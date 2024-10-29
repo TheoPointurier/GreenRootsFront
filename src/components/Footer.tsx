@@ -11,11 +11,11 @@ function Footer () {
 
       <div className="flex bg-greenroots_green items-center justify-around flex-row flex-nowrap h-auto">
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs p-2">CGV</a>
+          <a href="/" className="text-greenroots_white text-xs pl-2 pr-2">CGV</a>
         </span>
       
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs p-2">Politique de confidentialité</a>
+          <a href="/" className="text-greenroots_white text-xs pl-2">Politique de confidentialité</a>
         </span>
 
         <div className="flex-grow flex justify-center">
@@ -25,11 +25,11 @@ function Footer () {
         </div>
 
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs p-2">Mentions légales</a>
+          <a href="/" className="text-greenroots_white text-xs pr-2">Mentions légales</a>
         </span>
 
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs p-2">Contact</a>
+          <a href="/" className="text-greenroots_white text-xs pl-2 pr-2">Contact</a>
         </span>
       </div>
     </footer>
