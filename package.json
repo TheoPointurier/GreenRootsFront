@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:css:prod": "tailwindcss -i ./src/index.css -o ./dist/output.css",
+    "build:css:watch": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
