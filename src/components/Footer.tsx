@@ -3,7 +3,7 @@ import mountains from '../../public/Images/moutains.svg';
 
 function Footer () {
   return (
-    <footer>
+    <footer className='pb-16 mt-5'>
       <div className="flex bg-greenroots_green h-auto">
         <img src={mountains} alt="mountain left" className="w-1/2 h-auto transform scale-x-[-1]" />
         <img src={mountains} alt="mountain right" className="w-1/2 h-auto" />

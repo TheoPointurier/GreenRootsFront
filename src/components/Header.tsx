@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <>
-      <header className="fixed bottom-0 left-0 w-full flex items-end bg-greenroots_green z-50 h-15">
+      <header className="fixed bottom-0 left-0 w-full flex items-end bg-greenroots_green z-50 p-18">
         {/* Left menu icon */}
         <div className="flex-1 flex justify-start">
           <FontAwesomeIcon icon={faBars} size="sm" className="w-8 h-8 m-2 cursor-pointer text-greenroots_white" onClick={toggleMenu} />
