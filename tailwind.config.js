@@ -8,7 +8,10 @@ export default {
         greenroots_orange: '#CD5C08',
         greenroots_sand: '#FFF9F3',
         greenroots_grey: '#B7B7B7',
-      }
+      },
+      textColor: {
+        greenroots_white: '#FFF',
+      },
     },
   },
   plugins: [],
