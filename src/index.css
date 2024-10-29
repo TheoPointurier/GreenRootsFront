@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import Gerbil Font */
+@font-face {
+  font-family: 'Gerbil';
+  src: url('./assets/fonts/gerbil.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Add Gerbil font and default fonts */
+body {
+  font-family: 'Gerbil', Arial, sans-serif;
+}
