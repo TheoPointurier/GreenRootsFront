@@ -6,7 +6,7 @@ import TreeDetail from './pages/TreeDetail';
 import Campaigns from './pages/Campaigns';
 import CampaignDetail from './pages/CampaignDetail';
 import User from './pages/User';
-
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +36,10 @@ const router = createBrowserRouter([
       {
         path:'/user/:id',
         element: <User />,
+      },
+      {
+        path: '*', // 404, page not found / path '*', for every routes not resolved
+        element: <NotFound />,
       },
     ],
   },
