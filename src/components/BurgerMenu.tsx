@@ -10,7 +10,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
   return (
     <>
       {/* Icone d'ouverture du menu */}
-      <div className="flex-1 flex justify-start">
+      <div className="flex-1 flex justify-end">
         <FontAwesomeIcon 
           icon={faBars} 
           size="sm" 
@@ -21,8 +21,8 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
 
       {/* Contenu du menu burger */}
       {isOpen && (
-        <div className="fixed inset-0 top-[70px] bottom-[56px] bg-greenroots_green flex flex-col items-start pl-2 justify-start z-40 max-w-80 rounded-tr-lg border border-greenroots_orange-500 shadow-lg">
-          <ul className="text-greenroots_white text-2xl space-y-4">
+        <div className="fixed right-0 top-[70px] bottom-[56px] bg-greenroots_green flex flex-col items-end pl-8 pr-6 justify-start z-40 max-w-80 rounded-tl-lg border border-greenroots_orange-500 shadow-lg">
+          <ul className="text-greenroots_white text-xl space-y-4">
             <li className='pt-10'><a href="/user">Compte / Connexion</a></li>
             <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 ml-2 mr-4"><a href="/panier">Mon panier</a></li>
             <li className='pt-10'><a href="/">Accueil</a></li>
@@ -32,13 +32,13 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
           </ul>
 
           {/* Bouton de fermeture */}
-          <div className="absolute bottom-16 left-2 flex items-center">
+          <div className="absolute bottom-5 right-2 flex items-center">
+            <span className="text-greenroots_white text-lg pr-10">Green Roots</span>
             <FontAwesomeIcon 
               icon={faTimes} 
               className="w-8 h-8 text-greenroots_white text-1xl cursor-pointer" 
               onClick={toggleMenu} 
             />
-            <span className="text-greenroots_white text-lg pl-10">Green Roots</span>
           </div>
         </div>
       )}

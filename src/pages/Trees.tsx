@@ -63,9 +63,11 @@ function Trees() {
               <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
               <button type="button" onClick={handleIncrement} className="border border-blue-300 rounded-r-full w-7 text-sm md:text-base">+</button>
             </div>
-            <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-3 pr-3 rounded-full mr-2">
-              Ajouter au panier
-            </button>
+            <div className='mt-2 ml-2'>
+              <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-3 pr-3 rounded-full mr-2">
+                Ajouter au panier
+              </button>
+            </div>
           </form>
         </article>
 
@@ -86,7 +88,7 @@ function Trees() {
             <p className="p-2 m-1">Age : 0 à 2 ans</p>
             <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
           </div>
-          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2">
+          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2 flex-wrap">
             <div className="flex items-stretch ml-2 h-10 w-auto">
               <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
               <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
@@ -115,7 +117,7 @@ function Trees() {
             <p className="p-2 m-1">Age : 0 à 2 ans</p>
             <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
           </div>
-          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2">
+          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2 flex-wrap">
             <div className="flex items-stretch ml-2 h-10 w-auto">
               <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
               <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
