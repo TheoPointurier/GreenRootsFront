@@ -57,6 +57,7 @@ function HomePage() {
           src="/Images/illustration_arbre.webp"
           alt="Illustration d'un arbre"
           className="w-full max-w-md mx-auto"
+          loading="lazy"
         />
 
         {/* Section "Ce que nous te proposons" superposée */}
@@ -112,6 +113,7 @@ function HomePage() {
             src="/Images/weeping-willow-tree.png"
             alt="Arbre pleureur"
             className="w-[300px] object-cover"
+            loading="lazy"
           />
         </div>
         <div
