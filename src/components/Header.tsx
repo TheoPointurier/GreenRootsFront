@@ -35,7 +35,7 @@ function Header() {
 
       {/* Burger menu  */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-20 bg-greenroots_green flex flex-col items-left pl-2 justify-start z-40 max-w-80 ">
+        <div className="fixed inset-0 top-20 bg-greenroots_green flex flex-col items-start pl-2 justify-start z-40 max-w-80 rounded-tr-lg border border-greenroots_orange-500 shadow-lg">
           
           {/* Menu list */}
           <ul className="text-greenroots_white text-2xl space-y-4">
