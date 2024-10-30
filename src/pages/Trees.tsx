@@ -28,7 +28,7 @@ function Trees() {
         <h2 className="text-h2 flex flex-wrap justify-center items-center mt-10 mb-4">
           Trouves l'arbre qu'il <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">te faut</span>
         </h2>
-        <div className='flex flex-row items-center justify-between flex-wrap ml-10 mr-10 mb-5'>
+        <div className='flex flex-row items-center justify-between flex-wrap ml-1 mr-1 mt-5 mb-3'>
           {/* Back link */}
           <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-6 '/> Retour</a>
           {/* Filter button */}
