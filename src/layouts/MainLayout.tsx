@@ -4,11 +4,11 @@ import { Outlet } from 'react-router-dom';
 
 function MainLayout() {
   return (
-    <div className="flex-1 relative">
-    <Header />
-    <Outlet />
-    <Footer />
-  </div>
+    <div className="flex-1">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
   ); 
 }
 

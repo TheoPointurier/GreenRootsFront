@@ -6,21 +6,17 @@ function Trees() {
   const [quantity, setQuantity] = useState(1); 
 
   const handleIncrement = () => {
-    // Increment the quantity
     setQuantity(quantity + 1);
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      // Decrement the quantity
       setQuantity(quantity - 1);
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Prevent page reloading
+  const handleSubmit = (event) => {
     event.preventDefault();
-    // Logic to add to cart
     console.log(`Ajout de ${quantity} au panier`);
   };
 
@@ -30,29 +26,93 @@ function Trees() {
         Trouves l'arbre qu'il <span className="bg-greenroots_green text-greenroots_white rounded p-1">te faut</span>
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-1">
-        <article className="flex flex-col m-5 rounded-b-md rounded-t-lg border border-grey rounded-r-lg shadow-lg">
+        {/* Premier article */}
+        <article className="flex flex-col m-5 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg">
           <div className='flex justify-center'>
-            <img src={Image} alt="Nom arbre" className="rounded-t-lg" />
+            <img 
+              src={Image} 
+              alt="Nom arbre" 
+              className="w-full h-40 rounded-t-[20px] object-cover"
+            />
           </div>
-          <div>
-            <h3 className="text-h3 pt-3 pl-3 mb-2">Nom arbre</h3>
+          <div className='flex flex-row justify-between mt-2 p-1 items-center'>
+            <h3 className="text-h3 pt-3 pl-3 mb-1">Nom arbre</h3>
+            <p className="text-greenroots_green pr-4" >50 €</p>
           </div>
-          <div>
-            <p className="p-2">Prix</p>
-            <p className="p-2">Age : 0 à 2 ans</p>
-            <p className="p-2">Lieu : France, Forêt du Pinsan</p>
+          <div className='m-1'>
+            <p className="p-2 m-1">Age : 0 à 2 ans</p>
+            <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
           </div>
-          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2"> {/* Encapsuler le tout dans un formulaire */}
+          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2">
             <div className="flex items-stretch ml-2 h-10 w-auto">
               <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
-              <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-6 pl-6">{quantity}</span>
+              <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
               <button type="button" onClick={handleIncrement} className="border border-blue-300 rounded-r-full w-7 text-sm md:text-base">+</button>
             </div>
-            <button type="submit" className="bg-greenroots_orange p-2 rounded-lg mr-2">
+            <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-3 pr-3 rounded-full mr-2">
               Ajouter au panier
             </button>
           </form>
         </article>
+
+        {/* Deuxième article */}
+        <article className="flex flex-col m-5 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg">
+          <div className='flex justify-center'>
+          <img 
+              src="../../public/Images/chene.jpg" 
+              alt="Nom arbre" 
+              className="w-full h-40 rounded-t-[20px] object-cover"
+            />
+          </div>
+          <div className='flex flex-row justify-between mt-2 p-1 items-center'>
+            <h3 className="text-h3 pt-3 pl-3 mb-1">Nom arbre</h3>
+            <p className="text-greenroots_green pr-4" >50 €</p>
+          </div>
+          <div className='m-1'>
+            <p className="p-2 m-1">Age : 0 à 2 ans</p>
+            <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
+          </div>
+          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2">
+            <div className="flex items-stretch ml-2 h-10 w-auto">
+              <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
+              <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
+              <button type="button" onClick={handleIncrement} className="border border-blue-300 rounded-r-full w-7 text-sm md:text-base">+</button>
+            </div>
+            <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-3 pr-3 rounded-full mr-2">
+              Ajouter au panier
+            </button>
+          </form>
+        </article>
+
+        {/* Troisième article */}
+        <article className="flex flex-col m-5 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg">
+          <div className='flex justify-center'>
+          <img 
+              src="../../public/Images/view-of-flower.jpeg" 
+              alt="Nom arbre" 
+              className="w-full h-40 rounded-t-[20px] object-cover"
+            />
+          </div>
+          <div className='flex flex-row justify-between mt-2 p-1 items-center'>
+            <h3 className="text-h3 pt-3 pl-3 mb-1">Nom arbre</h3>
+            <p className="text-greenroots_green pr-4" >50 €</p>
+          </div>
+          <div className='m-1'>
+            <p className="p-2 m-1">Age : 0 à 2 ans</p>
+            <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
+          </div>
+          <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mb-2">
+            <div className="flex items-stretch ml-2 h-10 w-auto">
+              <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
+              <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium pr-8 pl-8">{quantity}</span>
+              <button type="button" onClick={handleIncrement} className="border border-blue-300 rounded-r-full w-7 text-sm md:text-base">+</button>
+            </div>
+            <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-3 pr-3 rounded-full mr-2">
+              Ajouter au panier
+            </button>
+          </form>
+        </article>
+        
       </div>
     </main>
   );
