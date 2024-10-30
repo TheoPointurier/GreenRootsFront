@@ -1,4 +1,4 @@
-import logo from '../assets/Logos/Logo_principal.webp';
+// import logo from '../assets/Logos/Logo_principal.webp';
 import mountains from '../../public/Images/moutains.svg';
 
 function Footer () {
@@ -18,11 +18,11 @@ function Footer () {
           <a href="/" className="text-greenroots_white text-xs pl-2">Politique de confidentialité</a>
         </span>
 
-        <div className="flex-grow flex justify-center">
+        {/* <div className="flex-grow flex justify-center">
           <a href="/" >
             <img src={logo} alt="logo" className="w-50 h-50 -mt-5" />
           </a>
-        </div>
+        </div> */}
 
         <span className="flex">
           <a href="/" className="text-greenroots_white text-xs pr-2">Mentions légales</a>
