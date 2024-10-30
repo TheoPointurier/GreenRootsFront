@@ -34,6 +34,14 @@ function HomePage() {
   //     });
   // }, []);
 
+  // Questions/Réponses pour la FAQ
+  const faqs = [
+    { id: 'faq1', question: 'Quelle est la mission de Greenroots ?', answer: 'Greenroots vise à promouvoir la plantation d\'arbres pour lutter contre le changement climatique.' },
+    { id: 'faq2', question: 'Comment puis-je contribuer ?', answer: 'Vous pouvez contribuer en achetant un arbre à planter dans l\'une de nos campagnes.' },
+    { id: 'faq3', question: 'Où sont plantés les arbres ?', answer: 'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.' },
+    { id: 'faq4', question: 'Puis-je suivre l\'impact de mon geste ?', answer: 'Oui, vous recevrez des informations sur la croissance de l\'arbre et l\'impact en CO₂ absorbé.' },
+  ];
+
   return (
     <div className="relative text-center mt-8 px-4">
       <h1 className="text-h1 font-bold text-black">
@@ -49,6 +57,7 @@ function HomePage() {
           src="/Images/illustration_arbre.webp"
           alt="Illustration d'un arbre"
           className="w-full max-w-md mx-auto"
+          loading="lazy"
         />
 
         {/* Section "Ce que nous te proposons" superposée */}
@@ -104,6 +113,7 @@ function HomePage() {
             src="/Images/weeping-willow-tree.png"
             alt="Arbre pleureur"
             className="w-[300px] object-cover"
+            loading="lazy"
           />
         </div>
         <div
@@ -125,19 +135,15 @@ function HomePage() {
       <div className="mt-20">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
         <div className="grid gap-4">
-          {[...Array(4)].map((_, index) => (
-            <div
-              key={Math.random().toString(36).substr(2, 9)}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer"
+          {faqs.map((faq, index) => (
+            <button
+              key={faq.id}
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
               onClick={() => setFaqOpenIndex(faqOpenIndex === index ? null : index)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  setFaqOpenIndex(faqOpenIndex === index ? null : index);
-                }
-              }}
+              type="button"
             >
               <div className="flex items-center justify-between">
-                <p className="font-bold">Exemple question FAQ</p>
+                <p className="font-bold">{faq.question}</p>
                 <span className="ml-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -157,10 +163,10 @@ function HomePage() {
               </div>
               {faqOpenIndex === index && (
                 <div className="mt-4 bg-white text-gray-700 p-4 rounded-lg">
-                  <p>Exemple réponse FAQ</p>
+                  <p>{faq.answer}</p>
                 </div>
               )}
-            </div>
+            </button>
           ))}
         </div>
       </div>

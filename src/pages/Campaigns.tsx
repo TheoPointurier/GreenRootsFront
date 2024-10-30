@@ -1,9 +1,11 @@
-function Campaings () {
+import CampaignsList from '../components/CampaignsList';
+
+function Campaigns() {
   return (
-    <main className="campaigns">
-      <h1>Aperçu Campaigns</h1>
-    </main>
+    <div className="campaigns-page">
+      <CampaignsList />
+    </div>
   );
 }
 
-export default Campaings;
+export default Campaigns;
