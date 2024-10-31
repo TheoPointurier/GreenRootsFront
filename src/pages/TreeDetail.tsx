@@ -24,21 +24,21 @@ function TreesDetail () {
 
   return (
     <main className="container mx-auto flex flex-col p-5">
-
-      {/* Title Detail Tree*/}
-      <div className='flex flex-row justify-between mt-2 p-1 items-center'>
-        <h2 className="text-h2 flex items-center mt-10 mb-4">
-          Détail d'un <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">arbre</span>
-        </h2>
-      </div>
       
       {/* Back link */}
       <div className="flex justify-start mt-5">
         <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-1'/> Retour</a>
       </div>
 
+      {/* Title Detail Tree*/}
+      <div className='flex flex-row justify-evenly mt-2 p-1 items-center'>
+        <h2 className="text-h2 items-center text-center mt-10 mb-10">
+          Détail d'un <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">arbre</span>
+        </h2>
+      </div>
+
       {/* Detail one tree */}
-      <div className="flex justify-center mt-5 mb-5">
+      <div className="flex justify-evenly mt-5 mb-5">
       <img 
         src={Image}
         alt="Nom arbre" 

@@ -32,7 +32,7 @@ function TreesList({ tree }: TreeProps) {
     <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs mx-auto h-full">
       <div className="flex justify-center w-full">
         <img
-          src="../../public/Images/view-of-flower.jpeg"
+          src="../../public/Images/view-of-flower.webp"
           alt={tree.name}
           className="w-full h-40 rounded-t-[20px] object-cover"
           loading="lazy"

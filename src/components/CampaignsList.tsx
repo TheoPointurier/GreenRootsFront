@@ -30,7 +30,7 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
         <article key={campaign.id} className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg max-w-full">
           <div className="flex justify-center w-full">
             <img
-              src="../../public/Images/Hetre2.jpg"
+              src="../../public/Images/Hetre2.webp"
               alt={campaign.name}
               className="w-full h-40 rounded-t-[20px] object-cover"
               loading="lazy"
