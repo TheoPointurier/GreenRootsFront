@@ -5,7 +5,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 function CampaingDetail () {
   return (
     <main className="container mx-auto flex flex-col p-5">
-      
+
     {/* Back link */}
     <section className="flex justify-start mt-5">
       <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-1'/> Retour</a>
