@@ -24,7 +24,7 @@ function FilterSelect({ onFilterChange, filterType }: FilterSelectProps) {
 
   const handleFilterSelect = (option: string) => {
     setIsOpen(false);
-    onFilterChange(option === 'Tous' || option === 'Toutes' ? '' : option); // Affiche tout si "Tous" ou "Toutes" est sélectionné
+    onFilterChange(option === 'Tous' || option === 'Toutes' ? '' : option);
   };
 
   return (

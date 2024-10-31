@@ -1,4 +1,3 @@
-// components/CampaignsList.tsx
 import { useState, useEffect } from 'react';
 import TreesList from './TreesList';
 

@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 
 interface CartItem {
   id: string;
@@ -26,7 +27,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-    console.log("Panier chargé depuis le localStorage :", cartItems);
+    const savedCart = localStorage.getItem('cart');
+    const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+    console.log("Panier chargé depuis le localStorage :", parsedCart);
   }, []);
 
   useEffect(() => {
@@ -47,9 +50,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
             : cartItem
         );
-      } else {
-        return [...prevCart, item];
       }
+      return [...prevCart, item];
     });
   };
 

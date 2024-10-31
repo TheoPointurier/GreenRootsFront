@@ -30,6 +30,7 @@ function TreesList({ tree }: TreeProps) {
       ...tree,
       quantity,
       image: '/Images/view-of-flower.webp',
+      id: tree.id.toString(),
     });
     console.log("Produit ajouté au panier:", tree);
   };

@@ -1,5 +1,3 @@
-// components/CartSummary.tsx
-
 interface CartSummaryProps {
   subtotal: number; // Sous-total HT
   onCheckout: () => void;
@@ -24,7 +22,7 @@ function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
       </div>
 
       <button
-        type="button" // Ajout explicite du type
+        type="button"
         onClick={onCheckout}
         className="w-full mt-4 bg-greenroots_green text-white py-2 rounded-lg font-semibold"
       >
