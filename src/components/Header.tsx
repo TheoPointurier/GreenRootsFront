@@ -13,9 +13,13 @@ function Header() {
 
   return (
     <>
-      <header className="fixed bottom-0 left-0 w-full flex items-end bg-greenroots_green z-50 p-18">
-        {/* Menu burger */}
-        <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <header className="fixed bottom-0 left-0 w-full flex items-center bg-greenroots_green z-50 p-18">
+
+        {/* Icône du panier */}
+        <div className="flex-1 flex justify-start">
+          <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 m-2 text-greenroots_white" />
+        </div>
+
         {/* Logo central */}
         <div className="flex-1 flex justify-center">
           <a href="/">
@@ -23,10 +27,8 @@ function Header() {
           </a>
         </div>
 
-        {/* Icône du panier */}
-        <div className="flex-1 flex justify-end">
-          <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 m-2 text-greenroots_white" />
-        </div>
+        {/* Menu burger */}
+        <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </header>
     </>
   );
