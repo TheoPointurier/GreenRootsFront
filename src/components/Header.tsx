@@ -17,7 +17,9 @@ function Header() {
 
         {/* Icône du panier */}
         <div className="flex-1 flex justify-start">
+        <a href="/panier">
           <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 m-2 text-greenroots_white" />
+        </a>
         </div>
 
         {/* Logo central */}

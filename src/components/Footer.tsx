@@ -1,5 +1,5 @@
 // import logo from '../assets/Logos/Logo_principal.webp';
-import mountains from '../../public/Images/moutains.svg';
+import mountains from '/Images/moutains.svg';
 
 function Footer () {
   return (

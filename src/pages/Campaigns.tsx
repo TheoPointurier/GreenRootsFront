@@ -72,7 +72,7 @@ function Campaigns() {
   ];
 
   useEffect(() => {
-    setFilteredCampaigns(campaigns); // Initialiser avec toutes les campagnes
+    setFilteredCampaigns(campaigns);
   }, []);
 
   const handleFilterChange = (country: string) => {
