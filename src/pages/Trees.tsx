@@ -1,4 +1,4 @@
-import Image from '../../public/Images/Hetre2.jpg';
+import Image from '../../public/Images/Hetre2.webp';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
@@ -74,8 +74,8 @@ function Trees() {
         {/* Deuxième article */}
         <article className="flex flex-col m-5 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg">
           <div className='flex justify-center'>
-          <img 
-              src="../../public/Images/chene.jpg" 
+          <img
+              src="../../public/Images/chene.webp" 
               alt="Nom arbre" 
               className="w-full h-40 rounded-t-[20px] object-cover"
             />
@@ -104,7 +104,7 @@ function Trees() {
         <article className="flex flex-col m-5 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg">
           <div className='flex justify-center'>
           <img 
-              src="../../public/Images/view-of-flower.jpeg" 
+              src="../../public/Images/tea-field-plantation.webp"
               alt="Nom arbre" 
               className="w-full h-40 rounded-t-[20px] object-cover"
             />

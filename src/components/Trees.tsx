@@ -22,7 +22,7 @@ function Trees() {
     <article className="flex flex-col m-4 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full">
       <div className='flex justify-center w-full'>
         <img
-          src="../../public/Images/view-of-flower.jpeg"
+          src="../public/Images/view-of-flower.webp"
           alt="Nom arbre"
           className="w-full h-40 rounded-t-[20px] object-cover"
           loading="lazy"

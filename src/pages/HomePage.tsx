@@ -10,15 +10,15 @@ function HomePage() {
   // Images définies en dur dans HomePage
   const campaignImages = [
     {
-      src: '/Images/planting-in-forest.jpg',
+      src: '/Images/planting-in-forest.webp',
       alt: 'Planting in Forest',
     },
     {
-      src: '/Images/tea-field-plantation.jpg',
+      src: '/Images/tea-field-plantation.webp',
       alt: 'Tea Field Plantation',
     },
     {
-      src: '/Images/view-of-flower.jpeg',
+      src: '/Images/view-of-flower.webp',
       alt: 'View of Flower',
     },
   ];
@@ -110,7 +110,7 @@ function HomePage() {
       <div className="flex items-center justify-center mt-16 relative">
         <div className="relative z-10">
           <img
-            src="/Images/weeping-willow-tree.png"
+            src="/Images/weeping-willow-tree.webp"
             alt="Arbre pleureur"
             className="w-[300px] object-cover"
             loading="lazy"
