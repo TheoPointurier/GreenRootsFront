@@ -34,11 +34,18 @@ function TreesList({ tree }: TreeProps) {
     });
     console.log("Produit ajouté au panier:", tree);
   };
-  
 
   return (
-    <article className="flex flex-col items-center p-4 border rounded-lg shadow-md">
-      <div className="flex flex-col items-center mt-2 w-full">
+    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs mx-auto h-full">
+      <div className="flex justify-center w-full">
+        <img
+          src="/Images/view-of-flower.webp"
+          alt={tree.name}
+          className="w-full h-40 rounded-t-[20px] object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div className="flex flex-col items-center mt-2 w-full h-24">
         <h3 className="text-h3 font-bold">{tree.name}</h3>
         <p className="text-greenroots_green">{tree.price.toFixed(2)} € HT</p>
       </div>
