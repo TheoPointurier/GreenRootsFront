@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from '../../public/Images/Hetre2.webp';
+import Image from '/Images/Hetre2.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 
