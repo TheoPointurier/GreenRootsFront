@@ -30,7 +30,7 @@ function Trees() {
         </h2>
         <div className='flex flex-row items-center justify-between flex-wrap ml-1 mr-1 mt-5 mb-3'>
           {/* Back link */}
-          <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-6 '/> Retour</a>
+          <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-6'/> Retour</a>
           {/* Filter button */}
           <button type="submit" className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-9 pr-9 mr-5 rounded-full">
             Filtrer

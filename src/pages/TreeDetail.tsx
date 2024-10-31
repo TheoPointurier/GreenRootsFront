@@ -4,7 +4,6 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { useState } from 'react';
 
 function TreesDetail () {
-
   // Quantity state
   const [quantity, setQuantity] = useState(1); 
 
@@ -26,14 +25,12 @@ function TreesDetail () {
   return (
     <main className="container mx-auto flex flex-col p-5">
   {/* Back link */}
-  <div className="flex justify-start mt-5 mb-3">
-    <a href="/trees" className="flex items-center pr-1">
-      <FontAwesomeIcon icon={faChevronLeft} className="pr-1 ml-6" /> Retour
-    </a>
+  <div className="flex justify-start mt-5">
+    <a href="/" className='pr-1'><FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-1'/> Retour</a>
   </div>
 
   {/* Detail one tree */}
-  <div className="flex justify-center mt-10 mb-10">
+  <div className="flex justify-center mt-5 mb-5">
   <img 
     src={Image}
     alt="Nom arbre" 
@@ -47,12 +44,12 @@ function TreesDetail () {
       <h3 className="text-h3 pl-3 mb-2">Chêne</h3>
       <p className="text-greenroots_green pr-4">50 €</p>
     </div>
-    <p className="p-2 m-1">Age : 0 à 2 ans</p>
-    <p className="p-2 m-1">Lieu : France, Forêt du Pinsan</p>
-    <p className="p-2 m-1">Co2 absorbé : 300 par an</p>
+    <p className="p-1 m-1">Age : 0 à 2 ans</p>
+    <p className="p-1 m-1">Lieu : France, Forêt du Pinsan</p>
+    <p className="p-1 m-1">Co2 absorbé : 300 par an</p>
 
     {/* Quantity Selector */}
-    <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mt-5 mb-2 flex-wrap">
+    <form onSubmit={handleSubmit} className="flex flex-row justify-between items-center p-2 mt-2 mb-1 flex-wrap">
       <div className="flex items-stretch h-10 w-auto">
         <button type="button" onClick={handleDecrement} className="border border-blue-300 rounded-l-full w-7 text-sm md:text-base">-</button>
         <span className="border-t border-b border-blue-300 flex items-center justify-center text-sm md:text-base font-medium px-8">{quantity}</span>
