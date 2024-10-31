@@ -5,7 +5,7 @@
 /* Import Gerbil Font */
 @font-face {
   font-family: 'Gerbil';
-  src: url('./assets/fonts/gerbil.otf') format('opentype');
+  src: url('/fonts/gerbil.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,4 +14,3 @@
 body {
   font-family: 'Gerbil', Arial, sans-serif;
 }
-
