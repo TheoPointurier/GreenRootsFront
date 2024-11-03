@@ -1,26 +1,13 @@
-// components/FilterSelect.tsx
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface FilterSelectProps {
   onFilterChange: (filter: string) => void;
-  filterType: 'country' | 'species'; // Spécifie si l’on filtre par pays ou par espèce d’arbre
+  filterType: 'country' | 'species';
+  filterOptions: string[];
 }
 
-function FilterSelect({ onFilterChange, filterType }: FilterSelectProps) {
+function FilterSelect({ onFilterChange, filterType, filterOptions }: FilterSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [filterOptions, setFilterOptions] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Simuler la récupération des données selon le type de filtre
-    const fetchOptions = async () => {
-      if (filterType === 'country') {
-        setFilterOptions(['Tous', 'France', 'USA', 'Canada', 'Germany']);
-      } else if (filterType === 'species') {
-        setFilterOptions(['Toutes', 'Chêne', 'Sapin', 'Érable', 'Bouleau']);
-      }
-    };
-    fetchOptions();
-  }, [filterType]);
 
   const handleFilterSelect = (option: string) => {
     setIsOpen(false);

@@ -1,4 +1,4 @@
-import Image from '../../public/Images/weeping-willow-tree.webp';
+import Image from '/Images/weeping-willow-tree.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 
@@ -54,7 +54,7 @@ function CampaingDetail () {
       <article className="flex flex-col mt-3 rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs mx-auto h-full">
       <div className="flex justify-center w-full">
         <img
-          src="../../public/Images/view-of-flower.webp"
+          src="/Images/view-of-flower.webp"
           alt="Nom arbre"
           className="w-full h-40 rounded-t-[20px] object-cover"
           loading="lazy"
