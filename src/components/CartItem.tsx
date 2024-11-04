@@ -13,7 +13,8 @@ interface CartItemProps {
 function CartItem({ item, quantity }: CartItemProps) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
   const tvaRate = 0.20;
-  const priceTTC = item.price * (1 + tvaRate);
+  const priceHT = typeof item.price === 'string' ? Number.parseFloat(item.price) : item.price;
+  const priceTTC = priceHT * (1 + tvaRate);
 
   return (
     <div className="flex items-center border-b py-4">
@@ -28,7 +29,7 @@ function CartItem({ item, quantity }: CartItemProps) {
       <div className="flex-1">
         <h3 className="text-lg font-semibold">{item.name}</h3>
         <p className="text-greenroots_green">
-          {item.price.toFixed(2)} € HT / {priceTTC.toFixed(2)} € TTC
+          {priceHT.toFixed(2)} € HT / {priceTTC.toFixed(2)} € TTC
         </p>
       </div>
 

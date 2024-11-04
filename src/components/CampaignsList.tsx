@@ -1,14 +1,30 @@
 import { useState, useEffect } from 'react';
 import TreesList from './TreesList';
 
-interface CampaignsListProps {
-  campaigns: {
+interface Campaign {
+  id: number;
+  name: string;
+  description: string;
+  location: {
+    name_location: string;
+    country: {
+      name: string;
+    };
+  };
+  treesCampaign: {
     id: number;
     name: string;
-    country: string;
-    description: string;
-    trees: { id: number; name: string; price: number; age: number; location: string }[];
+    price_ht: number;
+    age: number;
+    location: string;
+    species: {
+      species_name: string;
+    };
   }[];
+}
+
+interface CampaignsListProps {
+  campaigns: Campaign[];
 }
 
 function CampaignsList({ campaigns }: CampaignsListProps) {
@@ -38,7 +54,9 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
           </div>
           <div className="flex flex-col p-4">
             <h3 className="text-h3 font-bold">{campaign.name}</h3>
-            <h3 className="text-h3">{campaign.country}</h3>
+            <p className="text-sm text-gray-500">
+              {campaign.location.name_location}, {campaign.location.country.name}
+            </p>
             <p className="p-2">{campaign.description}</p>
           </div>
           <div className="flex flex-row justify-between items-center p-2 mb-2">
@@ -61,14 +79,14 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
               </div>
             </button>
           </div>
-          {contributionStates[idx] && (
+          {contributionStates[idx] && campaign.treesCampaign && campaign.treesCampaign.length > 0 && (
             <div className="mt-6 p-4 bg-gray-100 rounded-lg overflow-hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(200px,1fr)] gap-4 max-w-[600px] mx-auto">
-              {campaign.trees.map(tree => (
-                <TreesList key={tree.id} tree={tree} />
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(200px,1fr)] gap-4 max-w-[600px] mx-auto">
+                {campaign.treesCampaign.map(tree => (
+                  <TreesList key={tree.id} tree={{ ...tree, campaignCountry: campaign.location.country.name }} />
+                ))}
+              </div>
             </div>
-          </div>                
           )}
         </article>
       ))}
