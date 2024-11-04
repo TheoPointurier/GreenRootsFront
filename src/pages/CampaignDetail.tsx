@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaignById } from '../api/campaigns';
 import TreesList from '../components/TreesList';
-import Image from '/Images/weeping-willow-tree.webp'; // Import de l'image
 
 interface Tree {
   id: number;
@@ -60,7 +59,8 @@ function CampaignDetail() {
   }
 
   // Convert and format end_campaign date
-const endDate = new Date(campaign.end_campaign.replace(' ', 'T')); // Remplacement de l'espace par 'T'
+  // The T is used to separate the date and time in a string that follows the ISO 8601 format
+const endDate = new Date(campaign.end_campaign.replace(' ', 'T'));
 const formattedDate = endDate.toLocaleDateString('fr-FR', {
   day: '2-digit',
   month: '2-digit',
@@ -86,7 +86,7 @@ const formattedDate = endDate.toLocaleDateString('fr-FR', {
       {/* Forest photo */}
       <section className="flex justify-evenly mt-5 mb-5">
         <img 
-          src={Image}
+          src={`/Campaign_Images/${campaign.id}.webp`}
           alt={`forêt de ${campaign.name}`} 
           className="w-full max-w-sm md:max-w-md lg:max-w-lg h-100 rounded-[20px] object-cover"
         />

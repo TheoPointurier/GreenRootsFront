@@ -55,7 +55,7 @@ function CampaignsList() {
         <article key={campaign.id} className="flex flex-col rounded-t-lg border shadow-lg max-w-full">
           <div className="flex justify-center w-full">
             <img
-              src="/Images/Hetre2.webp"
+              src={`/Campaign_Images/${campaign.id}.webp`}
               alt={campaign.name}
               className="w-full h-40 rounded-t-lg object-cover"
               loading="lazy"
