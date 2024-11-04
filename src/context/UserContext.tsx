@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import apiClient from '../api/apiClient';
 
-interface User {
+export interface User {
   id: number;
   email: string;
   firstname: string;
@@ -42,13 +42,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   // Fonction de déconnexion
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
-  };
+  }, []);
 
   // Fonction pour récupérer les informations utilisateur en fonction de l'ID
-  const fetchUserInfo = async (userId: number) => {
+  const fetchUserInfo = useCallback(async (userId: number) => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error("Token non défini");
@@ -67,7 +67,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Erreur lors de la récupération des informations utilisateur:", error);
       logout();
     }
-  };
+  }, [logout]);
 
   // Vérifie le token au chargement de l'application pour connexion persistante
   useEffect(() => {
@@ -86,7 +86,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     checkUserLoggedIn();
-  }, []);
+  }, [fetchUserInfo, logout]);
 
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>

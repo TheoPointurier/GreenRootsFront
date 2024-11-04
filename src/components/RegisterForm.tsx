@@ -1,11 +1,8 @@
-// src/components/RegisterForm.tsx
-
-import React, { useState, FormEvent } from 'react';
-import type { User } from '../context/UserContext'; 
+import type { FormEvent } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { register } from '../api/auth';
-
 
 export default function RegisterForm() {
   const { setUser } = useUser();
@@ -35,17 +32,28 @@ export default function RegisterForm() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null); // Réinitialise l'erreur
-  
-    // Crée une copie des données du formulaire en filtrant les champs vides
-    const dataToSend = { ...formData };
-    if (!dataToSend.phone_number) delete dataToSend.phone_number;
-    if (!dataToSend.entity_name) delete dataToSend.entity_name;
-    if (!dataToSend.entity_type) delete dataToSend.entity_type;
-    if (!dataToSend.entity_siret) delete dataToSend.entity_siret;
-  
+
+    // Création explicite de l'objet RegisterData avec toutes les propriétés attendues
+    const dataToSend = {
+      email: formData.email,
+      password: formData.password,
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      city: formData.city,
+      postal_code: formData.postal_code,
+      street: formData.street,
+      street_number: formData.street_number,
+      country: formData.country,
+      id_role: formData.id_role,
+      phone_number: formData.phone_number || undefined,
+      entity_name: formData.entity_name || undefined,
+      entity_type: formData.entity_type || undefined,
+      entity_siret: formData.entity_siret || undefined,
+    };
+
     try {
       const registeredUser = await register(dataToSend);
-  
+
       // Enregistre les informations utilisateur dans le contexte après l'inscription
       setUser({
         id: registeredUser.id,
@@ -55,15 +63,15 @@ export default function RegisterForm() {
         city: formData.city,
         postal_code: formData.postal_code,
         street: formData.street,
-        street_number: parseInt(formData.street_number, 10),
+        street_number: Number.parseInt(formData.street_number, 10),
         country: formData.country,
-        id_role: parseInt(formData.id_role, 10),
+        id_role: Number.parseInt(formData.id_role, 10),
         phone_number: formData.phone_number || undefined,
         entity_name: formData.entity_name || undefined,
         entity_type: formData.entity_type || undefined,
         entity_siret: formData.entity_siret || undefined,
       });
-  
+
       // Redirige vers la page d'accueil ou une autre page
       navigate('/');
     } catch (error) {
@@ -71,7 +79,6 @@ export default function RegisterForm() {
       setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
@@ -80,6 +87,7 @@ export default function RegisterForm() {
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
         <input
+          id="email"
           name="email"
           type="email"
           value={formData.email}
@@ -91,6 +99,7 @@ export default function RegisterForm() {
       <div className="mb-4">
         <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
         <input
+          id="password"
           name="password"
           type="password"
           value={formData.password}
@@ -100,8 +109,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Prénom</label>
+        <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">Prénom</label>
         <input
+          id="firstname"
           name="firstname"
           type="text"
           value={formData.firstname}
@@ -111,8 +121,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Nom</label>
+        <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">Nom</label>
         <input
+          id="lastname"
           name="lastname"
           type="text"
           value={formData.lastname}
@@ -122,8 +133,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Ville</label>
+        <label htmlFor="city" className="block text-sm font-medium text-gray-700">Ville</label>
         <input
+          id="city"
           name="city"
           type="text"
           value={formData.city}
@@ -133,8 +145,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Code postal</label>
+        <label htmlFor="postal_code" className="block text-sm font-medium text-gray-700">Code postal</label>
         <input
+          id="postal_code"
           name="postal_code"
           type="text"
           value={formData.postal_code}
@@ -144,8 +157,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Rue</label>
+        <label htmlFor="street" className="block text-sm font-medium text-gray-700">Rue</label>
         <input
+          id="street"
           name="street"
           type="text"
           value={formData.street}
@@ -155,8 +169,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Numéro de rue</label>
+        <label htmlFor="street_number" className="block text-sm font-medium text-gray-700">Numéro de rue</label>
         <input
+          id="street_number"
           name="street_number"
           type="number"
           value={formData.street_number}
@@ -166,8 +181,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Pays</label>
+        <label htmlFor="country" className="block text-sm font-medium text-gray-700">Pays</label>
         <input
+          id="country"
           name="country"
           type="text"
           value={formData.country}
@@ -177,8 +193,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
+        <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
         <input
+          id="phone_number"
           name="phone_number"
           type="tel"
           value={formData.phone_number}
@@ -187,8 +204,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Nom de l'entité</label>
+        <label htmlFor="entity_name" className="block text-sm font-medium text-gray-700">Nom de l'entité</label>
         <input
+          id="entity_name"
           name="entity_name"
           type="text"
           value={formData.entity_name}
@@ -197,8 +215,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Type d'entité</label>
+        <label htmlFor="entity_type" className="block text-sm font-medium text-gray-700">Type d'entité</label>
         <input
+          id="entity_type"
           name="entity_type"
           type="text"
           value={formData.entity_type}
@@ -207,8 +226,9 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">SIRET de l'entité</label>
+        <label htmlFor="entity_siret" className="block text-sm font-medium text-gray-700">SIRET de l'entité</label>
         <input
+          id="entity_siret"
           name="entity_siret"
           type="text"
           value={formData.entity_siret}

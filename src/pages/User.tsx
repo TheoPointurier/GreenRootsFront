@@ -1,11 +1,10 @@
-// src/pages/User.tsx
-
-import React, { useEffect, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
 
-const User: React.FC = () => {
+
+const User: FC = () => {
   const { user, setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
 
@@ -19,8 +18,14 @@ const User: React.FC = () => {
         return;
       }
 
+      const userId = getUserIdFromToken(token);
+      if (!userId) {
+        setError("ID utilisateur non trouvé dans le token.");
+        return;
+      }
+
       try {
-        const response = await apiClient('/me', {
+        const response = await apiClient(`/users/${userId}`, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -45,3 +50,14 @@ const User: React.FC = () => {
 };
 
 export default User;
+
+// Fonction pour décoder l'ID utilisateur depuis le token
+const getUserIdFromToken = (token: string): number | null => {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.id || null;
+  } catch (error) {
+    console.error("Erreur lors du décodage du token:", error);
+    return null;
+  }
+};

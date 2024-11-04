@@ -1,6 +1,7 @@
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useUser } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 type BurgerMenuProps = {
   isOpen: boolean;
@@ -9,10 +10,12 @@ type BurgerMenuProps = {
 
 const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
   const { user, logout } = useUser();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     toggleMenu();
+    navigate('/');
   };
 
   return (
