@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import TreesList from './TreesList';
+import { Link } from 'react-router-dom';
+import { fetchCampaigns } from '../api/campaigns';
+import TreesList from '../components/TreesList';
 
 interface Campaign {
   id: number;
@@ -23,16 +25,23 @@ interface Campaign {
   }[];
 }
 
-interface CampaignsListProps {
-  campaigns: Campaign[];
-}
-
-function CampaignsList({ campaigns }: CampaignsListProps) {
+function CampaignsList() {
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [contributionStates, setContributionStates] = useState<boolean[]>([]);
 
   useEffect(() => {
-    setContributionStates(new Array(campaigns.length).fill(false));
-  }, [campaigns]);
+    const fetchData = async () => {
+      try {
+        const data = await fetchCampaigns();
+        setCampaigns(data);
+        setContributionStates(new Array(data.length).fill(false));
+      } catch (error) {
+        console.error("Erreur lors de la récupération des campagnes:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleContribution = (index: number) => {
     setContributionStates(prevStates =>
@@ -43,12 +52,12 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-xl mx-auto p-4">
       {campaigns.map((campaign, idx) => (
-        <article key={campaign.id} className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg max-w-full">
+        <article key={campaign.id} className="flex flex-col rounded-t-lg border shadow-lg max-w-full">
           <div className="flex justify-center w-full">
             <img
               src="/Images/Hetre2.webp"
               alt={campaign.name}
-              className="w-full h-40 rounded-t-[20px] object-cover"
+              className="w-full h-40 rounded-t-lg object-cover"
               loading="lazy"
             />
           </div>
@@ -60,32 +69,22 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
             <p className="p-2">{campaign.description}</p>
           </div>
           <div className="flex flex-row justify-between items-center p-2 mb-2">
-            <button type="button" className="bg-greenroots_green text-greenroots_white text-[0.8rem] p-2 rounded-full">
+            <Link to={`/campaigns/${campaign.id}`} className="bg-greenroots_green text-white p-2 rounded-full">
               En savoir plus
-            </button>
+            </Link>
             <button
               type="button"
               onClick={() => toggleContribution(idx)}
-              className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 rounded-full"
+              className="bg-greenroots_orange text-white p-2 rounded-full"
             >
-              <div className="flex items-center justify-between">
-                <span>Je contribue</span>
-                <span className="ml-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transform ${contributionStates[idx] ? 'rotate-180' : ''}`}>
-                    <title>Flèche déroulante</title>
-                    <path fillRule="evenodd" d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z" clipRule="evenodd" />
-                  </svg>
-                </span>
-              </div>
+              Contribuer
             </button>
           </div>
-          {contributionStates[idx] && campaign.treesCampaign && campaign.treesCampaign.length > 0 && (
-            <div className="mt-6 p-4 bg-gray-100 rounded-lg overflow-hidden">
-              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)] md:grid-cols-[minmax(200px,1fr)] gap-4 max-w-[600px] mx-auto">
-                {campaign.treesCampaign.map(tree => (
-                  <TreesList key={tree.id} tree={{ ...tree, campaignCountry: campaign.location.country.name }} />
-                ))}
-              </div>
+          {contributionStates[idx] && campaign.treesCampaign && (
+            <div className="p-4 bg-gray-100 rounded-lg">
+              {campaign.treesCampaign.map(tree => (
+                <TreesList key={tree.id} tree={{ ...tree, campaignCountry: campaign.location.country.name }} />
+              ))}
             </div>
           )}
         </article>
