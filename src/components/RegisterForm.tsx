@@ -1,9 +1,11 @@
 // src/components/RegisterForm.tsx
 
 import React, { useState, FormEvent } from 'react';
-import { register } from '../api/auth';
+import type { User } from '../context/UserContext'; 
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { register } from '../api/auth';
+
 
 export default function RegisterForm() {
   const { setUser } = useUser();
@@ -76,7 +78,7 @@ export default function RegisterForm() {
       <h2 className="text-2xl font-bold text-center mb-6">Inscription</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
         <input
           name="email"
           type="email"
@@ -87,7 +89,7 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Mot de passe</label>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
         <input
           name="password"
           type="password"

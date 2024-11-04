@@ -1,5 +1,3 @@
-// src/components/LoginForm.tsx
-
 import React, { useState, FormEvent } from 'react';
 import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
@@ -18,18 +16,18 @@ export default function LoginForm() {
 
     try {
       const response = await login({ email, password });
-      console.log("Réponse du backend :", response); // Vérification de la réponse
-
       const { user, accesstoken } = response;
-
-      setUser(user); // Enregistre les informations utilisateur dans le contexte
 
       // Stocke le token dans le localStorage
       if (accesstoken) {
         localStorage.setItem('token', accesstoken);
       }
 
-      navigate('/'); // Redirige vers la page d'accueil après connexion
+      // Met à jour le contexte utilisateur
+      setUser(user);
+
+      // Redirige vers la page d'accueil après connexion
+      navigate('/');
     } catch (error) {
       console.error("Erreur de connexion", error);
       setError("Échec de la connexion. Veuillez vérifier vos identifiants.");
@@ -41,9 +39,10 @@ export default function LoginForm() {
       <h2 className="text-2xl font-bold text-center mb-6">Connexion</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
         <input
           type="email"
+          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -51,9 +50,10 @@ export default function LoginForm() {
         />
       </div>
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700">Mot de passe</label>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
         <input
           type="password"
+          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

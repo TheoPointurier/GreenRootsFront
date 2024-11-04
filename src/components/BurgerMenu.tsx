@@ -8,11 +8,11 @@ type BurgerMenuProps = {
 };
 
 const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
-  const { user, logout } = useUser(); // Utilise useUser pour accéder à l'utilisateur et à la fonction logout
+  const { user, logout } = useUser();
 
   const handleLogout = () => {
-    logout(); // Appelle la fonction logout depuis le contexte
-    toggleMenu(); // Ferme le menu après déconnexion
+    logout();
+    toggleMenu();
   };
 
   return (
@@ -34,7 +34,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
             {/* Lien vers la page de connexion ou déconnexion */}
             <li className="pt-10">
               {user ? (
-                <button onClick={handleLogout} className="text-greenroots_white">
+                <button type="button" onClick={handleLogout} className="text-greenroots_white">
                   Déconnexion
                 </button>
               ) : (
@@ -47,7 +47,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
             {/* Lien vers le compte utilisateur si connecté */}
             {user && (
               <li className="pt-5">
-                <a href={`/user/me`} className="text-greenroots_white">
+                <a href={`/user/${user.id}`} className="text-greenroots_white">
                   Compte
                 </a>
               </li>

@@ -1,5 +1,3 @@
-// src/context/UserContext.tsx
-
 import { createContext, useContext, useState, useEffect } from 'react';
 import apiClient from '../api/apiClient';
 
@@ -49,21 +47,39 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem('token');
   };
 
+  // Fonction pour récupérer les informations utilisateur en fonction de l'ID
+  const fetchUserInfo = async (userId: number) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error("Token non défini");
+      return;
+    }
+
+    try {
+      const response = await apiClient(`/users/${userId}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(response); // Met à jour le contexte avec les informations de l'utilisateur
+    } catch (error) {
+      console.error("Erreur lors de la récupération des informations utilisateur:", error);
+      logout();
+    }
+  };
+
   // Vérifie le token au chargement de l'application pour connexion persistante
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       const token = localStorage.getItem('token');
       if (token) {
-        try {
-          const response = await apiClient('/me', {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setUser(response.user);
-        } catch (error) {
-          console.error('Erreur lors de la récupération des informations utilisateur:', error);
+        const userId = getUserIdFromToken(token);
+        if (userId) {
+          // Appelle fetchUserInfo avec l'ID de l'utilisateur pour obtenir ses informations
+          await fetchUserInfo(userId);
+        } else {
+          console.error("ID utilisateur non trouvé dans le token");
           logout();
         }
       }
@@ -77,4 +93,15 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+// Fonction pour décoder l'ID utilisateur depuis le token
+const getUserIdFromToken = (token: string): number | null => {
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.id || null;
+  } catch (error) {
+    console.error("Erreur lors du décodage du token:", error);
+    return null;
+  }
 };
