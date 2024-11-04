@@ -8,6 +8,8 @@ import CampaignDetail from './pages/CampaignDetail';
 import User from './pages/User';
 import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -19,23 +21,23 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path:'/trees',
+        path: '/trees',
         element: <Trees />,
       },
       {
-        path:'/trees/:id',
+        path: '/trees/:id',
         element: <TreeDetail />,
       },
       {
-        path:'/campaigns',
+        path: '/campaigns',
         element: <Campaigns />,
       },
       {
-        path:'/campaigns/:id',
+        path: '/campaigns/:id',
         element: <CampaignDetail />,
       },
       {
-        path:'/user/:id',
+        path: '/user/me',
         element: <User />,
       },
       {
@@ -43,7 +45,15 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: '*', // 404, page not found / path '*', for every routes not resolved
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/register',
+        element: <Register />,
+      },
+      {
+        path: '*', // 404, page not found / path '*', for every route not resolved
         element: <NotFound />,
       },
     ],
