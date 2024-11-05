@@ -1,57 +1,53 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchCampaigns } from '../api/campaigns';
 import TreesList from '../components/TreesList';
 
+// Définition de l'interface Campaign qui structure les données d'une campagne
 interface Campaign {
+id: number;
+name: string;
+description: string;
+location: {
+  name_location: string;
+  country: {
+    name: string;
+  };
+};
+treesCampaign: {
   id: number;
   name: string;
-  description: string;
-  location: {
-    name_location: string;
-    country: {
-      name: string;
-    };
+  price_ht: number;
+  age: number;
+  location: string;
+  species: {
+    species_name: string;
   };
-  treesCampaign: {
-    id: number;
-    name: string;
-    price_ht: number;
-    age: number;
-    location: string;
-    species: {
-      species_name: string;
-    };
-  }[];
+}[];
 }
 
-function CampaignsList() {
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
-  const [contributionStates, setContributionStates] = useState<boolean[]>([]);
+// Définition de l'interface CampaignsListProps pour les propriétés du composant
+interface CampaignsListProps {
+campaigns: Campaign[];
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchCampaigns();
-        setCampaigns(data);
-        setContributionStates(new Array(data.length).fill(false));
-      } catch (error) {
-        console.error("Erreur lors de la récupération des campagnes:", error);
-      }
-    };
+function CampaignsList({ campaigns }: CampaignsListProps) {
+const [contributionStates, setContributionStates] = useState<boolean[]>(new Array(campaigns.length).fill(false));
 
-    fetchData();
-  }, []);
+const toggleContribution = (index: number) => {
+  setContributionStates(prevStates => {
+    const newStates = [...prevStates];
+    newStates[index] = !newStates[index];
+    return newStates;
+  });
+};
 
-  const toggleContribution = (index: number) => {
-    setContributionStates(prevStates =>
-      prevStates.map((state, i) => (i === index ? !state : state))
-    );
-  };
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-xl mx-auto p-4">
-      {campaigns.map((campaign, idx) => (
+// Rendu du composant
+return (
+  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-xl mx-auto p-4">
+    {campaigns.length === 0 ? (
+      <p className="text-center">Aucune campagne trouvée.</p>
+    ) : (
+      campaigns.map((campaign, idx) => (
         <article key={campaign.id} className="flex flex-col rounded-t-lg border shadow-lg max-w-full">
           <div className="flex justify-center w-full">
             <img
@@ -75,9 +71,15 @@ function CampaignsList() {
             <button
               type="button"
               onClick={() => toggleContribution(idx)}
-              className="bg-greenroots_orange text-white p-2 rounded-full"
+              className="flex flex-row items-center bg-greenroots_orange text-white p-2 rounded-full"
             >
-              Contribuer
+              <span>Contribuer</span>
+              <span className="ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transform ${contributionStates[idx] ? 'rotate-180' : ''}`}>
+                  <title>Flèche déroulante</title>
+                  <path fillRule="evenodd" d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z" clipRule="evenodd" />
+                </svg>
+              </span>
             </button>
           </div>
           {contributionStates[idx] && campaign.treesCampaign && (
@@ -88,9 +90,10 @@ function CampaignsList() {
             </div>
           )}
         </article>
-      ))}
-    </div>
-  );
+      ))
+    )}
+  </div>
+);
 }
 
 export default CampaignsList;
