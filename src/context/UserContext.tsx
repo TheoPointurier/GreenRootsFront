@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import apiClient from '../api/apiClient';
 
 interface User {
@@ -41,14 +41,14 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Fonction de déconnexion
-  const logout = () => {
+  // Fonction de déconnexion avec useCallback pour éviter les dépendances inutiles
+  const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
-  };
+  }, []);
 
   // Fonction pour récupérer les informations utilisateur en fonction de l'ID
-  const fetchUserInfo = async (userId: number) => {
+  const fetchUserInfo = useCallback(async (userId: number) => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error("Token non défini");
@@ -67,7 +67,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Erreur lors de la récupération des informations utilisateur:", error);
       logout();
     }
-  };
+  }, [logout]);
 
   // Vérifie le token au chargement de l'application pour connexion persistante
   useEffect(() => {
@@ -76,7 +76,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       if (token) {
         const userId = getUserIdFromToken(token);
         if (userId) {
-          // Appelle fetchUserInfo avec l'ID de l'utilisateur pour obtenir ses informations
           await fetchUserInfo(userId);
         } else {
           console.error("ID utilisateur non trouvé dans le token");
@@ -86,7 +85,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     checkUserLoggedIn();
-  }, []);
+  }, [fetchUserInfo, logout]);
 
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>

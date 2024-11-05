@@ -1,6 +1,7 @@
 // src/pages/User.tsx
 
-import React, { useEffect, useState } from 'react';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
