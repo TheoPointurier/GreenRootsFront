@@ -55,9 +55,9 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
           loading="lazy"
         />
       </div>
-      <div className="flex flex-col items-center mt-2 w-full h-24">
+      <div className="flex justify-between flex-col items-center mt-2 w-full h-24">
         <h3 className="text-h3 font-bold">{tree.name || 'Nom non disponible'}</h3>
-        <p className="text-sm text-gray-500 flex items-center gap-2">
+        <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
           {tree.species?.species_name || 'Espèce non disponible'}
           {!hideDescriptionButton && (
             <Link
