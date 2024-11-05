@@ -49,7 +49,7 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
     <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs mx-auto h-auto">
       <div className="flex justify-center w-full">
         <img
-          src="/Images/view-of-flower.webp"
+          src={`/Trees_Images/${tree.id}.webp`}
           alt={tree.name || 'Image'}
           className="w-full h-40 rounded-t-[20px] object-cover"
           loading="lazy"
