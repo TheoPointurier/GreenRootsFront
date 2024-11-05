@@ -1,8 +1,9 @@
-import type { FormEvent } from 'react';
 import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { register } from '../api/auth';
+import type { RegisterData } from '../api/auth';
 
 export default function RegisterForm() {
   const { setUser } = useUser();
@@ -17,7 +18,7 @@ export default function RegisterForm() {
     street: '',
     street_number: '',
     country: '',
-    id_role: '1', // Définir un rôle par défaut si nécessaire
+    id_role: '1',
     phone_number: '',
     entity_name: '',
     entity_type: '',
@@ -31,61 +32,49 @@ export default function RegisterForm() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    setError(null); // Réinitialise l'erreur
-
-    // Création explicite de l'objet RegisterData avec toutes les propriétés attendues
-    const dataToSend = {
-      email: formData.email,
-      password: formData.password,
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      city: formData.city,
-      postal_code: formData.postal_code,
-      street: formData.street,
-      street_number: formData.street_number,
-      country: formData.country,
-      id_role: formData.id_role,
-      phone_number: formData.phone_number || undefined,
-      entity_name: formData.entity_name || undefined,
-      entity_type: formData.entity_type || undefined,
-      entity_siret: formData.entity_siret || undefined,
-    };
-
+    setError(null);
+  
+    const dataToSend: RegisterData = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value !== '')
+    ) as unknown as RegisterData;
+  
     try {
-      const registeredUser = await register(dataToSend);
-
-      // Enregistre les informations utilisateur dans le contexte après l'inscription
-      setUser({
-        id: registeredUser.id,
-        email: formData.email,
-        firstname: formData.firstname,
-        lastname: formData.lastname,
-        city: formData.city,
-        postal_code: formData.postal_code,
-        street: formData.street,
-        street_number: Number.parseInt(formData.street_number, 10),
-        country: formData.country,
-        id_role: Number.parseInt(formData.id_role, 10),
-        phone_number: formData.phone_number || undefined,
-        entity_name: formData.entity_name || undefined,
-        entity_type: formData.entity_type || undefined,
-        entity_siret: formData.entity_siret || undefined,
-      });
-
-      // Redirige vers la page d'accueil ou une autre page
-      navigate('/');
-    } catch (error) {
-      console.error("Erreur d'inscription", error);
-      setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
+      const response = await register(dataToSend);
+      console.log("Réponse complète du serveur :", response);
+  
+      if (response.user) {
+        setUser(response.user);
+        navigate('/login');
+      } else {
+        setError("Erreur lors de la création de votre compte. Veuillez réessayer.");
+      }
+    } catch (err) {
+      console.error("Erreur d'inscription détectée :", err);
+  
+      if ((err as { status?: number }).status === 400 && (err as { response?: { error: string[] } }).response?.error) {
+        setError((err as { response: { error: string[] } }).response.error.join(", "));
+      } else if ((err as { message?: string }).message?.includes("duplicate key") || (err as { message?: string }).message?.includes("Email déjà utilisé")) {
+        setError("Cet email est déjà utilisé. Veuillez en choisir un autre.");
+      } else {
+        setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
+      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md"
+    >
       <h2 className="text-2xl font-bold text-center mb-6">Inscription</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Email
+        </label>
         <input
           id="email"
           name="email"
@@ -97,7 +86,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Mot de passe
+        </label>
         <input
           id="password"
           name="password"
@@ -109,7 +103,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">Prénom</label>
+        <label
+          htmlFor="firstname"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Prénom
+        </label>
         <input
           id="firstname"
           name="firstname"
@@ -121,7 +120,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">Nom</label>
+        <label
+          htmlFor="lastname"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Nom
+        </label>
         <input
           id="lastname"
           name="lastname"
@@ -133,7 +137,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="city" className="block text-sm font-medium text-gray-700">Ville</label>
+        <label
+          htmlFor="city"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Ville
+        </label>
         <input
           id="city"
           name="city"
@@ -145,7 +154,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="postal_code" className="block text-sm font-medium text-gray-700">Code postal</label>
+        <label
+          htmlFor="postal_code"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Code postal
+        </label>
         <input
           id="postal_code"
           name="postal_code"
@@ -157,19 +171,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="street" className="block text-sm font-medium text-gray-700">Rue</label>
-        <input
-          id="street"
-          name="street"
-          type="text"
-          value={formData.street}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="street_number" className="block text-sm font-medium text-gray-700">Numéro de rue</label>
+        <label
+          htmlFor="street_number"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Numéro de rue
+        </label>
         <input
           id="street_number"
           name="street_number"
@@ -181,7 +188,29 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="country" className="block text-sm font-medium text-gray-700">Pays</label>
+        <label
+          htmlFor="street"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Rue
+        </label>
+        <input
+          id="street"
+          name="street"
+          type="text"
+          value={formData.street}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="country"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Pays
+        </label>
         <input
           id="country"
           name="country"
@@ -193,7 +222,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
+        <label
+          htmlFor="phone_number"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Numéro de téléphone
+        </label>
         <input
           id="phone_number"
           name="phone_number"
@@ -204,7 +238,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="entity_name" className="block text-sm font-medium text-gray-700">Nom de l'entité</label>
+        <label
+          htmlFor="entity_name"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Nom de l'entité
+        </label>
         <input
           id="entity_name"
           name="entity_name"
@@ -215,7 +254,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="entity_type" className="block text-sm font-medium text-gray-700">Type d'entité</label>
+        <label
+          htmlFor="entity_type"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Type d'entité
+        </label>
         <input
           id="entity_type"
           name="entity_type"
@@ -226,7 +270,12 @@ export default function RegisterForm() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="entity_siret" className="block text-sm font-medium text-gray-700">SIRET de l'entité</label>
+        <label
+          htmlFor="entity_siret"
+          className="block text-sm font-medium text-gray-700"
+        >
+          SIRET de l'entité
+        </label>
         <input
           id="entity_siret"
           name="entity_siret"
@@ -236,6 +285,7 @@ export default function RegisterForm() {
           className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
+
       <button
         type="submit"
         className="w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full"

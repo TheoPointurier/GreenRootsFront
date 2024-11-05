@@ -62,21 +62,19 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser(response); // Met à jour le contexte avec les informations de l'utilisateur
+      setUser(response);
     } catch (error) {
       console.error("Erreur lors de la récupération des informations utilisateur:", error);
       logout();
     }
   }, [logout]);
 
-  // Vérifie le token au chargement de l'application pour connexion persistante
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       const token = localStorage.getItem('token');
       if (token) {
         const userId = getUserIdFromToken(token);
         if (userId) {
-          // Appelle fetchUserInfo avec l'ID de l'utilisateur pour obtenir ses informations
           await fetchUserInfo(userId);
         } else {
           console.error("ID utilisateur non trouvé dans le token");
