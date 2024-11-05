@@ -1,13 +1,11 @@
-// src/components/UserInfo.tsx
-
-import React from 'react';
-import { User } from '../context/UserContext';
+import type { FC } from 'react';
+import type { User } from '../context/UserContext';
 
 type UserInfoProps = {
   user: User;
 };
 
-const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
+const UserInfo: FC<UserInfoProps> = ({ user }) => {
   return (
     <div className="user-info">
       <h1>Bienvenue, {user.firstname} {user.lastname}</h1>

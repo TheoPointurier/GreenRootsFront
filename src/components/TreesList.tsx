@@ -46,23 +46,22 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
   };
 
   return (
-    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs mx-auto h-full">
+    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs mx-auto h-auto">
       <div className="flex justify-center w-full">
         <img
-          src="/Images/view-of-flower.webp"
+          src={`/Trees_Images/${tree.id}.webp`}
           alt={tree.name || 'Image'}
           className="w-full h-40 rounded-t-[20px] object-cover"
           loading="lazy"
         />
       </div>
-      <div className="flex flex-col items-center mt-2 w-full h-24">
+      <div className="flex justify-between flex-col items-center mt-2 w-full h-24">
         <h3 className="text-h3 font-bold">{tree.name || 'Nom non disponible'}</h3>
-        <p className="text-sm text-gray-500 flex items-center gap-2">
+        <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
           {tree.species?.species_name || 'Espèce non disponible'}
           {!hideDescriptionButton && (
             <Link
               to={`/trees/${tree.id}`}
-              target="_blank"
               className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
             >
               Description
