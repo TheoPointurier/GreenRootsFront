@@ -1,5 +1,3 @@
-// src/api/auth.ts
-
 import apiClient from './apiClient';
 
 interface LoginData {
@@ -38,4 +36,3 @@ export async function register(data: RegisterData) {
     body: JSON.stringify(data),
   });
 }
-

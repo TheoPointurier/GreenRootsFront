@@ -41,13 +41,11 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Fonction de déconnexion avec useCallback pour éviter les dépendances inutiles
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
   }, []);
 
-  // Fonction pour récupérer les informations utilisateur en fonction de l'ID
   const fetchUserInfo = useCallback(async (userId: number) => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -62,14 +60,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser(response); // Met à jour le contexte avec les informations de l'utilisateur
+      setUser(response);
     } catch (error) {
       console.error("Erreur lors de la récupération des informations utilisateur:", error);
       logout();
     }
   }, [logout]);
 
-  // Vérifie le token au chargement de l'application pour connexion persistante
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       const token = localStorage.getItem('token');

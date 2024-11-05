@@ -14,7 +14,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/'); // Redirige vers la page d'accueil après la déconnexion
+    navigate('/');
     toggleMenu();
   };
 

@@ -3,7 +3,7 @@ import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { register } from '../api/auth';
-import type { RegisterData } from '../api/auth'; // Importez le type RegisterData
+import type { RegisterData } from '../api/auth';
 
 export default function RegisterForm() {
   const { setUser } = useUser();
@@ -33,36 +33,31 @@ export default function RegisterForm() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-
-    // Crée une copie de formData en excluant les champs vides et la type comme RegisterData
+  
     const dataToSend: RegisterData = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== '')
     ) as unknown as RegisterData;
-
+  
     try {
-      const registeredUser = await register(dataToSend);
-
-      setUser({
-        id: registeredUser.id,
-        email: formData.email,
-        firstname: formData.firstname,
-        lastname: formData.lastname,
-        city: formData.city,
-        postal_code: formData.postal_code,
-        street: formData.street,
-        street_number: Number.parseInt(formData.street_number, 10),
-        country: formData.country,
-        id_role: Number.parseInt(formData.id_role, 10),
-        phone_number: formData.phone_number || undefined,
-        entity_name: formData.entity_name || undefined,
-        entity_type: formData.entity_type || undefined,
-        entity_siret: formData.entity_siret || undefined,
-      });
-
-      navigate('/');
-    } catch (error) {
-      console.error("Erreur d'inscription", error);
-      setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
+      const response = await register(dataToSend);
+      console.log("Réponse complète du serveur :", response);
+  
+      if (response.user) {
+        setUser(response.user);
+        navigate('/login');
+      } else {
+        setError("Erreur lors de la création de votre compte. Veuillez réessayer.");
+      }
+    } catch (err) {
+      console.error("Erreur d'inscription détectée :", err);
+  
+      if ((err as { status?: number }).status === 400 && (err as { response?: { error: string[] } }).response?.error) {
+        setError((err as { response: { error: string[] } }).response.error.join(", "));
+      } else if ((err as { message?: string }).message?.includes("duplicate key") || (err as { message?: string }).message?.includes("Email déjà utilisé")) {
+        setError("Cet email est déjà utilisé. Veuillez en choisir un autre.");
+      } else {
+        setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
+      }
     }
   };
 
@@ -107,7 +102,6 @@ export default function RegisterForm() {
           className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      {/* Ajoutez les labels manquants */}
       <div className="mb-4">
         <label
           htmlFor="firstname"

@@ -28,7 +28,7 @@ export default function LoginForm() {
       setUser(user);
 
       // Redirige vers la page d'accueil après connexion
-      navigate('/');
+      navigate(`/user/${user.id}`);
     } catch (error) {
       console.error("Erreur de connexion", error);
       setError("Échec de la connexion. Veuillez vérifier vos identifiants.");
