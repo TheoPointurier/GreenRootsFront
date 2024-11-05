@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import apiClient from '../api/apiClient';
 
-interface User {
+export interface User {
   id: number;
   email: string;
   firstname: string;
@@ -41,11 +41,13 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  // Fonction de déconnexion
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
   }, []);
 
+  // Fonction pour récupérer les informations utilisateur en fonction de l'ID
   const fetchUserInfo = useCallback(async (userId: number) => {
     const token = localStorage.getItem('token');
     if (!token) {

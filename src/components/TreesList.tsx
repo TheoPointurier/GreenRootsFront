@@ -46,7 +46,7 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
   };
 
   return (
-    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs mx-auto h-full">
+    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs mx-auto h-auto">
       <div className="flex justify-center w-full">
         <img
           src="/Images/view-of-flower.webp"
@@ -62,7 +62,6 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
           {!hideDescriptionButton && (
             <Link
               to={`/trees/${tree.id}`}
-              target="_blank"
               className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
             >
               Description

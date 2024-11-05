@@ -1,15 +1,17 @@
+// main.tsx
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+import { RouterProvider } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
-import Router from './router'; // Assurez-vous que `Router` est bien importé
+import router from './router';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <UserProvider> {/* Enveloppe l'application pour fournir le contexte utilisateur */}
+    <UserProvider>
       <CartProvider>
-        <Router /> {/* Utilisation de notre composant `Router` */}
+        <RouterProvider router={router} />
       </CartProvider>
     </UserProvider>
   </StrictMode>

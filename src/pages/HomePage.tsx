@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Carousel from '../components/Carousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 // import { useEffect } from 'react';  (à décommenter quand l'API sera prête)
 
 function HomePage() {
@@ -86,7 +88,13 @@ function HomePage() {
               boxShadow: '-4px -4px 4px rgba(205, 92, 8, 1), 4px 4px 4px rgba(0, 0, 0, 0.3)',
             }}
           >
-            <h3 className="text-h3 font-bold mb-3">Note</h3>
+            <div className='flex flex-row justify-center mb-5'>
+            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
+            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
+            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
+            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
+            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
+            </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum est ac orci tincidunt, vitae tincidunt nunc lacinia. Maecenas fringilla pulvinar urna.
             </p>

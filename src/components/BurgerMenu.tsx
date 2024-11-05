@@ -16,6 +16,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
     logout();
     navigate('/');
     toggleMenu();
+    navigate('/');
   };
 
   return (
