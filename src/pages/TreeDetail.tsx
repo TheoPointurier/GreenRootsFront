@@ -20,29 +20,33 @@ interface Tree {
   };
 }
 
+interface Campaign {
+  id: number;
+  name: string;
+  location: {
+    country: {
+      name: string;
+    };
+  };
+  treesCampaign: Tree[];
+}
+
 function TreeDetail() {
   const { id } = useParams<{ id: string }>();
   const [tree, setTree] = useState<Tree | null>(null);
-  const [campaignCountries, setCampaignCountries] = useState<string[]>([]);
+  const [treeCampaigns, setTreeCampaigns] = useState<Campaign[]>([]);
 
   useEffect(() => {
     const fetchTreeData = async () => {
       try {
         const campaigns = await fetchCampaigns();
-        const countries = new Set<string>();
-        let foundTree: Tree | null = null;
+        const relatedCampaigns = campaigns.filter((campaign: Campaign) =>
+          campaign.treesCampaign.some((treeInCampaign: Tree) => treeInCampaign.id.toString() === id)
+        );
 
-        for (const campaign of campaigns) {
-          const treeFound = campaign.treesCampaign.find((tree: Tree) => tree.id.toString() === id);
-          if (treeFound) {
-            foundTree = treeFound;
-            countries.add(campaign.location.country.name);
-          }
-        }
-
-        if (foundTree) {
-          setTree(foundTree);
-          setCampaignCountries(Array.from(countries));
+        if (relatedCampaigns.length > 0) {
+          setTree(relatedCampaigns[0].treesCampaign.find((t) => t.id.toString() === id) || null);
+          setTreeCampaigns(relatedCampaigns);
         }
       } catch (error) {
         console.error("Erreur lors de la récupération de l'arbre:", error);
@@ -68,13 +72,24 @@ function TreeDetail() {
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
           Détail d'un{' '}
           <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">
-          {tree.species?.species_name || 'Espèce non disponible'}
+            {tree.species?.species_name || 'Espèce non disponible'}
           </span>
         </h2>
       </div>
 
-      <div className="flex justify-center mb-4">
-        <TreesList tree={{ ...tree, campaignCountry: campaignCountries.join(', ') }} hideDescriptionButton={true} />
+      {/* Affiche une instance de TreesList par campagne */}
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        {treeCampaigns.map((campaign) => (
+          <TreesList
+            key={`${tree.id}-${campaign.id}`}
+            tree={{
+              ...tree,
+              campaignCountry: campaign.location.country.name,
+              campaignName: campaign.name,
+              campaignId: campaign.id,
+            }}
+          />
+        ))}
       </div>
 
       <div className="flex flex-col p-5 mt-1 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
@@ -92,8 +107,8 @@ function TreeDetail() {
         </p>
         <p className="mt-2 mb-2">
           Lieu(x) de plantation :{' '}
-          {campaignCountries.length > 0
-            ? campaignCountries.join(', ')
+          {treeCampaigns.length > 0
+            ? treeCampaigns.map((campaign) => campaign.location.country.name).join(', ')
             : 'Aucun lieu de plantation pour le moment'}
         </p>
       </div>

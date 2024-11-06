@@ -47,17 +47,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (item: CartItem) => {
     setCartItems(prevCart => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+      const existingItem = prevCart.find(
+        cartItem => cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
+      );
       if (existingItem) {
+        // Si l'article existe déjà, augmentez sa quantité
         return prevCart.map(cartItem =>
-          cartItem.id === item.id
+          cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
             ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
             : cartItem
         );
       }
+      // Sinon, ajoutez le nouvel article
       return [...prevCart, item];
     });
   };
+  
 
   const increaseQuantity = (itemId: string) => {
     setCartItems(prevCart =>
