@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const NotFound: React.FC = () => {
   return (
     <div className="flex-1 flex bg-greenroots_beige h-auto justify-center items-center flex-col p-5 md:p-20 min-h-screen">
@@ -16,15 +18,15 @@ const NotFound: React.FC = () => {
         </div>
 
         {/* Back link */}
-        <a href="/" className="text-center text-xl md:text-3xl mt-8 text-blue-500 hover:underline">
+        <Link to="/" className="text-center text-xl md:text-3xl mt-8 text-blue-500 hover:underline">
           Oups, ça sent le sapin !
-        </a>
+        </Link>
 
         {/* Error message */}
         <p className="mt-4 text-lg md:text-xl text-center">
-          La page que vous recherchez n'existe pas, vous pouvez revenir à <a href="/" className="text-blue-500 hover:underline">
+          La page que vous recherchez n'existe pas, vous pouvez revenir à <Link to="/" className="text-blue-500 hover:underline">
             l'accueil
-          </a>.
+          </Link>.
         </p>
       </section>
     </div>

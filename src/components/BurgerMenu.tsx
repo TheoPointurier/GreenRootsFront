@@ -2,6 +2,7 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type BurgerMenuProps = {
   isOpen: boolean;
@@ -14,7 +15,6 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
     toggleMenu();
     navigate('/');
   };
@@ -42,33 +42,33 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
                   Déconnexion
                 </button>
               ) : (
-                <a href="/login" className="text-greenroots_white">
+                <Link to="/login" className="text-greenroots_white">
                   Connexion
-                </a>
+                </Link>
               )}
             </li>
 
             {/* Lien vers le compte utilisateur si connecté */}
             {user && (
               <li className="pt-5">
-                <a href={`/user/${user.id}`} className="text-greenroots_white">
+                <Link to={`/user/${user.id}`} className="text-greenroots_white">
                   Compte
-                </a>
+                </Link>
               </li>
             )}
             <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 mr-4">
-              <a href="/register">S'enregistrer</a>
+              <Link to="/register">S'enregistrer</Link>
             </li>
 
             {/* Autres liens du menu */}
             <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 mr-4">
-              <a href="/panier">Mon panier</a>
+              <Link to="/panier">Mon panier</Link>
             </li>
-            <li className="pt-10"><a href="/">Accueil</a></li>
-            <li className="pt-5"><a href="/trees">Nos arbres</a></li>
-            <li className="pt-5"><a href="/campaigns">Nos campagnes</a></li>
-            <li className="pt-5"><a href="/contact">Contact</a></li>
-            <li className="pt-5"><a href="/about">À propos</a></li>
+            <li className="pt-10"><Link to="/">Accueil</Link></li>
+            <li className="pt-5"><Link to="/trees">Nos arbres</Link></li>
+            <li className="pt-5"><Link to="/campaigns">Nos campagnes</Link></li>
+            <li className="pt-5"><Link to="/contact">Contact</Link></li>
+            <li className="pt-5"><Link to="/about">À propos</Link></li>
           </ul>
 
           {/* Bouton de fermeture */}
