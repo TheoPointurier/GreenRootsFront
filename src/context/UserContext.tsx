@@ -50,7 +50,7 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const isInitialCheckDone = useRef(false); // Utilisation de useRef pour marquer la vérification initiale
+  const isInitialCheckDone = useRef(false);
 
   const logout = useCallback(() => {
     setUser(null);
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
-      if (isInitialCheckDone.current) return; // Stoppe si la vérification initiale est déjà faite
+      if (isInitialCheckDone.current) return;
 
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
@@ -88,7 +88,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         }
       }
 
-      isInitialCheckDone.current = true; // Marque la vérification initiale comme terminée
+      isInitialCheckDone.current = true;
       setIsLoading(false);
     };
 

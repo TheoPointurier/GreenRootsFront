@@ -1,6 +1,6 @@
 import apiClient from './apiClient';
 
-interface LoginData {
+export interface LoginData {
   email: string;
   password: string;
 }

@@ -1,5 +1,3 @@
-// NotFound.tsx (404)
-
 const NotFound: React.FC = () => {
   return (
     <div className="flex-1 flex bg-greenroots_beige h-auto justify-center items-center flex-col p-5 md:p-20 min-h-screen">

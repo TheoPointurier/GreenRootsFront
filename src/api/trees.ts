@@ -1,4 +1,3 @@
-// src/api/trees.ts
 import apiClient from './apiClient';
 
 export const fetchTrees = async () => {
