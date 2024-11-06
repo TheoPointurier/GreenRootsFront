@@ -81,22 +81,22 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
         </p>
         <p className="p-1">Âge : {tree.age || 'Non spécifié'} ans</p>
       </div>
-      <div className="flex flex-row justify-between items-center p-2 mb-2 w-full">
+      <div className="flex flex-row justify-between items-center p-2 mb-2 gap-2 w-full">
         <div className="flex items-center">
           <button
             type="button"
             onClick={handleDecrement}
-            className="border border-blue-300 rounded-l-full w-8"
+            className="border border-blue-300 rounded-l-full w-8 p-3"
           >
             -
           </button>
-          <span className="border-t border-b border-blue-300 px-4">
+          <span className="border-t border-b border-blue-300 px-4 p-3">
             {quantity}
           </span>
           <button
             type="button"
             onClick={handleIncrement}
-            className="border border-blue-300 rounded-r-full w-8"
+            className="border border-blue-300 rounded-r-full w-8 p-3"
           >
             +
           </button>
@@ -104,7 +104,7 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
         <button
           type="button"
           onClick={handleAddToCart}
-          className="bg-greenroots_orange text-greenroots_white p-2 rounded-full"
+          className="flex items-center bg-greenroots_orange text-white p-0.5 rounded-full"
         >
           Ajouter au panier
         </button>

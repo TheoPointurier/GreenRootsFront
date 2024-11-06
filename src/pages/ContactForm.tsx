@@ -1,6 +1,7 @@
 function ContactForm () {
   return (
-    <div className="flex-1 flex flex-col m-10">
+    <div className="flex-1 flex justify-around">
+    <section className="flex flex-col m-10">
       <h1 className="text-h1 font-bold text-black">Formulaire de contact</h1>
       <form id="contact-form" className="mt-10">
         <label htmlFor="user_name">Nom</label>
@@ -13,6 +14,7 @@ function ContactForm () {
         <textarea name="message" id="message" className="mt-1 mb-2 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:greenroots_green focus:ring-greenroots_green"/>
         <input type="submit" value="Send" className="mt-5 w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full"/>
       </form>
+    </section>
     </div>
   );
 }

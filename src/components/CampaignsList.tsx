@@ -71,7 +71,7 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
               <button
                 type="button"
                 onClick={() => toggleContribution(idx)}
-                className="flex flex-row items-center bg-greenroots_orange text-white p-2 rounded-full"
+                className="flex items-center bg-greenroots_orange text-white p-2 rounded-full"
               >
                 <span>Contribuer</span>
                 <span className="ml-2">
