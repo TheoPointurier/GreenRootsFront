@@ -10,7 +10,10 @@ import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import About from './pages/About';
+import ContactForm from './pages/ContactForm';
 import { useUser } from './context/UserContext';
+
 
 const Router = () => {
   const { user } = useUser();
@@ -29,6 +32,8 @@ const Router = () => {
         { path: '/panier', element: <Cart /> },
         { path: '/login', element: <Login /> },
         { path: '/register', element: <Register /> },
+        { path: '/about', element: <About /> },
+        { path: '/contact', element: <ContactForm /> },
         { path: '*', element: <NotFound /> },
       ],
     },

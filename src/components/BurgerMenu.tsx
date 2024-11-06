@@ -56,15 +56,19 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
                 </a>
               </li>
             )}
+            <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 mr-4">
+              <a href="/register">S'enregistrer</a>
+            </li>
 
             {/* Autres liens du menu */}
-            <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 ml-2 mr-4">
+            <li className="border-b-2 border-greenroots_grey-500 pt-3 pb-10 mr-4">
               <a href="/panier">Mon panier</a>
             </li>
             <li className="pt-10"><a href="/">Accueil</a></li>
             <li className="pt-5"><a href="/trees">Nos arbres</a></li>
             <li className="pt-5"><a href="/campaigns">Nos campagnes</a></li>
-            <li className="pt-5"><a href="/a-propos">À propos</a></li>
+            <li className="pt-5"><a href="/contact">Contact</a></li>
+            <li className="pt-5"><a href="/about">À propos</a></li>
           </ul>
 
           {/* Bouton de fermeture */}
