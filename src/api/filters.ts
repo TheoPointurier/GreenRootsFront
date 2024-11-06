@@ -1,4 +1,3 @@
-// src/api/filters.ts
 import apiClient from './apiClient';
 
 export const fetchCountries = async (): Promise<string[]> => {

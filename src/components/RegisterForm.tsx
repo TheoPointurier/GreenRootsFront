@@ -2,8 +2,8 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-import { register } from '../api/auth';
-import type { RegisterData } from '../api/auth';
+import { register, login } from '../api/auth';
+import type { RegisterData, LoginData } from '../api/auth';
 
 export default function RegisterForm() {
   const { setUser } = useUser();
@@ -33,31 +33,34 @@ export default function RegisterForm() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-  
+
     const dataToSend: RegisterData = Object.fromEntries(
-      Object.entries(formData).filter(([_, value]) => value !== '')
+      Object.entries(formData).filter(([_, value]) => value !== ''),
     ) as unknown as RegisterData;
-  
+
     try {
-      const response = await register(dataToSend);
-      console.log("Réponse complète du serveur :", response);
-  
-      if (response.user) {
-        setUser(response.user);
-        navigate('/login');
+      const registerResponse = await register(dataToSend);
+      console.log('Réponse complète du serveur :', registerResponse);
+      if (registerResponse.message === 'Utilisateur créé') {
+        const loginData: LoginData = {
+          email: formData.email,
+          password: formData.password,
+        };
+        const loginResponse = await login(loginData);
+        if (loginResponse.accesstoken && loginResponse.user) {
+          localStorage.setItem('token', loginResponse.accesstoken);
+          localStorage.setItem('userId', loginResponse.user.id.toString());
+          setUser(loginResponse.user);
+          navigate(`/user/${loginResponse.user.id}`);
+        } else {
+          setError("Erreur lors de la connexion après l'inscription.");
+        }
       } else {
-        setError("Erreur lors de la création de votre compte. Veuillez réessayer.");
+        setError('Erreur lors de la création de votre compte. Veuillez réessayer.');
       }
     } catch (err) {
       console.error("Erreur d'inscription détectée :", err);
-  
-      if ((err as { status?: number }).status === 400 && (err as { response?: { error: string[] } }).response?.error) {
-        setError((err as { response: { error: string[] } }).response.error.join(", "));
-      } else if ((err as { message?: string }).message?.includes("duplicate key") || (err as { message?: string }).message?.includes("Email déjà utilisé")) {
-        setError("Cet email est déjà utilisé. Veuillez en choisir un autre.");
-      } else {
-        setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
-      }
+      setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
     }
   };
 

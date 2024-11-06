@@ -1,6 +1,5 @@
 import type { FormEvent } from 'react';
 import { useState } from 'react';
-
 import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
@@ -20,28 +19,37 @@ export default function LoginForm() {
       const response = await login({ email, password });
       const { user, accesstoken } = response;
 
-      // Stocke le token dans le localStorage
       if (accesstoken) {
         localStorage.setItem('token', accesstoken);
+        localStorage.setItem('userId', user.id.toString());
+        console.log(
+          'Token et ID utilisateur stockés dans localStorage:',
+          accesstoken,
+          user.id,
+        );
+        setUser(user);
+        navigate(`/user/${user.id}`);
       }
-
-      // Met à jour le contexte utilisateur
-      setUser(user);
-
-      // Redirige vers la page d'accueil après connexion
-      navigate(`/user/${user.id}`);
     } catch (error) {
-      console.error("Erreur de connexion", error);
-      setError("Échec de la connexion. Veuillez vérifier vos identifiants.");
+      console.error('Erreur de connexion', error);
+      setError('Échec de la connexion. Veuillez vérifier vos identifiants.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md"
+    >
       <h2 className="text-2xl font-bold text-center mb-6">Connexion</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}
       <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Email
+        </label>
         <input
           type="email"
           id="email"
@@ -52,7 +60,12 @@ export default function LoginForm() {
         />
       </div>
       <div className="mb-6">
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Mot de passe
+        </label>
         <input
           type="password"
           id="password"
