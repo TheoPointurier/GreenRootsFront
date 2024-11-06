@@ -2,15 +2,15 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 interface CartItem {
-  id: string; // ID unique basé sur arbre et campagne
-  treeId: number; // ID de l'arbre seul
-  campaignId: number; // ID de la campagne
+  id: string;
+  treeId: number;
+  campaignId: number;
   name: string;
   price: number;
   quantity: number;
   image: string;
-  campaignName: string; // Nom de la campagne
-  campaignLocation: string; // Localisation de la campagne
+  campaignName: string;
+  campaignLocation: string;
 }
 
 interface CartContextProps {
@@ -51,14 +51,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         cartItem => cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
       );
       if (existingItem) {
-        // Si l'article existe déjà, augmentez sa quantité
         return prevCart.map(cartItem =>
           cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
             ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
             : cartItem
         );
       }
-      // Sinon, ajoutez le nouvel article
       return [...prevCart, item];
     });
   };

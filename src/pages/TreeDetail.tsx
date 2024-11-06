@@ -45,7 +45,7 @@ function TreeDetail() {
         );
 
         if (relatedCampaigns.length > 0) {
-          setTree(relatedCampaigns[0].treesCampaign.find((t) => t.id.toString() === id) || null);
+          setTree(relatedCampaigns[0].treesCampaign.find((t: Tree) => t.id.toString() === id) || null);
           setTreeCampaigns(relatedCampaigns);
         }
       } catch (error) {

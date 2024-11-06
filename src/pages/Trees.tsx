@@ -22,6 +22,17 @@ interface Tree {
   campaignName?: string;
 }
 
+interface Campaign {
+  id: number;
+  name: string;
+  location: {
+    country: {
+      name: string;
+    };
+  };
+  treesCampaign: Tree[];
+}
+
 function Trees() {
   const [filteredTrees, setFilteredTrees] = useState<Tree[]>([]);
   const [trees, setTrees] = useState<Tree[]>([]);
@@ -29,17 +40,17 @@ function Trees() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [treeData, campaignData] = await Promise.all([
+        const [treeData, campaignData]: [Tree[], Campaign[]] = await Promise.all([
           fetchTrees(),
           fetchCampaigns(),
         ]);
 
         const treesPerCampaign = treeData.flatMap((tree: Tree) => {
           return campaignData
-            .filter((campaign) =>
-              campaign.treesCampaign.some((campaignTree) => campaignTree.id === tree.id)
+            .filter((campaign: Campaign) =>
+              campaign.treesCampaign.some((campaignTree: Tree) => campaignTree.id === tree.id)
             )
-            .map((campaign) => ({
+            .map((campaign: Campaign) => ({
               ...tree,
               campaignId: campaign.id,
               campaignName: campaign.name,
