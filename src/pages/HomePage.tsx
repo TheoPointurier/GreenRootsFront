@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Carousel from '../components/Carousel';
 import Reviews from '../components/Reviews';
-import { fetchReviews } from '../api/reviews'; // Assurez-vous que le chemin est correct
-import type { ReviewsType } from '../@types/reviews';
+// import { useEffect } from 'react';  (à décommenter quand l'API sera prête)
 
 function HomePage() {
   const navigate = useNavigate();
@@ -25,41 +24,16 @@ function HomePage() {
     },
   ];
 
-  // État pour stocker les avis récupérés depuis l'API
-  const [reviews, setReviews] = useState<ReviewsType[]>([]);
-
-  // Déclare un état 'loading' de type boolean, initialisé à true, pour indiquer que les données sont en cours de chargement
-  const [loading, setLoading] = useState<boolean>(true);
-
-  // Déclare un état 'error' qui peut être une chaîne de caractères ou null, initialisé à null, pour stocker un message d'erreur en cas de problème
-  const [error, setError] = useState<string | null>(null);
-
-  // Fonction pour récupérer les avis depuis l'API
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        // Appel API pour récupérer les avis et attend la réponse de l'API
-        const data = await fetchReviews();
-        // Stocke les avis dans l'état 'reviews'
-        setReviews(data);
-      } catch (err) {
-        setError('Erreur lors de la récupération des avis.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadReviews();
-  }, []);
-
-  // Affiche un message approprié en cas de chargement des avis ou d'erreur
-  if (loading) {
-    return <div>Chargement des avis...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // Partie qui cherchera les images depuis l'API (à décommenter quand l'API sera prête)
+  // const [campaignImages, setCampaignImages] = useState([]);
+  //
+  // useEffect(() => {
+  //   fetch('/api/campaigns/images')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setCampaignImages(data.images);
+  //     });
+  // }, []);
 
   // Questions/Réponses pour la FAQ
   const faqs = [
@@ -98,7 +72,6 @@ function HomePage() {
         </span>
       </h1>
 
-      {/* Div contenant l'image */}
       <div className="relative mt-16">
         <img
           src="/Images/illustration_arbre.webp"
@@ -106,15 +79,10 @@ function HomePage() {
           className="w-full max-w-md mx-auto"
           loading="lazy"
         />
-
-        {/* Section "Ce que nous te proposons" superposée */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
-          <h2 className="text-h2 font-bold text-black">
-            Ce que nous te proposons
-          </h2>
+          <h2 className="text-h2 font-bold text-black">Ce que nous te proposons</h2>
           <p className="text-gray-700 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
-            bibendum massa.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut bibendum massa.
           </p>
           <button
             onClick={() => navigate('/campaigns')}
@@ -131,18 +99,15 @@ function HomePage() {
         className="grid gap-8 mt-16"
         style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
       >
-        <Reviews reviews={reviews} />
+        <Reviews />
       </div>
 
       {/* Section Nos Campagnes */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
-          Nos campagnes
-        </h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Nos campagnes</h1>
         <Carousel images={campaignImages} />
       </div>
 
-      {/* Nouveau Titre */}
       <h1 className="text-h1 font-bold text-black mt-20">
         Gardes un visuel sur l'impact de{' '}
         <span className="bg-greenroots_green text-white rounded-lg px-4">
@@ -150,7 +115,6 @@ function HomePage() {
         </span>
       </h1>
 
-      {/* Image et texte chevauché */}
       <div className="flex items-center justify-center mt-16 relative">
         <div className="relative z-10">
           <img
@@ -164,9 +128,7 @@ function HomePage() {
           className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px]"
           style={{ width: '300px' }}
         >
-          <p className="text-gray-700 mb-4">
-            Explication graph suivi, CO2, etc.
-          </p>
+          <p className="text-gray-700 mb-4">Explication graph suivi, CO2, etc.</p>
           <button
             onClick={() => navigate('/campaigns')}
             className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
@@ -177,11 +139,8 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Section FAQ */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
-          Une question ?
-        </h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
         <div className="grid gap-4">
           {faqs.map((faq, index) => (
             <button

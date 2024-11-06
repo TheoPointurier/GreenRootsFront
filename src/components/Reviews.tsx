@@ -1,13 +1,41 @@
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { fetchReviews } from '../api/reviews'; // Assurez-vous que le chemin est correct
 import type { ReviewsType } from '../@types/reviews';
 import './Reviews.css';
 
-interface ReviewsProps {
-  reviews: ReviewsType[];
-}
+function Reviews() {
+  // Déclare les états pour les avis, le chargement et les erreurs
+  const [reviews, setReviews] = useState<ReviewsType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-function Reviews({ reviews = [] }: ReviewsProps) {
+  // Fonction pour récupérer les avis depuis l'API
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        const data = await fetchReviews();
+        setReviews(data);
+      } catch (err) {
+        setError('Erreur lors de la récupération des avis.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReviews();
+  }, []);
+
+  // Afficher un message de chargement ou d'erreur
+  if (loading) {
+    return <div>Chargement des avis...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   // Fonction pour mélanger un tableau de manière aléatoire
   const shuffleArray = (array: ReviewsType[]): ReviewsType[] => {
     return array.sort(() => Math.random() - 0.5);
@@ -37,7 +65,7 @@ function Reviews({ reviews = [] }: ReviewsProps) {
                 key={`${review.id}-${starIndex}`}
                 icon={faStar}
                 style={{ color: '#FFD43B' }}
-                className="text-h3 font-bold m-1 rotate-animation" // Ajout de la classe d'animation
+                className="text-h3 font-bold m-1 rotate-animation"
               />
             ))}
           </div>
