@@ -31,10 +31,12 @@ interface CampaignsListProps {
 }
 
 function CampaignsList({ campaigns }: CampaignsListProps) {
-  const [contributionStates, setContributionStates] = useState<boolean[]>(new Array(campaigns.length).fill(false));
+  const [contributionStates, setContributionStates] = useState<boolean[]>(
+    new Array(campaigns.length).fill(false),
+  );
 
   const toggleContribution = (index: number) => {
-    setContributionStates(prevStates => {
+    setContributionStates((prevStates) => {
       const newStates = [...prevStates];
       newStates[index] = !newStates[index];
       return newStates;
@@ -48,7 +50,10 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
         <p className="text-center">Aucune campagne trouvée.</p>
       ) : (
         campaigns.map((campaign, idx) => (
-          <article key={campaign.id} className="flex flex-col rounded-lg border shadow-lg max-w-full h-full">
+          <article
+            key={campaign.id}
+            className="flex flex-col rounded-lg border shadow-lg max-w-full h-full"
+          >
             <div className="flex justify-center w-full">
               <img
                 src={`/Campaign_Images/${campaign.id}.webp`}
@@ -60,12 +65,16 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
             <div className="flex flex-col flex-grow p-4">
               <h3 className="text-h3 font-bold">{campaign.name}</h3>
               <p className="text-sm text-gray-500 mb-2">
-                {campaign.location.name_location}, {campaign.location.country.name}
+                {campaign.location.name_location},{' '}
+                {campaign.location.country.name}
               </p>
               <p className="flex-grow mb-2">{campaign.description}</p>
             </div>
             <div className="flex flex-row justify-between items-center p-2 mb-2">
-              <Link to={`/campaigns/${campaign.id}`} className="bg-greenroots_green text-white p-2 rounded-full">
+              <Link
+                to={`/campaigns/${campaign.id}`}
+                className="bg-greenroots_green text-white p-2 rounded-full"
+              >
                 En savoir plus
               </Link>
               <button
@@ -75,17 +84,34 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
               >
                 <span>Contribuer</span>
                 <span className="ml-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transform ${contributionStates[idx] ? 'rotate-180' : ''}`}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className={`w-5 h-5 transform ${contributionStates[idx] ? 'rotate-180' : ''}`}
+                  >
                     <title>Flèche déroulante</title>
-                    <path fillRule="evenodd" d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </span>
               </button>
             </div>
             {contributionStates[idx] && campaign.treesCampaign && (
               <div className="p-4 bg-gray-100 rounded-b-lg">
-                {campaign.treesCampaign.map(tree => (
-                  <TreesList key={tree.id} tree={{ ...tree, campaignCountry: campaign.location.country.name }} />
+                {campaign.treesCampaign.map((tree) => (
+                  <TreesList
+                    key={`${tree.id}-${campaign.id}`} // Utilisez une clé unique pour chaque combinaison arbre-campagne
+                    tree={{
+                      ...tree,
+                      campaignCountry: campaign.location.country.name,
+                      campaignName: campaign.name,
+                      campaignId: campaign.id, // Passez `campaignId` ici
+                    }}
+                  />
                 ))}
               </div>
             )}

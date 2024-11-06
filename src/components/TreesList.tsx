@@ -16,6 +16,8 @@ interface TreeProps {
       average_lifespan?: number;
     };
     campaignCountry?: string;
+    campaignName?: string;
+    campaignId?: number; // Ajoutez cette ligne pour inclure `campaignId`
   };
   hideDescriptionButton?: boolean;
 }
@@ -36,11 +38,15 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
 
   const handleAddToCart = () => {
     addToCart({
-      id: tree.id.toString(),
+      id: `${tree.id}-${tree.campaignId}`,  // ID unique basé sur arbre et campagne
+      treeId: tree.id,
+      campaignId: tree.campaignId || 0, // Inclure `campaignId` avec une valeur par défaut
       name: tree.name,
       price: Number.parseFloat(tree.price_ht.toString()),
       quantity,
       image: '/Images/view-of-flower.webp',
+      campaignName: tree.campaignName || 'Nom de campagne indisponible',
+      campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
     console.log('Produit ajouté au panier:', tree);
   };

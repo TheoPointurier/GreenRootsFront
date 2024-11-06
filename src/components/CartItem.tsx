@@ -6,6 +6,8 @@ interface CartItemProps {
     name: string;
     price: number;
     image: string;
+    campaignName: string;
+    campaignLocation: string;
   };
   quantity: number;
 }
@@ -28,6 +30,8 @@ function CartItem({ item, quantity }: CartItemProps) {
 
       <div className="flex-1">
         <h3 className="text-lg font-semibold">{item.name}</h3>
+        <p className="text-gray-500">Campagne : {item.campaignName}</p>
+        <p className="text-gray-500">Lieu : {item.campaignLocation}</p>
         <p className="text-greenroots_green">
           {priceHT.toFixed(2)} € HT / {priceTTC.toFixed(2)} € TTC
         </p>

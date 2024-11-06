@@ -2,11 +2,15 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
 interface CartItem {
-  id: string;
+  id: string; // ID unique basé sur arbre et campagne
+  treeId: number; // ID de l'arbre seul
+  campaignId: number; // ID de la campagne
   name: string;
   price: number;
   quantity: number;
   image: string;
+  campaignName: string; // Nom de la campagne
+  campaignLocation: string; // Localisation de la campagne
 }
 
 interface CartContextProps {

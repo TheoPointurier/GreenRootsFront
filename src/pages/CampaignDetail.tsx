@@ -117,18 +117,19 @@ const formattedDate = endDate.toLocaleDateString('fr-FR', {
         <p className="text-sm p-1 mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam maiores corporis.</p>
         <div>
           {campaign.treesCampaign.map(tree => (
-            <TreesList 
-              key={tree.id} 
-              tree={{ 
-                id: tree.id, 
-                name: tree.name, 
-                price_ht: tree.price_ht, 
-                age: tree.age, 
-                location: tree.location, 
-                species: tree.species, 
-                campaignCountry: campaign.location.country.name
-              }}
-            />
+           <TreesList 
+           key={tree.id} 
+           tree={{ 
+             id: tree.id, 
+             name: tree.name, 
+             price_ht: tree.price_ht, 
+             age: tree.age, 
+             location: tree.location, 
+             species: tree.species, 
+             campaignCountry: campaign.location.country.name, // Pays de la campagne
+             campaignName: campaign.name                       // Nom de la campagne
+           }}
+         />                        
           ))}
         </div>
       </section>
