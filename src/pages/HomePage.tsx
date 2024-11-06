@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from '../components/Carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-// import { useEffect } from 'react';  (à décommenter quand l'API sera prête)
+import Reviews from '../components/Reviews';
+import { fetchReviews } from '../api/reviews'; // Assurez-vous que le chemin est correct
+import type { ReviewsType } from '../@types/reviews';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -25,23 +25,68 @@ function HomePage() {
     },
   ];
 
-  // Partie qui cherchera les images depuis l'API (à décommenter quand l'API sera prête)
-  // const [campaignImages, setCampaignImages] = useState([]);
-  //
-  // useEffect(() => {
-  //   fetch('/api/campaigns/images')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setCampaignImages(data.images);
-  //     });
-  // }, []);
+  // État pour stocker les avis récupérés depuis l'API
+  const [reviews, setReviews] = useState<ReviewsType[]>([]);
+
+  // Déclare un état 'loading' de type boolean, initialisé à true, pour indiquer que les données sont en cours de chargement
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Déclare un état 'error' qui peut être une chaîne de caractères ou null, initialisé à null, pour stocker un message d'erreur en cas de problème
+  const [error, setError] = useState<string | null>(null);
+
+  // Fonction pour récupérer les avis depuis l'API
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        // Appel API pour récupérer les avis et attend la réponse de l'API
+        const data = await fetchReviews();
+        // Stocke les avis dans l'état 'reviews'
+        setReviews(data);
+      } catch (err) {
+        setError('Erreur lors de la récupération des avis.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReviews();
+  }, []);
+
+  // Affiche un message approprié en cas de chargement des avis ou d'erreur
+  if (loading) {
+    return <div>Chargement des avis...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   // Questions/Réponses pour la FAQ
   const faqs = [
-    { id: 'faq1', question: 'Quelle est la mission de Greenroots ?', answer: 'Greenroots vise à promouvoir la plantation d\'arbres pour lutter contre le changement climatique.' },
-    { id: 'faq2', question: 'Comment puis-je contribuer ?', answer: 'Vous pouvez contribuer en achetant un arbre à planter dans l\'une de nos campagnes.' },
-    { id: 'faq3', question: 'Où sont plantés les arbres ?', answer: 'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.' },
-    { id: 'faq4', question: 'Puis-je suivre l\'impact de mon geste ?', answer: 'Oui, vous recevrez des informations sur la croissance de l\'arbre et l\'impact en CO₂ absorbé.' },
+    {
+      id: 'faq1',
+      question: 'Quelle est la mission de Greenroots ?',
+      answer:
+        "Greenroots vise à promouvoir la plantation d'arbres pour lutter contre le changement climatique.",
+    },
+    {
+      id: 'faq2',
+      question: 'Comment puis-je contribuer ?',
+      answer:
+        "Vous pouvez contribuer en achetant un arbre à planter dans l'une de nos campagnes.",
+    },
+    {
+      id: 'faq3',
+      question: 'Où sont plantés les arbres ?',
+      answer:
+        'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.',
+    },
+    {
+      id: 'faq4',
+      question: "Puis-je suivre l'impact de mon geste ?",
+      answer:
+        "Oui, vous recevrez des informations sur la croissance de l'arbre et l'impact en CO₂ absorbé.",
+    },
   ];
 
   return (
@@ -64,9 +109,12 @@ function HomePage() {
 
         {/* Section "Ce que nous te proposons" superposée */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
-          <h2 className="text-h2 font-bold text-black">Ce que nous te proposons</h2>
+          <h2 className="text-h2 font-bold text-black">
+            Ce que nous te proposons
+          </h2>
           <p className="text-gray-700 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut bibendum massa.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
+            bibendum massa.
           </p>
           <button
             onClick={() => navigate('/campaigns')}
@@ -79,39 +127,27 @@ function HomePage() {
       </div>
 
       {/* Grille des Avis : Grille Adaptative */}
-      <div className="grid gap-8 mt-16" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-        {[...Array(3)].map(() => (
-          <div
-            key={Math.random().toString(36).substr(2, 9)}
-            className="bg-greenroots_green p-4 rounded-lg text-white"
-            style={{
-              boxShadow: '-4px -4px 4px rgba(205, 92, 8, 1), 4px 4px 4px rgba(0, 0, 0, 0.3)',
-            }}
-          >
-            <div className='flex flex-row justify-center mb-5'>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum est ac orci tincidunt, vitae tincidunt nunc lacinia. Maecenas fringilla pulvinar urna.
-            </p>
-          </div>
-        ))}
+      <div
+        className="grid gap-8 mt-16"
+        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
+      >
+        <Reviews reviews={reviews} />
       </div>
 
       {/* Section Nos Campagnes */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Nos campagnes</h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+          Nos campagnes
+        </h1>
         <Carousel images={campaignImages} />
       </div>
 
       {/* Nouveau Titre */}
       <h1 className="text-h1 font-bold text-black mt-20">
         Gardes un visuel sur l'impact de{' '}
-        <span className="bg-greenroots_green text-white rounded-lg px-4">ton geste</span>
+        <span className="bg-greenroots_green text-white rounded-lg px-4">
+          ton geste
+        </span>
       </h1>
 
       {/* Image et texte chevauché */}
@@ -128,7 +164,9 @@ function HomePage() {
           className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px]"
           style={{ width: '300px' }}
         >
-          <p className="text-gray-700 mb-4">Explication graph suivi, CO2, etc.</p>
+          <p className="text-gray-700 mb-4">
+            Explication graph suivi, CO2, etc.
+          </p>
           <button
             onClick={() => navigate('/campaigns')}
             className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
@@ -141,13 +179,17 @@ function HomePage() {
 
       {/* Section FAQ */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+          Une question ?
+        </h1>
         <div className="grid gap-4">
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
               className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
-              onClick={() => setFaqOpenIndex(faqOpenIndex === index ? null : index)}
+              onClick={() =>
+                setFaqOpenIndex(faqOpenIndex === index ? null : index)
+              }
               type="button"
             >
               <div className="flex items-center justify-between">

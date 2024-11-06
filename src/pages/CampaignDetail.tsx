@@ -79,7 +79,7 @@ const formattedDate = endDate.toLocaleDateString('fr-FR', {
       {/* Title campaign */}
       <section className='flex flex-row justify-evenly mt-2 p-1 items-center'>
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
-          Reforestation de la forêt du <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">{campaign.name}</span>
+          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">{campaign.name}</span>
         </h2>
       </section>
 
