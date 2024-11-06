@@ -1,5 +1,6 @@
 // import logo from '../assets/Logos/Logo_principal.webp';
 import mountains from '/Images/moutains.svg';
+import { Link } from 'react-router-dom';
 
 function Footer () {
   return (
@@ -11,25 +12,25 @@ function Footer () {
 
       <div className="hidden lg:flex bg-greenroots_green items-stretch justify-around flex-row flex-nowrap h-full z-100">
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs pl-2 pr-7 pb-2">CGV</a>
+          <Link to="/" className="text-greenroots_white text-xs pl-2 pr-7 pb-2">CGV</Link>
         </span>
         
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs pr-7 pb-2">Politique de confidentialité</a>
+          <Link to="/" className="text-greenroots_white text-xs pr-7 pb-2">Politique de confidentialité</Link>
         </span>
 
         {/* <div className="flex-grow flex justify-center">
-          <a href="/" >
+          <Link to="/" >
             <img src={logo} alt="logo" className="w-50 h-50 -mt-5" />
-          </a>
+          </Link>
         </div> */}
 
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs pr-7 pb-2">Mentions légales</a>
+          <Link to="/" className="text-greenroots_white text-xs pr-7 pb-2">Mentions légales</Link>
         </span>
 
         <span className="flex">
-          <a href="/" className="text-greenroots_white text-xs pr-2 pb-2">Contact</a>
+          <Link to="/" className="text-greenroots_white text-xs pr-2 pb-2">Contact</Link>
         </span>
       </div>
     </footer>

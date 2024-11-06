@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
   const { setUser } = useUser();
@@ -82,8 +83,8 @@ export default function LoginForm() {
         Se connecter
       </button>
       <div className='flex items-center justify-between'>
-        <a className="text-greenroots_green text-[0.6rem] pt-4" href="/register">Nouveau client ?</a>
-        <a className="text-greenroots_green text-[0.6rem] pt-4" href="/resetpassword">Mot de passe oublié ?</a>
+        <Link to="/register" className="text-greenroots_green text-[0.6rem] pt-4" >Nouveau client ?</Link>
+        <Link to="/resetpassword" className="text-greenroots_green text-[0.6rem] pt-4" >Mot de passe oublié ?</Link>
       </div>
     </form>
   );
