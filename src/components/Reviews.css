@@ -1,0 +1,23 @@
+@keyframes rotateStar {
+  /* Rotation des étoiles */
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-animation {
+  /* Durée de 1,7 secondes, une seule fois */
+  animation: rotateStar 1.7s linear forwards;
+}

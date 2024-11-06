@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Carousel from '../components/Carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Reviews from '../components/Reviews';
 // import { useEffect } from 'react';  (à décommenter quand l'API sera prête)
 
 function HomePage() {
@@ -38,10 +37,30 @@ function HomePage() {
 
   // Questions/Réponses pour la FAQ
   const faqs = [
-    { id: 'faq1', question: 'Quelle est la mission de Greenroots ?', answer: 'Greenroots vise à promouvoir la plantation d\'arbres pour lutter contre le changement climatique.' },
-    { id: 'faq2', question: 'Comment puis-je contribuer ?', answer: 'Vous pouvez contribuer en achetant un arbre à planter dans l\'une de nos campagnes.' },
-    { id: 'faq3', question: 'Où sont plantés les arbres ?', answer: 'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.' },
-    { id: 'faq4', question: 'Puis-je suivre l\'impact de mon geste ?', answer: 'Oui, vous recevrez des informations sur la croissance de l\'arbre et l\'impact en CO₂ absorbé.' },
+    {
+      id: 'faq1',
+      question: 'Quelle est la mission de Greenroots ?',
+      answer:
+        "Greenroots vise à promouvoir la plantation d'arbres pour lutter contre le changement climatique.",
+    },
+    {
+      id: 'faq2',
+      question: 'Comment puis-je contribuer ?',
+      answer:
+        "Vous pouvez contribuer en achetant un arbre à planter dans l'une de nos campagnes.",
+    },
+    {
+      id: 'faq3',
+      question: 'Où sont plantés les arbres ?',
+      answer:
+        'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.',
+    },
+    {
+      id: 'faq4',
+      question: "Puis-je suivre l'impact de mon geste ?",
+      answer:
+        "Oui, vous recevrez des informations sur la croissance de l'arbre et l'impact en CO₂ absorbé.",
+    },
   ];
 
   return (
@@ -53,7 +72,6 @@ function HomePage() {
         </span>
       </h1>
 
-      {/* Div contenant l'image */}
       <div className="relative mt-16">
         <img
           src="/Images/illustration_arbre.webp"
@@ -61,8 +79,6 @@ function HomePage() {
           className="w-full max-w-md mx-auto"
           loading="lazy"
         />
-
-        {/* Section "Ce que nous te proposons" superposée */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
           <h2 className="text-h2 font-bold text-black">Ce que nous te proposons</h2>
           <p className="text-gray-700 mt-4">
@@ -79,27 +95,11 @@ function HomePage() {
       </div>
 
       {/* Grille des Avis : Grille Adaptative */}
-      <div className="grid gap-8 mt-16" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-        {[...Array(3)].map(() => (
-          <div
-            key={Math.random().toString(36).substr(2, 9)}
-            className="bg-greenroots_green p-4 rounded-lg text-white"
-            style={{
-              boxShadow: '-4px -4px 4px rgba(205, 92, 8, 1), 4px 4px 4px rgba(0, 0, 0, 0.3)',
-            }}
-          >
-            <div className='flex flex-row justify-center mb-5'>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B",}} className="text-h3 font-bold m-1"/>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum est ac orci tincidunt, vitae tincidunt nunc lacinia. Maecenas fringilla pulvinar urna.
-            </p>
-          </div>
-        ))}
+      <div
+        className="grid gap-8 mt-16"
+        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
+      >
+        <Reviews />
       </div>
 
       {/* Section Nos Campagnes */}
@@ -108,13 +108,13 @@ function HomePage() {
         <Carousel images={campaignImages} />
       </div>
 
-      {/* Nouveau Titre */}
       <h1 className="text-h1 font-bold text-black mt-20">
         Gardes un visuel sur l'impact de{' '}
-        <span className="bg-greenroots_green text-white rounded-lg px-4">ton geste</span>
+        <span className="bg-greenroots_green text-white rounded-lg px-4">
+          ton geste
+        </span>
       </h1>
 
-      {/* Image et texte chevauché */}
       <div className="flex items-center justify-center mt-16 relative">
         <div className="relative z-10">
           <img
@@ -139,7 +139,6 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Section FAQ */}
       <div className="mt-20">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
         <div className="grid gap-4">
@@ -147,7 +146,9 @@ function HomePage() {
             <button
               key={faq.id}
               className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
-              onClick={() => setFaqOpenIndex(faqOpenIndex === index ? null : index)}
+              onClick={() =>
+                setFaqOpenIndex(faqOpenIndex === index ? null : index)
+              }
               type="button"
             >
               <div className="flex items-center justify-between">
