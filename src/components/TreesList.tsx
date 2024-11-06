@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface TreeProps {
   tree: {
@@ -16,31 +16,34 @@ interface TreeProps {
       average_lifespan?: number;
     };
     campaignCountry?: string;
+    campaignName?: string;
+    campaignId?: number;
   };
-  hideDescriptionButton?: boolean;
 }
 
-function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
+function TreesList({ tree }: TreeProps) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const location = useLocation();
 
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
+  // Détecte si on est sur une page `trees/:id` pour masquer le bouton "Description"
+  const isTreeDetailPage = location.pathname.includes(`/trees/${tree.id}`);
+  // Détecte si on est sur une page `campaigns` ou `campaigns/:id` pour masquer le bouton du nom de campagne
+  const isCampaignPage = location.pathname.startsWith('/campaigns');
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
+  const handleIncrement = () => setQuantity(quantity + 1);
+  const handleDecrement = () => quantity > 1 && setQuantity(quantity - 1);
   const handleAddToCart = () => {
     addToCart({
-      id: tree.id.toString(),
+      id: `${tree.id}-${tree.campaignId}`,
+      treeId: tree.id,
+      campaignId: tree.campaignId || 0,
       name: tree.name,
       price: Number.parseFloat(tree.price_ht.toString()),
       quantity,
       image: '/Images/view-of-flower.webp',
+      campaignName: tree.campaignName || 'Nom de campagne indisponible',
+      campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
     console.log('Produit ajouté au panier:', tree);
   };
@@ -58,13 +61,12 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
       <div className="flex justify-between flex-col items-center mt-2 w-full h-24">
         <h3 className="text-h3 font-bold">{tree.name || 'Nom non disponible'}</h3>
         <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
-          {tree.species?.species_name || 'Espèce non disponible'}
-          {!hideDescriptionButton && (
+          {!isTreeDetailPage && (
             <Link
               to={`/trees/${tree.id}`}
               className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
             >
-              Description
+              {tree.species?.species_name || 'Espèce non disponible'}
             </Link>
           )}
         </p>
@@ -75,10 +77,21 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
         </p>
       </div>
       <div className="m-2 w-full">
-        <p className="p-1">
-          Lieu de plantation :{' '}
-          {tree.campaignCountry || 'Aucun lieu de plantation pour le moment'}
-        </p>
+        {!isCampaignPage && (
+          <>
+            <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
+              <Link
+                to={`/campaigns/${tree.campaignId}`}
+                className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
+              >
+                {tree.campaignName || 'Nom de campagne indisponible'}
+              </Link>
+            </p>
+            <p className="p-1">
+              Lieu de plantation : {tree.campaignCountry || 'Aucun lieu de plantation pour le moment'}
+            </p>
+          </>
+        )}
         <p className="p-1">Âge : {tree.age || 'Non spécifié'} ans</p>
       </div>
       <div className="flex flex-row justify-between items-center p-2 mb-2 gap-2 w-full">
@@ -90,9 +103,7 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
           >
             -
           </button>
-          <span className="border-t border-b border-blue-300 px-4 p-3">
-            {quantity}
-          </span>
+          <span className="border-t border-b border-blue-300 px-4 p-3">{quantity}</span>
           <button
             type="button"
             onClick={handleIncrement}
@@ -111,6 +122,7 @@ function TreesList({ tree, hideDescriptionButton = false }: TreeProps) {
       </div>
     </article>
   );
+  
 }
 
 export default TreesList;

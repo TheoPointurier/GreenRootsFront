@@ -18,6 +18,19 @@ interface Tree {
   };
   location: string;
   campaignCountry?: string;
+  campaignId?: number;
+  campaignName?: string;
+}
+
+interface Campaign {
+  id: number;
+  name: string;
+  location: {
+    country: {
+      name: string;
+    };
+  };
+  treesCampaign: Tree[];
 }
 
 function Trees() {
@@ -27,37 +40,39 @@ function Trees() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [treeData, campaignData] = await Promise.all([
+        const [treeData, campaignData]: [Tree[], Campaign[]] = await Promise.all([
           fetchTrees(),
           fetchCampaigns(),
         ]);
 
-        const enrichedTrees = treeData.map((tree: Tree) => {
-          const relatedCampaign = campaignData.find((campaign: { treesCampaign: { id: number }[]; location?: { country?: { name: string } } }) =>
-            campaign.treesCampaign.some(campaignTree => campaignTree.id === tree.id)
-          );
-          
-          return {
-            ...tree,
-            campaignCountry: relatedCampaign?.location?.country?.name || 'Aucun lieu de plantation pour le moment',
-          };
+        const treesPerCampaign = treeData.flatMap((tree: Tree) => {
+          return campaignData
+            .filter((campaign: Campaign) =>
+              campaign.treesCampaign.some((campaignTree: Tree) => campaignTree.id === tree.id)
+            )
+            .map((campaign: Campaign) => ({
+              ...tree,
+              campaignId: campaign.id,
+              campaignName: campaign.name,
+              campaignCountry: campaign.location?.country?.name || 'Aucun lieu de plantation pour le moment',
+            }));
         });
 
-        setTrees(enrichedTrees);
-        setFilteredTrees(enrichedTrees);
+        setTrees(treesPerCampaign);
+        setFilteredTrees(treesPerCampaign);
       } catch (error) {
         console.error("Erreur lors de la récupération des arbres et campagnes :", error);
       }
     };
-    
+
     fetchData();
   }, []);
 
-  const speciesOptions = Array.from(new Set(trees.map(tree => tree.species?.species_name || '')));
+  const speciesOptions = Array.from(new Set(trees.map((tree) => tree.species?.species_name || '')));
 
   const handleFilterChange = (speciesName: string) => {
     const filtered = speciesName
-      ? trees.filter(tree => tree.species?.species_name === speciesName)
+      ? trees.filter((tree) => tree.species?.species_name === speciesName)
       : trees;
     setFilteredTrees(filtered);
   };
@@ -75,8 +90,8 @@ function Trees() {
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-screen-xl mx-auto p-4">
-        {filteredTrees.map(tree => (
-          <TreesList key={tree.id} tree={tree} />
+        {filteredTrees.map((tree) => (
+          <TreesList key={`${tree.id}-${tree.campaignId}`} tree={tree} />
         ))}
       </div>
     </main>

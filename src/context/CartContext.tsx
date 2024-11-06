@@ -3,10 +3,14 @@ import type { ReactNode } from 'react';
 
 interface CartItem {
   id: string;
+  treeId: number;
+  campaignId: number;
   name: string;
   price: number;
   quantity: number;
   image: string;
+  campaignName: string;
+  campaignLocation: string;
 }
 
 interface CartContextProps {
@@ -43,10 +47,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (item: CartItem) => {
     setCartItems(prevCart => {
-      const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+      const existingItem = prevCart.find(
+        cartItem => cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
+      );
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.id === item.id
+          cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
             ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
             : cartItem
         );
@@ -54,6 +60,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return [...prevCart, item];
     });
   };
+  
 
   const increaseQuantity = (itemId: string) => {
     setCartItems(prevCart =>
