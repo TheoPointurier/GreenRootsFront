@@ -1,4 +1,4 @@
-// import logo from '../Linkssets/Logos/Logo_principal.webp';
+// import logo from '../assets/Logos/Logo_principal.webp';
 import mountains from '/Images/moutains.svg';
 import { Link } from 'react-router-dom';
 
