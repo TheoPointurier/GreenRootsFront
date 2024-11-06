@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 import apiClient from '../api/apiClient';
 
 export interface User {
@@ -41,65 +47,46 @@ export const useUser = () => {
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Fonction de déconnexion
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
   }, []);
 
-  // Fonction pour récupérer les informations utilisateur en fonction de l'ID
-  const fetchUserInfo = useCallback(async (userId: number) => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error("Token non défini");
-      return;
-    }
-
-    try {
-      const response = await apiClient(`/users/${userId}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setUser(response);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des informations utilisateur:", error);
-      logout();
-    }
-  }, [logout]);
-
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       const token = localStorage.getItem('token');
-      if (token) {
-        const userId = getUserIdFromToken(token);
-        if (userId) {
-          await fetchUserInfo(userId);
-        } else {
-          console.error("ID utilisateur non trouvé dans le token");
+      const userId = localStorage.getItem('userId');
+      console.log(
+        'Token et ID utilisateur récupérés depuis localStorage:',
+        token,
+        userId,
+      );
+
+      if (token && userId && !user) {
+        try {
+          const data = await apiClient(`/users/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          console.log("Données utilisateur récupérées depuis l'API:", data);
+          setUser(data);
+          console.log('Utilisateur mis à jour dans le contexte:', data);
+        } catch (error) {
+          console.error(
+            'Erreur lors de la récupération des informations utilisateur:',
+            error,
+          );
           logout();
         }
       }
     };
 
     checkUserLoggedIn();
-  }, [fetchUserInfo, logout]);
+  }, [user, logout]);
 
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
     </UserContext.Provider>
   );
-};
-
-// Fonction pour décoder l'ID utilisateur depuis le token
-const getUserIdFromToken = (token: string): number | null => {
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.id || null;
-  } catch (error) {
-    console.error("Erreur lors du décodage du token:", error);
-    return null;
-  }
 };
