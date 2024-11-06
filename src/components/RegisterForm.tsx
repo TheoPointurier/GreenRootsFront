@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
 import { register } from '../api/auth';
 import type { RegisterData } from '../api/auth';
 
 export default function RegisterForm() {
-  const { setUser } = useUser();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -33,45 +31,35 @@ export default function RegisterForm() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-
+  
     const dataToSend: RegisterData = Object.fromEntries(
       Object.entries(formData).filter(([_, value]) => value !== ''),
     ) as unknown as RegisterData;
-
+  
     try {
       const response = await register(dataToSend);
       console.log('Réponse complète du serveur :', response);
-
-      if (response.user) {
-        setUser(response.user);
+  
+      if (response && response.message === 'Utilisateur créé') {
         navigate('/login');
       } else {
-        setError(
-          'Erreur lors de la création de votre compte. Veuillez réessayer.',
-        );
+        setError('Erreur lors de la création de votre compte. Veuillez réessayer.');
       }
     } catch (err) {
       console.error("Erreur d'inscription détectée :", err);
-
-      if (
-        (err as { status?: number }).status === 400 &&
-        (err as { response?: { error: string[] } }).response?.error
-      ) {
-        setError(
-          (err as { response: { error: string[] } }).response.error.join(', '),
-        );
-      } else if (
-        (err as { message?: string }).message?.includes('duplicate key') ||
-        (err as { message?: string }).message?.includes('Email déjà utilisé')
-      ) {
+  
+      if ((err as { status?: number }).status === 400 &&
+          (err as { response?: { error: string[] } }).response?.error) {
+        setError((err as { response: { error: string[] } }).response.error.join(', '));
+      } else if ((err as { message?: string }).message?.includes('duplicate key') ||
+                 (err as { message?: string }).message?.includes('Email déjà utilisé')) {
         setError('Cet email est déjà utilisé. Veuillez en choisir un autre.');
       } else {
-        setError(
-          "Échec de l'inscription. Veuillez vérifier les informations saisies.",
-        );
+        setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
       }
     }
   };
+  
 
   return (
     <form

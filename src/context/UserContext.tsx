@@ -4,6 +4,7 @@ import {
   useState,
   useEffect,
   useCallback,
+  useRef,
 } from 'react';
 import apiClient from '../api/apiClient';
 
@@ -28,12 +29,14 @@ interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
   logout: () => void;
+  isLoading: boolean;
 }
 
 const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => {},
   logout: () => {},
+  isLoading: true,
 });
 
 export const useUser = () => {
@@ -46,14 +49,19 @@ export const useUser = () => {
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const isInitialCheckDone = useRef(false); // Utilisation de useRef pour marquer la vérification initiale
 
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
   }, []);
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
+      if (isInitialCheckDone.current) return; // Stoppe si la vérification initiale est déjà faite
+
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
       console.log(
@@ -62,7 +70,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         userId,
       );
 
-      if (token && userId && !user) {
+      if (token && userId) {
         try {
           const data = await apiClient(`/users/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
@@ -79,13 +87,16 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           logout();
         }
       }
+
+      isInitialCheckDone.current = true; // Marque la vérification initiale comme terminée
+      setIsLoading(false);
     };
 
     checkUserLoggedIn();
-  }, [user, logout]);
+  }, [logout]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, setUser, logout, isLoading }}>
       {children}
     </UserContext.Provider>
   );
