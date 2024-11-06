@@ -59,7 +59,7 @@ function TreeDetail() {
   return (
     <main className="container mx-auto flex flex-col p-5">
       <div className="flex justify-start mt-5">
-        <Link to="/" className="pr-1">
+        <Link to="/trees" className="pr-1">
           <FontAwesomeIcon icon={faChevronLeft} className="pr-1 ml-1" /> Retour
         </Link>
       </div>

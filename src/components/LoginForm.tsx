@@ -48,7 +48,7 @@ export default function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:greenroots_green focus:ring-greenroots_green"
         />
       </div>
       <div className="mb-6">
@@ -59,7 +59,7 @@ export default function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:greenroots_green focus:ring-greenroots_green"
         />
       </div>
       <button
@@ -68,6 +68,10 @@ export default function LoginForm() {
       >
         Se connecter
       </button>
+      <div className='flex items-center justify-between'>
+        <a className="text-greenroots_green text-[0.6rem] pt-4" href="/register">Nouveau client ?</a>
+        <a className="text-greenroots_green text-[0.6rem] pt-4" href="/resetpassword">Mot de passe oublié ?</a>
+      </div>
     </form>
   );
 }
