@@ -1,7 +1,4 @@
-interface CartSummaryProps {
-  subtotal: number; // Sous-total HT
-  onCheckout: () => void;
-}
+import type { CartSummaryProps } from "../@types/Cart";
 
 function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
   const tvaRate = 0.20;

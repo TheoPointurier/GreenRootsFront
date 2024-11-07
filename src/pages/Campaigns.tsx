@@ -5,28 +5,7 @@ import { fetchCampaigns } from '../api/campaigns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
-interface Campaign {
-  id: number;
-  name: string;
-  description: string;
-  location: {
-    name_location: string;
-    country: {
-      name: string;
-    };
-  };
-  treesCampaign: {
-    id: number;
-    name: string;
-    price_ht: number;
-    age: number;
-    location: string;
-    species: {
-      species_name: string;
-    };
-  }[];
-}
+import type { Campaign } from '../@types/campaigns';
 
 function Campaigns() {
   const [filteredCampaigns, setFilteredCampaigns] = useState<Campaign[]>([]);
@@ -46,8 +25,12 @@ function Campaigns() {
     getCampaigns();
   }, []);
 
-  const countryOptions = Array.from(new Set(campaigns.map(campaign => campaign.location?.country?.name || '')));
+  // Génère les options de filtre pour les pays sans doublons
+  const countryOptions: string[] = Array.from(
+    new Set(campaigns.map(campaign => campaign.location?.country?.name || ''))
+  );
 
+  // Gère le filtrage par pays
   const handleFilterChange = (country: string) => {
     const filtered = country
       ? campaigns.filter(campaign => campaign.location?.country?.name === country)
@@ -64,7 +47,7 @@ function Campaigns() {
         <Link to="/" className="pr-1">
           <FontAwesomeIcon icon={faChevronLeft} className="pr-1 ml-1" /> Retour
         </Link>
-      <FilterSelect onFilterChange={handleFilterChange} filterType="country" filterOptions={['Tous', ...countryOptions]} />
+        <FilterSelect onFilterChange={handleFilterChange} filterType="country" filterOptions={['Tous', ...countryOptions]} />
       </div>
       <CampaignsList campaigns={filteredCampaigns} />
     </main>

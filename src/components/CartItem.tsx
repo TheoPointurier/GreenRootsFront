@@ -1,16 +1,5 @@
 import { useCart } from '../context/CartContext';
-
-interface CartItemProps {
-  item: {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-    campaignName: string;
-    campaignLocation: string;
-  };
-  quantity: number;
-}
+import type { CartItemProps  } from '../@types/Cart';
 
 function CartItem({ item, quantity }: CartItemProps) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();

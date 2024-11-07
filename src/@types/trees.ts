@@ -1,12 +1,15 @@
 export interface Tree {
-  id_tree: number;
+  id: number;
   name: string;
-  price_HT: number;
-  quantity?: number;
+  price_ht: number;
   age: number;
-  created_at: string;
-  updated_at: string;
-  id_species: number;
+  location: string;
+  species: {
+    species_name: string;
+    co2_absorption?: number;
+    description?: string;
+    average_lifespan?: number;
+  };
 }
 
 export interface TreeSpecies {
@@ -15,4 +18,12 @@ export interface TreeSpecies {
   description: string;
   co2_absorption: number;
   average_lifespan: number;
+}
+
+export interface TreeProps {
+  tree: Tree & {
+    campaignCountry?: string;
+    campaignName?: string;
+    campaignId?: number;
+  };
 }

@@ -6,7 +6,7 @@ function MainLayout() {
   return (
     <div className="flex-1">
       <Header />
-      <Outlet />
+        <Outlet />
       <Footer />
     </div>
   ); 

@@ -1,10 +1,5 @@
 import { useState } from 'react';
-
-interface FilterSelectProps {
-  onFilterChange: (filter: string) => void;
-  filterType: 'country' | 'species';
-  filterOptions: string[];
-}
+import type { FilterSelectProps } from '../@types/Filter';
 
 function FilterSelect({ onFilterChange, filterType, filterOptions }: FilterSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
