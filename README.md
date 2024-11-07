@@ -60,3 +60,33 @@ npm run dev
 This repository is licensed under the O'Clock Training License. All rights reserved by O'Clock.
 
 ---
+
+## 🛠️💡 Why Build Projects? (English version)
+
+General Presentation
+
+What? Development of an e-commerce platform to buy trees to plant (by GreenRoots and tomorrow third-party associations) to contribute to reforestation.
+
+Who? GreenRoots (fictitious) was born from the urgency to take concrete measures to preserve our planet in the face of deforestation and climate change.
+For whom? Eco-conscious public, responsible companies, committed associations, etc.
+
+How? In a team to be defined (positioning via a wish form) by the teaching team. Organization in agile method for project management.
+
+When? For 4 weeks corresponding to 4 sprints (design, code, deployment, acceptance testing, etc.).
+
+Why? For the realization of a fictitious project for educational purposes aimed at obtaining the Professional Title.
+
+## 🛠️💡 Why Build Projects? (French version)
+
+Présentation Générale
+
+Quoi ? Développement d'une plateforme d'e-commerce permettant d'acheter des arbres à planter (par GreenRoots et demain des associations tierces) pour contribuer à la reforestation.
+
+Qui ? GreenRoots (fictif) est née de l’urgence de prendre des mesures concrètes pour préserver notre planète face à la déforestation et au changement climatique.
+
+Pour qui ? Public éco-conscient, entreprises responsables, associations engagées, etc.
+Comment ? En équipe à définir (positionnement via un formulaire de voeux) par l'équipe pédagogique. Organisation en méthode agile pour la gestion de projet.
+
+Quand ? Pendant 4 semaines correspondant à 4 sprints (conception, code, déploiement, recettage, etc.).
+
+Pourquoi ? Pour la réalisation d'un projet fictif à but pédagogique visant l'obtention du Titre Professionnel.
