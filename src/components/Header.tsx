@@ -1,15 +1,29 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import logo from '../assets/Logos/Logo_principal.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
+import { useUser } from '../context/UserContext'; // Import du contexte utilisateur pour vérifier l'état de connexion
+import logo from '../assets/Logos/Logo_principal.webp';
 
 function Header() {
+  // État pour contrôler l'ouverture du menu burger
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Récupération des informations de l'utilisateur et de la fonction de déconnexion
+  const { user, logout } = useUser();
+  const navigate = useNavigate(); // Hook pour naviguer dans l'application
+
+  // Fonction pour basculer l'état du menu burger
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Fonction pour gérer la déconnexion de l'utilisateur
+  const handleLogout = () => {
+    logout(); // Appel de la fonction de déconnexion
+    navigate('/'); // Redirection vers la page d'accueil après la déconnexion
   };
 
   return (
@@ -25,11 +39,28 @@ function Header() {
 
         {/* Menu horizontal uniquement sur tablette et PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center">
+          {/* Liens principaux du site */}
           <Link to="/" className="text-xl">Accueil</Link>
           <Link to="/trees" className="text-xl">Nos arbres</Link>
           <Link to="/campaigns" className="text-xl">Nos campagnes</Link>
           <Link to="/contact" className="text-xl">Contact</Link>
           <Link to="/about" className="text-xl">À propos</Link>
+
+          {/* Liens conditionnels basés sur l'état de l'utilisateur */}
+          {user ? (
+            <>
+              {/* Si l'utilisateur est connecté, affichage du bouton de déconnexion */}
+              <button type="button" onClick={handleLogout} className="text-xl text-greenroots_white">Déconnexion</button>
+              {/* Lien vers la page de profil de l'utilisateur */}
+              <Link to={`/user/${user.id}`} className="text-xl">Mon compte</Link>
+            </>
+          ) : (
+            <>
+              {/* Si l'utilisateur n'est pas connecté, affichage des liens de connexion et d'inscription */}
+              <Link to="/login" className="text-xl">Connexion</Link>
+              <Link to="/register" className="text-xl">S'enregistrer</Link>
+            </>
+          )}
         </nav>
 
         {/* Panier à droite */}
