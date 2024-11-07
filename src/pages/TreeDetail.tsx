@@ -17,11 +17,16 @@ function TreeDetail() {
       try {
         const campaigns = await fetchCampaigns();
         const relatedCampaigns = campaigns.filter((campaign: Campaign) =>
-          campaign.treesCampaign.some((treeInCampaign) => treeInCampaign.id.toString() === id)
+          campaign.treesCampaign.some(
+            (treeInCampaign) => treeInCampaign.id.toString() === id,
+          ),
         );
 
         if (relatedCampaigns.length > 0) {
-          const foundTree = relatedCampaigns[0].treesCampaign.find((t: TreeProps['tree']) => t.id.toString() === id) || null;
+          const foundTree =
+            relatedCampaigns[0].treesCampaign.find(
+              (t: TreeProps['tree']) => t.id.toString() === id,
+            ) || null;
           if (foundTree) {
             setTree({
               ...foundTree,
@@ -61,8 +66,34 @@ function TreeDetail() {
         </h2>
       </div>
 
+      <div className="flex flex-col p-5 mt-1 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
+        <h3 className="text-h3 mt-2 mb-2">{tree.species?.species_name}</h3>
+        <p className="mt-2 mb-2">{tree.species?.description}</p>
+        <p className="mt-2 mb-2">
+          Absorption de CO₂ : {tree.species?.co2_absorption} kg/an
+        </p>
+        <p className="mt-2 mb-2">
+          Durée de vie moyenne : {tree.species?.average_lifespan} ans
+        </p>
+        <p className="mt-2 mb-2">
+          Lieu(x) de plantation :{' '}
+          {treeCampaigns.length > 0
+            ? treeCampaigns
+                .map((campaign) => campaign.location.country.name)
+                .join(', ')
+            : 'Aucun lieu de plantation pour le moment'}
+        </p>
+      </div>
+      <div className="flex flex-row justify-evenly mt-2 p-1 items-center">
+        <h2 className="text-h2 items-center text-center mt-10 mb-10">
+          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">
+            {tree.species?.species_name || 'Espèce non disponible'}
+          </span>
+          {' '}dans une campagne
+        </h2>
+      </div>
       {/* Affiche une instance de TreesList par campagne */}
-      <div className="grid grid-cols-1 gap-4 mb-4">
+      <div className="flex flex-wrap justify-center gap-4 mb-4">
         {treeCampaigns.map((campaign) => (
           <TreesList
             key={`${tree.id}-${campaign.id}`}
@@ -74,27 +105,6 @@ function TreeDetail() {
             }}
           />
         ))}
-      </div>
-
-      <div className="flex flex-col p-5 mt-1 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
-        <h3 className="text-h3 mt-2 mb-2">
-          {tree.species?.species_name}
-        </h3>
-        <p className="mt-2 mb-2">
-          {tree.species?.description}
-        </p>
-        <p className="mt-2 mb-2">
-          Absorption de CO₂ : {tree.species?.co2_absorption} kg/an
-        </p>
-        <p className="mt-2 mb-2">
-          Durée de vie moyenne : {tree.species?.average_lifespan} ans
-        </p>
-        <p className="mt-2 mb-2">
-          Lieu(x) de plantation :{' '}
-          {treeCampaigns.length > 0
-            ? treeCampaigns.map((campaign) => campaign.location.country.name).join(', ')
-            : 'Aucun lieu de plantation pour le moment'}
-        </p>
       </div>
     </main>
   );
