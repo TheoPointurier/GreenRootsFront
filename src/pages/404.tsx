@@ -12,7 +12,7 @@ const NotFound: React.FC = () => {
         <div className='flex justify-center mt-4'>
           <img 
             src="./src/assets/images/404_sapins.webp" 
-            alt="Nom arbre" 
+            alt="page not found" 
             className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-[20px]"
           />
         </div>
