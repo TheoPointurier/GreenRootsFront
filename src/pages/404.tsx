@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NotFound: React.FC = () => {
   return (
-    <div className="flex-1 flex bg-greenroots_beige h-auto justify-center items-center flex-col p-5 md:p-20 min-h-screen">
+    <div className="flex-1 flex bg-greenroots_beige h-auto justify-center items-center flex-col md:p-20 min-h-screen">
       <section className="flex flex-col justify-between p-5 mb-5 rounded-[20px] border border-grey shadow-xl max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full">
         
         {/* Title 404 */}
@@ -12,7 +12,7 @@ const NotFound: React.FC = () => {
         <div className='flex justify-center mt-4'>
           <img 
             src="./src/assets/images/404_sapins.webp" 
-            alt="Nom arbre" 
+            alt="page not found" 
             className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-[20px]"
           />
         </div>

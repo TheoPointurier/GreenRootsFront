@@ -7,13 +7,13 @@ import Campaigns from './pages/Campaigns';
 import CampaignDetail from './pages/CampaignDetail';
 import User from './pages/User';
 import Cart from './pages/Cart';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/404';
+import ServerError from './pages/500';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import About from './pages/About';
 import ContactForm from './pages/ContactForm';
 import { useUser } from './context/UserContext';
-
 
 const Router = () => {
   const { user } = useUser();
@@ -35,6 +35,7 @@ const Router = () => {
         { path: '/about', element: <About /> },
         { path: '/contact', element: <ContactForm /> },
         { path: '*', element: <NotFound /> },
+        { path: '/500', element: <ServerError /> },
       ],
     },
   ]);
