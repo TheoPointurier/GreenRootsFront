@@ -61,7 +61,7 @@ This repository is licensed under the O'Clock Training License. All rights reser
 
 ---
 
-## 🛠️💡 Why Build Projects? (English version)
+## 🛠️💡 Why build this project? (English version)
 
 General Presentation
 
@@ -76,7 +76,7 @@ When? For 4 weeks corresponding to 4 sprints (design, code, deployment, acceptan
 
 Why? For the realization of a fictitious project for educational purposes aimed at obtaining the Professional Title.
 
-## 🛠️💡 Why Build Projects? (French version)
+## 🛠️💡 Pourquoi construire ce projet? (French version)
 
 Présentation Générale
 
