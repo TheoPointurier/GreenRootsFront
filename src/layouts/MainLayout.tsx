@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Outlet } from 'react-router-dom';
+import { setNavigate } from '../api/apiClient';
 
 function MainLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Si le hash est vide, remonte en haut de la page
+    setNavigate(navigate); // Initialise la fonction de navigation
+  }, [navigate]);
+
+  useEffect(() => {
     if (!location.hash) {
       window.scrollTo(0, 0);
     }
