@@ -7,51 +7,26 @@ import { fetchCampaigns } from '../api/campaigns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import type { Campaign } from '../@types/campaigns';
-import type { Tree } from '../@types/trees';
-/*interface Tree {
-  id: number;
-  name: string;
-  price: number;
-  price_ht: number;
-  age: number;
-  species: {
-    species_name: string;
-  };
-  location: string;
-  campaignCountry?: string;
-  campaignId?: number;
-  campaignName?: string;
-}
-
-interface Campaign {
-  id: number;
-  name: string;
-  location: {
-    country: {
-      name: string;
-    };
-  };
-  treesCampaign: Tree[];
-}*/
+import type { TreeProps } from '../@types/trees';
 
 function Trees() {
-  const [filteredTrees, setFilteredTrees] = useState<Tree[]>([]);
-  const [trees, setTrees] = useState<Tree[]>([]);
+  const [filteredTrees, setFilteredTrees] = useState<TreeProps['tree'][]>([]);
+  const [trees, setTrees] = useState<TreeProps['tree'][]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [treeData, campaignData]: [Tree[], Campaign[]] = await Promise.all([
+        const [treeData, campaignData]: [TreeProps['tree'][], Campaign[]] = await Promise.all([
           fetchTrees(),
           fetchCampaigns(),
         ]);
 
-        const treesPerCampaign = treeData.flatMap((tree: Tree) => {
+        const treesPerCampaign = treeData.flatMap((tree) => {
           return campaignData
-            .filter((campaign: Campaign) =>
-              campaign.treesCampaign.some((campaignTree: Tree) => campaignTree.id === tree.id)
+            .filter((campaign) =>
+              campaign.treesCampaign.some((campaignTree) => campaignTree.id === tree.id)
             )
-            .map((campaign: Campaign) => ({
+            .map((campaign) => ({
               ...tree,
               campaignId: campaign.id,
               campaignName: campaign.name,

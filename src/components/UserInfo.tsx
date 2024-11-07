@@ -1,8 +1,5 @@
 import type { FC } from 'react';
 import type { UserInfoProps } from '../@types/users';
-/*type UserInfoProps = {
-  user: User;
-};*/
 
 const UserInfo: FC<UserInfoProps> = ({ user }) => {
   return (

@@ -5,36 +5,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaigns } from '../api/campaigns';
 import TreesList from '../components/TreesList';
 import type { Campaign } from '../@types/campaigns';
-import type { Tree } from '../@types/trees';
-/*interface Tree {
-  id: number;
-  name: string;
-  price_ht: number;
-  age: number;
-  location: string;
-  campaignCountry?: string;
-  species: {
-    species_name: string;
-    co2_absorption?: number;
-    description?: string;
-    average_lifespan?: number;
-  };
-}
-
-interface Campaign {
-  id: number;
-  name: string;
-  location: {
-    country: {
-      name: string;
-    };
-  };
-  treesCampaign: Tree[];
-}*/
+import type { TreeProps } from '../@types/trees';
 
 function TreeDetail() {
   const { id } = useParams<{ id: string }>();
-  const [tree, setTree] = useState<Tree | null>(null);
+  const [tree, setTree] = useState<TreeProps['tree'] | null>(null);
   const [treeCampaigns, setTreeCampaigns] = useState<Campaign[]>([]);
 
   useEffect(() => {
@@ -42,11 +17,19 @@ function TreeDetail() {
       try {
         const campaigns = await fetchCampaigns();
         const relatedCampaigns = campaigns.filter((campaign: Campaign) =>
-          campaign.treesCampaign.some((treeInCampaign: Tree) => treeInCampaign.id.toString() === id)
+          campaign.treesCampaign.some((treeInCampaign) => treeInCampaign.id.toString() === id)
         );
 
         if (relatedCampaigns.length > 0) {
-          setTree(relatedCampaigns[0].treesCampaign.find((t: Tree) => t.id.toString() === id) || null);
+          const foundTree = relatedCampaigns[0].treesCampaign.find((t: TreeProps['tree']) => t.id.toString() === id) || null;
+          if (foundTree) {
+            setTree({
+              ...foundTree,
+              campaignCountry: relatedCampaigns[0].location.country.name,
+              campaignName: relatedCampaigns[0].name,
+              campaignId: relatedCampaigns[0].id,
+            });
+          }
           setTreeCampaigns(relatedCampaigns);
         }
       } catch (error) {

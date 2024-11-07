@@ -2,27 +2,6 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import type { CartItem, CartContextProps } from '../@types/Cart';
 
-/*interface CartItem {
-  id: string;
-  treeId: number;
-  campaignId: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-  campaignName: string;
-  campaignLocation: string;
-}
-
-interface CartContextProps {
-  cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
-  increaseQuantity: (itemId: string) => void;
-  decreaseQuantity: (itemId: string) => void;
-  removeFromCart: (itemId: string) => void;
-  clearCart: () => void;
-}*/
-
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -61,7 +40,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return [...prevCart, item];
     });
   };
-  
 
   const increaseQuantity = (itemId: string) => {
     setCartItems(prevCart =>

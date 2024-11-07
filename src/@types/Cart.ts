@@ -1,6 +1,3 @@
-// Types/Cart.d.ts
-
-// Interface pour les items dans le panier
 export interface CartItemProps {
   item: {
     id: string;

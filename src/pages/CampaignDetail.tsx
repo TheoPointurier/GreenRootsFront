@@ -4,36 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaignById } from '../api/campaigns';
 import TreesList from '../components/TreesList';
-//import type { Tree } from '../@types/trees';
 import type { Campaign } from '../@types/campaigns';
-
-/*interface Tree {
-  id: number;
-  name: string;
-  price_ht: number;
-  age: number;
-  location: string;
-  species: {
-    species_name: string;
-    co2_absorption?: number;
-    description?: string;
-    average_lifespan?: number;
-  };
-}
-
-interface Campaign {
-  id: number;
-  name: string;
-  description: string;
-  end_campaign: string;
-  location: {
-    name_location: string;
-    country: {
-      name: string;
-    };
-  };
-  treesCampaign: Tree[];
-}*/
+import type { TreeProps } from '../@types/trees';
 
 function CampaignDetail() {
   const { id } = useParams<{ id: string }>();
@@ -62,12 +34,14 @@ function CampaignDetail() {
 
   // Convert and format end_campaign date
   // The T is used to separate the date and time in a string that follows the ISO 8601 format
-const endDate = new Date(campaign.end_campaign.replace(' ', 'T'));
-const formattedDate = endDate.toLocaleDateString('fr-FR', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-  });
+  const endDate = new Date(campaign.end_campaign.replace(' ', 'T'));
+  const formattedDate = !Number.isNaN(endDate.getTime())
+    ? endDate.toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      })
+    : 'Date invalide';
 
   return (
     <main className="container mx-auto flex flex-col p-5">
@@ -122,16 +96,12 @@ const formattedDate = endDate.toLocaleDateString('fr-FR', {
            <TreesList 
            key={tree.id} 
            tree={{ 
-             id: tree.id, 
-             name: tree.name, 
-             price_ht: tree.price_ht, 
-             age: tree.age, 
-             location: tree.location, 
-             species: tree.species, 
-             campaignCountry: campaign.location.country.name, // Pays de la campagne
-             campaignName: campaign.name                       // Nom de la campagne
-           }}
-         />                        
+             ...tree,
+             campaignCountry: campaign.location.country.name,
+             campaignName: campaign.name,
+             campaignId: campaign.id
+           } as TreeProps['tree']} 
+         />                         
           ))}
         </div>
       </section>

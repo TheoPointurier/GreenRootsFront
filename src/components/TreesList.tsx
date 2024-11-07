@@ -2,35 +2,13 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useLocation } from 'react-router-dom';
 import type {TreeProps} from '../@types/trees';
-/*interface TreeProps {
-  tree: {
-    id: number;
-    name: string;
-    price_ht: number;
-    age: number;
-    location: string;
-    species: {
-      species_name: string;
-      co2_absorption?: number;
-      description?: string;
-      average_lifespan?: number;
-    };
-    campaignCountry?: string;
-    campaignName?: string;
-    campaignId?: number;
-  };
-}*/
 
 function TreesList({ tree }: TreeProps) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const location = useLocation();
-
-  // Détecte si on est sur une page `trees/:id` pour masquer le bouton "Description"
   const isTreeDetailPage = location.pathname.includes(`/trees/${tree.id}`);
-  // Détecte si on est sur une page `campaigns` ou `campaigns/:id` pour masquer le bouton du nom de campagne
   const isCampaignPage = location.pathname.startsWith('/campaigns');
-
   const handleIncrement = () => setQuantity(quantity + 1);
   const handleDecrement = () => quantity > 1 && setQuantity(quantity - 1);
   const handleAddToCart = () => {

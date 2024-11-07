@@ -5,11 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import type { BurgerMenuProps } from '../@types/BurgerMenu';
 
-/*type BurgerMenuProps = {
-  isOpen: boolean;
-  toggleMenu: () => void;
-};*/
-
 const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
   const { user, logout } = useUser();
   const navigate = useNavigate();
