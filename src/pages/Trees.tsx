@@ -6,8 +6,9 @@ import { fetchTrees } from '../api/trees';
 import { fetchCampaigns } from '../api/campaigns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-
-interface Tree {
+import type { Campaign } from '../@types/campaigns';
+import type { Tree } from '../@types/trees';
+/*interface Tree {
   id: number;
   name: string;
   price: number;
@@ -31,7 +32,7 @@ interface Campaign {
     };
   };
   treesCampaign: Tree[];
-}
+}*/
 
 function Trees() {
   const [filteredTrees, setFilteredTrees] = useState<Tree[]>([]);

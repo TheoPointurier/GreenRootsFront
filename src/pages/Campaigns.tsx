@@ -5,8 +5,9 @@ import { fetchCampaigns } from '../api/campaigns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import type { Campaign } from '../@types/campaigns';
 
-interface Campaign {
+/*interface Campaign {
   id: number;
   name: string;
   description: string;
@@ -26,7 +27,7 @@ interface Campaign {
       species_name: string;
     };
   }[];
-}
+}*/
 
 function Campaigns() {
   const [filteredCampaigns, setFilteredCampaigns] = useState<Campaign[]>([]);

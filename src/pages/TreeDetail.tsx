@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaigns } from '../api/campaigns';
 import TreesList from '../components/TreesList';
-
-interface Tree {
+import type { Campaign } from '../@types/campaigns';
+import type { Tree } from '../@types/trees';
+/*interface Tree {
   id: number;
   name: string;
   price_ht: number;
@@ -29,7 +30,7 @@ interface Campaign {
     };
   };
   treesCampaign: Tree[];
-}
+}*/
 
 function TreeDetail() {
   const { id } = useParams<{ id: string }>();

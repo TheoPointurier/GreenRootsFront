@@ -7,8 +7,9 @@ import {
   useRef,
 } from 'react';
 import apiClient from '../api/apiClient';
+import type { User, UserContextType } from '../@types/users';
 
-export interface User {
+/*export interface User {
   id: number;
   email: string;
   firstname: string;
@@ -23,14 +24,14 @@ export interface User {
   entity_name?: string;
   entity_type?: string;
   entity_siret?: string;
-}
+}*/
 
-interface UserContextType {
+/*interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
   logout: () => void;
   isLoading: boolean;
-}
+}*/
 
 const UserContext = createContext<UserContextType>({
   user: null,

@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaignById } from '../api/campaigns';
 import TreesList from '../components/TreesList';
+//import type { Tree } from '../@types/trees';
+import type { Campaign } from '../@types/campaigns';
 
-interface Tree {
+/*interface Tree {
   id: number;
   name: string;
   price_ht: number;
@@ -31,7 +33,7 @@ interface Campaign {
     };
   };
   treesCampaign: Tree[];
-}
+}*/
 
 function CampaignDetail() {
   const { id } = useParams<{ id: string }>();

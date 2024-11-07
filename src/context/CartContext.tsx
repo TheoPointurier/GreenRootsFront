@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import type { CartItem, CartContextProps } from '../@types/Cart';
 
-interface CartItem {
+/*interface CartItem {
   id: string;
   treeId: number;
   campaignId: number;
@@ -20,7 +21,7 @@ interface CartContextProps {
   decreaseQuantity: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
   clearCart: () => void;
-}
+}*/
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 

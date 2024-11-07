@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useUser } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import type { BurgerMenuProps } from '../@types/BurgerMenu';
 
-type BurgerMenuProps = {
+/*type BurgerMenuProps = {
   isOpen: boolean;
   toggleMenu: () => void;
-};
+};*/
 
 const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
   const { user, logout } = useUser();

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TreesList from '../components/TreesList';
-
+import type { CampaignsListProps } from '../@types/campaigns';
 // Définition de l'interface Campaign qui structure les données d'une campagne
-interface Campaign {
+/*interface Campaign {
   id: number;
   name: string;
   description: string;
@@ -28,7 +28,7 @@ interface Campaign {
 // Définition de l'interface CampaignsListProps pour les propriétés du composant
 interface CampaignsListProps {
   campaigns: Campaign[];
-}
+}*/
 
 function CampaignsList({ campaigns }: CampaignsListProps) {
   const [contributionStates, setContributionStates] = useState<boolean[]>(

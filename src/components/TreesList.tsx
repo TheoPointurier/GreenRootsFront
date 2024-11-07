@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useLocation } from 'react-router-dom';
-
-interface TreeProps {
+import type {TreeProps} from '../@types/trees';
+/*interface TreeProps {
   tree: {
     id: number;
     name: string;
@@ -19,7 +19,7 @@ interface TreeProps {
     campaignName?: string;
     campaignId?: number;
   };
-}
+}*/
 
 function TreesList({ tree }: TreeProps) {
   const { addToCart } = useCart();

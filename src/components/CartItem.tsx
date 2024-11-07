@@ -1,6 +1,6 @@
 import { useCart } from '../context/CartContext';
-
-interface CartItemProps {
+import type { CartItemProps  } from '../@types/Cart';
+/*interface CartItemProps {
   item: {
     id: string;
     name: string;
@@ -10,7 +10,7 @@ interface CartItemProps {
     campaignLocation: string;
   };
   quantity: number;
-}
+}*/
 
 function CartItem({ item, quantity }: CartItemProps) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
