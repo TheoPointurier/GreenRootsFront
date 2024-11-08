@@ -54,7 +54,7 @@ function Reviews() {
         {randomReviews.map((review) => (
           <div
             key={review.id}
-            className="bg-greenroots_green p-4 rounded-lg text-white w-[300px] sm:w-[300px]"
+            className="bg-greenroots_green p-4 rounded-lg text-white w-[300px] sm:w-[400px] sm:h-auto"
             style={{
               boxShadow:
                 '-4px -4px 4px rgba(205, 92, 8, 1), 4px 4px 4px rgba(0, 0, 0, 0.3)',
@@ -85,7 +85,7 @@ function Reviews() {
           industry's standard text.
         </p>
         <img
-          src="/Images/graphic_co2.jpg"
+          src="/Images/graphic_co2.webp"
           alt="Graphique de l'impact"
           className="mb-4"
         />
