@@ -4,7 +4,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
-import { useUser } from '../context/UserContext'; // Import du contexte utilisateur pour vérifier l'état de connexion
+import { useUser } from '../context/UserContext';
 import logo from '../assets/Logos/Logo_principal.webp';
 
 function Header() {
@@ -13,7 +13,8 @@ function Header() {
 
   // Récupération des informations de l'utilisateur et de la fonction de déconnexion
   const { user, logout } = useUser();
-  const navigate = useNavigate(); // Hook pour naviguer dans l'application
+  // Hook pour naviguer dans l'application
+  const navigate = useNavigate();
 
   // Fonction pour basculer l'état du menu burger
   const toggleMenu = () => {
@@ -22,8 +23,10 @@ function Header() {
 
   // Fonction pour gérer la déconnexion de l'utilisateur
   const handleLogout = () => {
-    logout(); // Appel de la fonction de déconnexion
-    navigate('/'); // Redirection vers la page d'accueil après la déconnexion
+    // Appel de la fonction de déconnexion
+    logout();
+    // Redirection vers la page d'accueil après la déconnexion
+    navigate('/');
   };
 
   return (
