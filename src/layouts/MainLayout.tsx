@@ -10,7 +10,8 @@ function MainLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setNavigate(navigate); // Initialise la fonction de navigation
+    // Initialise la fonction de navigation
+    setNavigate(navigate);
   }, [navigate]);
 
   useEffect(() => {

@@ -31,7 +31,7 @@ function Header() {
 
   return (
     <>
-      {/* HEADER VERSION PC / TABLETTE (en haut de la page) */}
+      {/* HEADER VERSION PC (en haut de la page) */}
       <header className="w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden">
         {/* Logo à gauche */}
         <div className="flex items-center justify-start">
@@ -40,7 +40,7 @@ function Header() {
           </Link>
         </div>
 
-        {/* Menu horizontal uniquement sur tablette et PC */}
+        {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center">
           {/* Liens principaux du site */}
           <Link to="/" className="text-xl">Accueil</Link>
@@ -83,14 +83,14 @@ function Header() {
           </Link>
         </div>
 
-        {/* Logo centré pour mobile */}
+        {/* Logo centré pour mobile et tablette */}
         <div className="flex items-center justify-center flex-1">
           <Link to="/">
             <img src={logo} alt="logo" className="w-12 h-auto" />
           </Link>
         </div>
 
-        {/* BurgerMenu à droite pour mobile */}
+        {/* BurgerMenu à droite pour mobile et tablette */}
         <div className="flex items-center justify-end">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>

@@ -41,7 +41,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
 
   return (
     <>
-      {/* Icône du menu burger, visible uniquement sur mobile */}
+      {/* Icône du menu burger, visible uniquement sur mobile et tablette */}
       <div className="xl:hidden flex-1 flex justify-end">
         <FontAwesomeIcon
           icon={faBars}
