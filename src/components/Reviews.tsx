@@ -45,7 +45,7 @@ function Reviews() {
   const randomReviews = shuffleArray(reviews).slice(0, 3);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-8">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:ml-[7rem] md:mr-[7rem]">
       {/* Section des reviews */}
       <section
         className="flex flex-wrap gap-8 justify-center justify-self-auto"

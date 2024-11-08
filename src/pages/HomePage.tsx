@@ -139,7 +139,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mt-20">
+      <div className="mt-20 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
         <div className="grid gap-4">
           {faqs.map((faq, index) => (
