@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useLocation } from 'react-router-dom';
 import type {TreeProps} from '../@types/trees';
+import { toast } from 'react-toastify';
 
 function TreesList({ tree }: TreeProps) {
   const { addToCart } = useCart();
@@ -24,6 +25,7 @@ function TreesList({ tree }: TreeProps) {
       campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
     console.log('Produit ajouté au panier:', tree);
+    toast.success(`${tree.name} ajouté au panier avec succès !`);
   };
 
   return (
