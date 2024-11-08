@@ -9,30 +9,6 @@ import {
 import apiClient from '../api/apiClient';
 import type { User, UserContextType } from '../@types/users';
 
-/*export interface User {
-  id: number;
-  email: string;
-  firstname: string;
-  lastname: string;
-  city: string;
-  postal_code: string;
-  street: string;
-  street_number: number;
-  country: string;
-  id_role: number;
-  phone_number?: string;
-  entity_name?: string;
-  entity_type?: string;
-  entity_siret?: string;
-}*/
-
-/*interface UserContextType {
-  user: User | null;
-  setUser: (user: User | null) => void;
-  logout: () => void;
-  isLoading: boolean;
-}*/
-
 const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => {},
