@@ -29,11 +29,11 @@ function Header() {
   return (
     <>
       {/* HEADER VERSION PC / TABLETTE (en haut de la page) */}
-      <header className="w-full bg-greenroots_green py-0.5 px-1 2xl:flex 2xl:items-center 2xl:justify-between hidden xl:flex">
+      <header className="w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden">
         {/* Logo à gauche */}
         <div className="flex items-center justify-start">
           <Link to="/">
-            <img src={logo} alt="logo" className="w-18 h-auto 2xl:w-20" />
+            <img src={logo} alt="logo" className="w-18 h-auto xl:w-20" />
           </Link>
         </div>
 
