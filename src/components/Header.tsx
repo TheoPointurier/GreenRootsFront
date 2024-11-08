@@ -4,7 +4,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import BurgerMenu from './BurgerMenu';
-import { useUser } from '../context/UserContext'; // Import du contexte utilisateur pour vérifier l'état de connexion
+import { useUser } from '../context/UserContext';
 import logo from '../assets/Logos/Logo_principal.webp';
 
 function Header() {
@@ -13,7 +13,8 @@ function Header() {
 
   // Récupération des informations de l'utilisateur et de la fonction de déconnexion
   const { user, logout } = useUser();
-  const navigate = useNavigate(); // Hook pour naviguer dans l'application
+  // Hook pour naviguer dans l'application
+  const navigate = useNavigate();
 
   // Fonction pour basculer l'état du menu burger
   const toggleMenu = () => {
@@ -22,13 +23,15 @@ function Header() {
 
   // Fonction pour gérer la déconnexion de l'utilisateur
   const handleLogout = () => {
-    logout(); // Appel de la fonction de déconnexion
-    navigate('/'); // Redirection vers la page d'accueil après la déconnexion
+    // Appel de la fonction de déconnexion
+    logout();
+    // Redirection vers la page d'accueil après la déconnexion
+    navigate('/');
   };
 
   return (
     <>
-      {/* HEADER VERSION PC / TABLETTE (en haut de la page) */}
+      {/* HEADER VERSION PC (en haut de la page) */}
       <header className="w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden">
         {/* Logo à gauche */}
         <div className="flex items-center justify-start">
@@ -37,7 +40,7 @@ function Header() {
           </Link>
         </div>
 
-        {/* Menu horizontal uniquement sur tablette et PC */}
+        {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center">
           {/* Liens principaux du site */}
           <Link to="/" className="text-xl">Accueil</Link>
@@ -80,14 +83,14 @@ function Header() {
           </Link>
         </div>
 
-        {/* Logo centré pour mobile */}
+        {/* Logo centré pour mobile et tablette */}
         <div className="flex items-center justify-center flex-1">
           <Link to="/">
             <img src={logo} alt="logo" className="w-12 h-auto" />
           </Link>
         </div>
 
-        {/* BurgerMenu à droite pour mobile */}
+        {/* BurgerMenu à droite pour mobile et tablette */}
         <div className="flex items-center justify-end">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>

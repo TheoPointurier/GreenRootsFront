@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { register, login } from '../api/auth';
+import { showSuccessToast, showErrorToast } from '../components/ToastProvider';
 import type { RegisterData, LoginData } from '../api/auth';
 
 export default function RegisterForm() {
@@ -42,6 +43,7 @@ export default function RegisterForm() {
       const registerResponse = await register(dataToSend);
       console.log('Réponse complète du serveur :', registerResponse);
       if (registerResponse.message === 'Utilisateur créé') {
+        showSuccessToast('Compte créé avec succès ! Vous êtes maintenant connecté.');
         const loginData: LoginData = {
           email: formData.email,
           password: formData.password,
@@ -54,13 +56,16 @@ export default function RegisterForm() {
           navigate(`/user/${loginResponse.user.id}`);
         } else {
           setError("Erreur lors de la connexion après l'inscription.");
+          showErrorToast("Erreur lors de la connexion après l'inscription.");
         }
       } else {
         setError('Erreur lors de la création de votre compte. Veuillez réessayer.');
+        showErrorToast('Erreur lors de la création de votre compte.');
       }
     } catch (err) {
       console.error("Erreur d'inscription détectée :", err);
       setError("Échec de l'inscription. Veuillez vérifier les informations saisies.");
+      showErrorToast("Échec de l'inscription. Veuillez vérifier les informations saisies.");
     }
   };
 

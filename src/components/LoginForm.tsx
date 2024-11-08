@@ -4,6 +4,7 @@ import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import { Link } from 'react-router-dom';
+import { showSuccessToast, showErrorToast } from '../components/ToastProvider';
 
 export default function LoginForm() {
   const { setUser } = useUser();
@@ -23,17 +24,13 @@ export default function LoginForm() {
       if (accesstoken) {
         localStorage.setItem('token', accesstoken);
         localStorage.setItem('userId', user.id.toString());
-        console.log(
-          'Token et ID utilisateur stockés dans localStorage:',
-          accesstoken,
-          user.id,
-        );
         setUser(user);
+        showSuccessToast('Connexion réussie ! Bienvenue !');
         navigate(`/user/${user.id}`);
       }
     } catch (error) {
-      console.error('Erreur de connexion', error);
       setError('Échec de la connexion. Veuillez vérifier vos identifiants.');
+      showErrorToast('Échec de la connexion. Veuillez vérifier vos identifiants.');
     }
   };
 

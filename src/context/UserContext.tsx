@@ -7,6 +7,7 @@ import {
   useRef,
 } from 'react';
 import apiClient from '../api/apiClient';
+import { showSuccessToast } from '../components/ToastProvider';
 import type { User, UserContextType } from '../@types/users';
 
 const UserContext = createContext<UserContextType>({
@@ -33,6 +34,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    showSuccessToast('Vous avez été déconnecté avec succès.');
   }, []);
 
   useEffect(() => {
