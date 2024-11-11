@@ -88,7 +88,7 @@ function About() {
         <h2 className="text-h2 font-bold text-black p-3 mt-2 mb-2">Carte</h2>
 
         <div className="App flex-1 flex justify-center">
-          <div className="w-[600px] h-[400px]">
+          <div className="lg:w-[600px] lg:h-[400px] w-[250px] h-[200px] ">
             <MapComponent />
           </div>
         </div>
