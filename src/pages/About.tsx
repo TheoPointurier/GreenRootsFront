@@ -26,7 +26,7 @@ function About() {
 
   return (
     <div className="w-full h-full pl-[15rem] pr-[15rem]">
-      <section className="flex-1 flex flex-col justify-around items-center pl-[10rem] pr-[10rem]">
+      <section className="flex-1 flex flex-col justify-center items-center lg:pl-10 lg:pr-10">
         <h1 className="text-h1 font-bold text-black p-3 mt-2 mb-2">
           À propos de GreenRoots
         </h1>
@@ -74,7 +74,7 @@ function About() {
         </ul>
       </section>
 
-      <section className="flex flex-col justify-around items-center pl-[10rem] pr-[10rem]">
+      <section className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10">
         <h2 className="text-h2 font-bold text-black p-3 mt-2">
           Coordonnées de GreenRoots
         </h2>
@@ -94,7 +94,7 @@ function About() {
         </div>
       </section>
 
-      <section className="flex flex-col justify-around items-center pl-[10rem] pr-[10rem]">
+      <section className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10">
         <h2 id="cgv" className="text-h2 font-bold text-black p-3 mt-4 mb-2">
           Conditions Générales de Vente (CGV)
         </h2>
@@ -116,7 +116,7 @@ function About() {
         </p>
       </section>
 
-      <section className="flex flex-col justify-around items-center pl-[10rem] pr-[10rem]">
+      <section className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10">
         <h2
           id="confidentialite"
           className="text-h2 font-bold text-black p-3 mt-2 mb-2"
@@ -145,7 +145,7 @@ function About() {
         </p>
       </section>
 
-      <section className="flex flex-col justify-around items-center pl-[10rem] pr-[10rem]">
+      <section className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10">
         <h2
           id="mentions-legales"
           className="text-h2 font-bold text-black p-3 mt-2 mb-2"
