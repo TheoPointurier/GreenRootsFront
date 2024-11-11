@@ -3,6 +3,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
+      },
       colors: {
         greenroots_green: '#6A9C89',
         greenroots_orange: '#CD5C08',

@@ -64,7 +64,7 @@ function HomePage() {
   ];
 
   return (
-    <div className="relative text-center mt-8 px-4">
+    <div className="relative text-center mt-12 px-4">
       <h1 className="text-h1 font-bold text-black">
         Tu souhaites faire un geste
         <span className="bg-greenroots_green text-white rounded-lg px-4">
@@ -72,6 +72,12 @@ function HomePage() {
         </span>
       </h1>
 
+      <section className='flex-1 flex flex-row justify-center'>
+      <img
+          src="/Images/japanese-maple-tree.webp"
+          alt="Érable japonais rouge"
+          className="w-full max-w-2xl object-contain self-end hidden lg:block"
+        />
       <div className="relative mt-16">
         <img
           src="/Images/illustration_arbre.webp"
@@ -79,10 +85,14 @@ function HomePage() {
           className="w-full max-w-md mx-auto"
           loading="lazy"
         />
+
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
-          <h2 className="text-h2 font-bold text-black">Ce que nous te proposons</h2>
+          <h2 className="text-h2 font-bold text-black">
+            Ce que nous te proposons
+          </h2>
           <p className="text-gray-700 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut bibendum massa.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
+            bibendum massa.
           </p>
           <button
             onClick={() => navigate('/campaigns')}
@@ -93,6 +103,7 @@ function HomePage() {
           </button>
         </div>
       </div>
+      </section>
 
       {/* Grille des Avis : Grille Adaptative */}
       <div
@@ -104,7 +115,9 @@ function HomePage() {
 
       {/* Section Nos Campagnes */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Nos campagnes</h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+          Nos campagnes
+        </h1>
         <Carousel images={campaignImages} />
       </div>
 
@@ -128,7 +141,9 @@ function HomePage() {
           className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px]"
           style={{ width: '300px' }}
         >
-          <p className="text-gray-700 mb-4">Explication graph suivi, CO2, etc.</p>
+          <p className="text-gray-700 mb-4">
+            Explication graph suivi, CO2, etc.
+          </p>
           <button
             onClick={() => navigate('/campaigns')}
             className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
@@ -140,7 +155,9 @@ function HomePage() {
       </div>
 
       <div className="mt-20 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">Une question ?</h1>
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+          Une question ?
+        </h1>
         <div className="grid gap-4">
           {faqs.map((faq, index) => (
             <button
