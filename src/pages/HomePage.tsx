@@ -171,7 +171,7 @@ function HomePage() {
                 </span>
               </div>
               {faqOpenIndex === index && (
-                <div className="mt-4 bg-white text-gray-700 p-4 rounded-lg">
+                <div className="mt-4  bg-greenroots_sand text-gray-700 p-4 rounded-lg">
                   <p>{faq.answer}</p>
                 </div>
               )}

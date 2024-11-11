@@ -11,7 +11,8 @@ export default {
         greenroots_white: '#FFF',
       },
       fontSize: {
-        h1: ['2.25rem', '2.5rem'], // Taille de police et hauteur de ligne
+        // Taille de police et hauteur de ligne
+        h1: ['2.25rem', '2.5rem'],
         h2: ['1.875rem', '2.25rem'],
         h3: ['1.5rem', '2rem'],
       },
