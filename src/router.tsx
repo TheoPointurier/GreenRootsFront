@@ -9,6 +9,8 @@ import User from './pages/User';
 import Cart from './pages/Cart';
 import NotFound from './pages/404';
 import ServerError from './pages/500';
+import PrivateRoute from './components/PrivateRoute';
+import PaymentPage from './pages/PaymentPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import About from './pages/About';
@@ -30,6 +32,7 @@ const Router = () => {
         { path: '/campaigns/:id', element: <CampaignDetail /> },
         { path: `/user/${user?.id}`, element: <User /> },
         { path: '/panier', element: <Cart /> },
+        { path: '/payment', element: <PrivateRoute><PaymentPage /></PrivateRoute> },
         { path: '/login', element: <Login /> },
         { path: '/register', element: <Register /> },
         { path: '/about', element: <About /> },
