@@ -6,6 +6,7 @@ export interface CartItemProps {
     image: string;
     campaignName: string;
     campaignLocation: string;
+    countryName: string; // Ajout de countryName
   };
   quantity: number;
 }
@@ -20,7 +21,9 @@ export interface CartItem {
   image: string;
   campaignName: string;
   campaignLocation: string;
+  countryName?: string; // Rendre `countryName` optionnel
 }
+
 export interface CartContextProps {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;

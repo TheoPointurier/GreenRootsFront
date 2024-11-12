@@ -37,7 +37,14 @@ function Cart() {
       ) : (
         <div className="flex flex-col gap-6">
           {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} quantity={item.quantity} />
+            <CartItem
+            key={item.id}
+            item={{
+              ...item,
+              countryName: item.countryName ?? 'Pays non disponible',
+            }}
+            quantity={item.quantity}
+          />          
           ))}
           <CartSummary subtotal={subtotalHT} onCheckout={handleCheckout} />
         </div>

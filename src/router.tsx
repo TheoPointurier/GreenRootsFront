@@ -10,7 +10,8 @@ import Cart from './pages/Cart';
 import NotFound from './pages/404';
 import ServerError from './pages/500';
 import PrivateRoute from './components/PrivateRoute';
-import PaymentPage from './pages/PaymentPage';
+import OrderHistoryPage from './pages/OrderHistory';
+import PaymentPage from './pages/Payment';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import About from './pages/About';
@@ -33,6 +34,7 @@ const Router = () => {
         { path: `/user/${user?.id}`, element: <User /> },
         { path: '/panier', element: <Cart /> },
         { path: '/payment', element: <PrivateRoute><PaymentPage /></PrivateRoute> },
+        { path: '/user/orders', element: <PrivateRoute><OrderHistoryPage /></PrivateRoute> },
         { path: '/login', element: <Login /> },
         { path: '/register', element: <Register /> },
         { path: '/about', element: <About /> },
