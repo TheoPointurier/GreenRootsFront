@@ -34,21 +34,24 @@ function Header() {
       {/* HEADER VERSION PC (en haut de la page) */}
       <header className="w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden">
         {/* Logo à gauche */}
-        <div className="flex items-center justify-start">
+        <div className="flex items-center justify-start ml-6">
           <Link to="/">
             <img src={logo} alt="logo" className="w-18 h-auto xl:w-20" />
           </Link>
         </div>
 
         {/* Menu horizontal uniquement sur PC */}
-        <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center">
+        <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
+          <div className="flex space-x-4 flex-1 justify-center">
           {/* Liens principaux du site */}
           <Link to="/" className="text-xl">Accueil</Link>
           <Link to="/trees" className="text-xl">Nos arbres</Link>
           <Link to="/campaigns" className="text-xl">Nos campagnes</Link>
           <Link to="/contact" className="text-xl">Contact</Link>
           <Link to="/about" className="text-xl">À propos</Link>
+          </div>
 
+          <div className="flex space-x-4">
           {/* Liens conditionnels basés sur l'état de l'utilisateur */}
           {user ? (
             <>
@@ -64,10 +67,11 @@ function Header() {
               <Link to="/register" className="text-xl">S'enregistrer</Link>
             </>
           )}
+          </div>
         </nav>
 
         {/* Panier à droite */}
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end mr-6">
           <Link to="/panier">
             <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 text-greenroots_white" />
           </Link>
@@ -77,7 +81,7 @@ function Header() {
       {/* HEADER VERSION MOBILE / TABLETTE (en bas de la page) */}
       <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between py-0.5 px-1">
         {/* Panier à gauche pour mobile */}
-        <div className="flex items-center justify-start">
+        <div className="flex items-center justify-start ml-3">
           <Link to="/panier">
             <FontAwesomeIcon icon={faCartShopping} className="w-6 h-6 text-greenroots_white" />
           </Link>
@@ -91,7 +95,7 @@ function Header() {
         </div>
 
         {/* BurgerMenu à droite pour mobile et tablette */}
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end mr-1">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>
       </header>

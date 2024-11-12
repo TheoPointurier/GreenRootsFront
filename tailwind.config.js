@@ -3,6 +3,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
+      },
       colors: {
         greenroots_green: '#6A9C89',
         greenroots_orange: '#CD5C08',
@@ -11,7 +17,8 @@ export default {
         greenroots_white: '#FFF',
       },
       fontSize: {
-        h1: ['2.25rem', '2.5rem'], // Taille de police et hauteur de ligne
+        // Taille de police et hauteur de ligne
+        h1: ['2.25rem', '2.5rem'],
         h2: ['1.875rem', '2.25rem'],
         h3: ['1.5rem', '2rem'],
       },
