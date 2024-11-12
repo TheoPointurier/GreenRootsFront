@@ -29,11 +29,11 @@ function Reviews() {
 
   // Afficher un message de chargement ou d'erreur
   if (loading) {
-    return <div>Chargement des avis...</div>;
+    return <div aria-live="polite">Chargement des avis...</div>; // Ajout de aria-live
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div role="alert" aria-live="assertive">{error}</div>; // Ajout de role="alert" pour notifier immédiatement l'erreur
   }
 
   // Fonction pour mélanger un tableau de manière aléatoire
@@ -59,6 +59,7 @@ function Reviews() {
               boxShadow:
                 '-4px -4px 4px rgba(205, 92, 8, 1), 4px 4px 4px rgba(0, 0, 0, 0.3)',
             }}
+            aria-labelledby={`review-${review.id}`} // Lier à l'élément parent pour les technologies d'assistance
           >
             <div className="flex flex-row justify-center mb-5">
               {[...Array(review.rating)].map((_, starIndex) => (
@@ -67,6 +68,7 @@ function Reviews() {
                   icon={faStar}
                   style={{ color: '#FFD43B' }}
                   className="text-h3 font-bold m-1 rotate-animation"
+                  aria-hidden="true" // Rendre l'icône invisible pour les lecteurs d'écran
                 />
               ))}
             </div>
@@ -75,10 +77,9 @@ function Reviews() {
         ))}
       </section>
       {/* Section visuel impact */}
-      <section className="bg-white p-6 rounded-lg shadow-md xl:w-1/3 w-[400px] sm:w-[500px] 2xl:w-[700px]">
+      <section className="flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-md xl:w-1/3 w-[400px] sm:w-[500px] 2xl:w-[700px] ml-[2rem] mr-[2rem]">
         <h2 className="text-2xl font-bold mb-4">
-          Gardes un visuel sur l'impact de{' '}
-          <span className="text-greenroots_teal">ton geste</span>
+          Gardes un visuel sur l'impact de ton geste
         </h2>
         <p className="mb-4">
           Explication graph suivi, co2 etc... Lorem ipsum has been the
@@ -86,12 +87,14 @@ function Reviews() {
         </p>
         <img
           src="/Images/graphic_co2.webp"
-          alt="Graphique de l'impact"
-          className="mb-4"
+          alt="Graphique de l'impact - Suivi CO2"
+          className="max-w-sm w-full min-w-52 min-h-52 object-cover mb-5"
+          loading="lazy"
         />
         <button
           type="button"
           className="bg-greenroots_orange text-white px-4 py-2 rounded-full hover:bg-orange-600"
+          aria-label="Contribuer à l'impact de ton geste" // Ajout de aria-label pour expliquer l'action du bouton
         >
           Je contribue
         </button>
