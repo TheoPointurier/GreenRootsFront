@@ -1,65 +1,76 @@
 import { useCart } from '../context/CartContext';
-import type { CartItemProps  } from '../@types/Cart';
+import type { CartItemProps } from '../@types/Cart';
 
 function CartItem({ item, quantity }: CartItemProps) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
-  const tvaRate = 0.20;
-  const priceHT = typeof item.price === 'string' ? Number.parseFloat(item.price) : item.price;
+  const tvaRate = 0.2;
+  const priceHT =
+    typeof item.price === 'string' ? Number.parseFloat(item.price) : item.price;
   const priceTTC = priceHT * (1 + tvaRate);
 
   return (
-    <div className="flex items-center border-b py-4">
-      <div className="w-24 h-24 mr-4">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-cover rounded"
-        />
-      </div>
+    <article className="flex flex-col md:flex-row rounded-[20px] border border-gray-300 shadow-lg w-full max-w-lg md:max-w-full lg:w-full lg:max-w-4xl mx-auto mb-6">
+  {/* Image */}
+  <div className="flex justify-center w-full md:w-1/3">
+    <img
+      src={item.image}
+      alt={item.name}
+      className="w-full h-40 md:h-full rounded-t-[20px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-t-none object-cover"
+      loading="lazy"
+    />
+  </div>
 
-      <div className="flex-1">
-        <h3 className="text-lg font-semibold">{item.name}</h3>
-        <p className="text-gray-500">Campagne : {item.campaignName}</p>
-        <p className="text-gray-500">Lieu : {item.campaignLocation}</p>
-        <p className="text-greenroots_green">
-          {priceHT.toFixed(2)} € HT / {priceTTC.toFixed(2)} € TTC
-        </p>
-      </div>
+  {/* Informations sur l'article */}
+  <div className="flex flex-col items-center md:items-start p-4 w-full md:w-2/3">
+    <h3 className="text-lg font-bold mb-2">{item.name}</h3>
+    <p className="text-sm text-gray-500 mb-1">Campagne : {item.campaignName}</p>
+    <p className="text-sm text-gray-500 mb-1">Lieu : {item.campaignLocation}</p>
+    <p className="text-greenroots_green mb-2">
+      {priceHT.toFixed(2)} € HT / {priceTTC.toFixed(2)} € TTC
+    </p>
 
-      <div className="flex items-center space-x-2">
+    {/* Contrôle de la quantité et bouton supprimer */}
+    <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4">
+      {/* Contrôles de quantité */}
+      <div className="flex items-center">
         <button
           type="button"
           onClick={() => decreaseQuantity(item.id)}
-          className="border border-blue-300 rounded-full w-8 h-8 text-center"
-          disabled={quantity <= 1}
+          className="border border-greenroots_green rounded-l-full w-8 p-3"
         >
           -
         </button>
-        <span className="px-4 text-sm md:text-base font-medium">
+        <span className="border-t border-b border-greenroots_green px-4 p-3">
           {quantity}
         </span>
         <button
           type="button"
           onClick={() => increaseQuantity(item.id)}
-          className="border border-blue-300 rounded-full w-8 h-8 text-center"
+          className="border border-greenroots_green rounded-r-full w-8 p-3"
         >
           +
         </button>
-        <button
-          onClick={() => removeFromCart(item.id)}
-          className="text-red-500 ml-4"
-          type="button"
-        >
-          Supprimer
-        </button>
       </div>
 
-      <div className="ml-4">
-        <p className="text-lg font-semibold">
-          {(priceTTC * quantity).toFixed(2)} € TTC
-        </p>
-      </div>
+      {/* Bouton supprimer */}
+      <button
+        type="button"
+        onClick={() => removeFromCart(item.id)}
+        className="bg-[#84090f] text-white py-2 px-6 rounded-full md:w-auto w-full mt-2 md:mt-0"
+      >
+        Supprimer
+      </button>
     </div>
+
+    {/* Prix total */}
+    <div className="flex justify-center md:justify-end items-center w-full mt-4">
+      <p className="text-lg font-semibold">
+        {(priceTTC * quantity).toFixed(2)} € TTC
+      </p>
+    </div>
+  </div>
+</article>
+
   );
 }
 

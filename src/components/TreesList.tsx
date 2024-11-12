@@ -20,7 +20,7 @@ function TreesList({ tree }: TreeProps) {
       name: tree.name,
       price: Number.parseFloat(tree.price_ht.toString()),
       quantity,
-      image: '/Images/view-of-flower.webp',
+      image: `/Trees_Images/${tree.id}.webp`,
       campaignName: tree.campaignName || 'Nom de campagne indisponible',
       campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
@@ -79,15 +79,15 @@ function TreesList({ tree }: TreeProps) {
           <button
             type="button"
             onClick={handleDecrement}
-            className="border border-blue-300 rounded-l-full w-8 p-3"
+            className="border border-greenroots_green rounded-l-full w-8 p-3"
           >
             -
           </button>
-          <span className="border-t border-b border-blue-300 px-4 p-3">{quantity}</span>
+          <span className="border-t border-b border-greenroots_green px-4 p-3">{quantity}</span>
           <button
             type="button"
             onClick={handleIncrement}
-            className="border border-blue-300 rounded-r-full w-8 p-3"
+            className="border border-greenroots_green rounded-r-full w-8 p-3"
           >
             +
           </button>
