@@ -32,6 +32,7 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
               src={image.src}
               alt={image.alt}
               className="w-full h-full object-cover rounded-lg"
+              loading="lazy"
             />
             <button
               onClick={() => navigate('/campaigns')}

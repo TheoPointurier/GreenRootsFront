@@ -82,11 +82,12 @@ function Header() {
       <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
-          <Link to="/panier" aria-label="Voir mon panier">
+          <Link to="/panier" aria-label="Voir le contenu de mon panier" aria-describedby="tooltip-panier">
             <FontAwesomeIcon
             icon={faCartShopping}
             className="w-6 h-6 text-greenroots_white"
             // Masquer l'icône pour les lecteurs d'écran
+            aria-label="Afficher le contenu du panier"
             aria-hidden="true"
             />
           </Link>
