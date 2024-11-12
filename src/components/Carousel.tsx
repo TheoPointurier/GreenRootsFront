@@ -20,7 +20,7 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto overflow-hidden">
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden lg:max-w-4xl xl:max-w-3xl">
       {/* Images */}
       <div
         className="flex transition-transform duration-500"
@@ -31,11 +31,12 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-64 object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
             />
             <button
               onClick={() => navigate('/campaigns')}
               className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
+              aria-label="Bouton pour accéder à la liste des campagnes"
               type="button"
             >
               Accéder
@@ -49,8 +50,9 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
         {images.map((image, index) => (
           <button
             key={image.alt}
-            className={`w-3 h-3 rounded-full ${index === currentIndex ? 'bg-greenroots_orange' : 'bg-gray-300'}`}
+            className={`w-5 h-5 rounded-full ${index === currentIndex ? 'bg-greenroots_orange' : 'bg-gray-300'}`}
             onClick={() => goToSlide(index)}
+            aria-label="Boutons carroussel pour faire défiler les photos de campagnes"
             type="button"
           />
         ))}

@@ -36,7 +36,7 @@ function Header() {
         {/* Logo à gauche */}
         <div className="flex items-center justify-start ml-6">
           <Link to="/">
-            <img src={logo} alt="logo" className="w-18 h-auto xl:w-20" />
+            <img src={logo} alt="logo" className="w-18 h-18 xl:w-20" />
           </Link>
         </div>
 
@@ -79,18 +79,23 @@ function Header() {
       </header>
 
       {/* HEADER VERSION MOBILE / TABLETTE (en bas de la page) */}
-      <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between py-0.5 px-1">
+      <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
-          <Link to="/panier">
-            <FontAwesomeIcon icon={faCartShopping} className="w-6 h-6 text-greenroots_white" />
+          <Link to="/panier" aria-label="Voir mon panier">
+            <FontAwesomeIcon
+            icon={faCartShopping}
+            className="w-6 h-6 text-greenroots_white"
+            // Masquer l'icône pour les lecteurs d'écran
+            aria-hidden="true"
+            />
           </Link>
         </div>
 
         {/* Logo centré pour mobile et tablette */}
         <div className="flex items-center justify-center flex-1">
           <Link to="/">
-            <img src={logo} alt="logo" className="w-12 h-auto" />
+            <img src={logo} alt="logo" className="w-12 h-12" />
           </Link>
         </div>
 
