@@ -36,7 +36,8 @@ function Header() {
         {/* Logo à gauche */}
         <div className="flex items-center justify-start ml-6">
           <Link to="/">
-            <img src={logo} alt="logo" className="w-18 h-18 xl:w-20" />
+            <img src={logo} alt="logo" className="w-18 h-18 xl:w-20"/>
+            
           </Link>
         </div>
 
@@ -72,7 +73,7 @@ function Header() {
 
         {/* Panier à droite */}
         <div className="flex items-center justify-end mr-6">
-          <Link to="/panier">
+          <Link to="/panier" aria-label="Voir le contenu de mon panier">
             <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 text-greenroots_white" />
           </Link>
         </div>
