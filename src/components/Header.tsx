@@ -36,45 +36,69 @@ function Header() {
         {/* Logo à gauche */}
         <div className="flex items-center justify-start ml-6">
           <Link to="/">
-            <img src={logo} alt="logo" className="w-18 h-18 xl:w-20"/>
-            
+            <img src={logo} alt="logo" className="w-18 h-18 xl:w-20" />
           </Link>
         </div>
 
         {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
           <div className="flex space-x-4 flex-1 justify-center">
-          {/* Liens principaux du site */}
-          <Link to="/" className="text-xl">Accueil</Link>
-          <Link to="/trees" className="text-xl">Nos arbres</Link>
-          <Link to="/campaigns" className="text-xl">Nos campagnes</Link>
-          <Link to="/contact" className="text-xl">Contact</Link>
-          <Link to="/about" className="text-xl">À propos</Link>
+            {/* Liens principaux du site */}
+            <Link to="/" className="text-xl">
+              Accueil
+            </Link>
+            <Link to="/trees" className="text-xl">
+              Nos arbres
+            </Link>
+            <Link to="/campaigns" className="text-xl">
+              Nos campagnes
+            </Link>
+            <Link to="/contact" className="text-xl">
+              Contact
+            </Link>
+            <Link to="/about" className="text-xl">
+              À propos
+            </Link>
           </div>
 
           <div className="flex space-x-4">
-          {/* Liens conditionnels basés sur l'état de l'utilisateur */}
-          {user ? (
-            <>
-              {/* Si l'utilisateur est connecté, affichage du bouton de déconnexion */}
-              <button type="button" onClick={handleLogout} className="text-xl text-greenroots_white">Déconnexion</button>
-              {/* Lien vers la page de profil de l'utilisateur */}
-              <Link to={`/user/${user.id}`} className="text-xl">Mon compte</Link>
-            </>
-          ) : (
-            <>
-              {/* Si l'utilisateur n'est pas connecté, affichage des liens de connexion et d'inscription */}
-              <Link to="/login" className="text-xl">Connexion</Link>
-              <Link to="/register" className="text-xl">S'enregistrer</Link>
-            </>
-          )}
+            {/* Liens conditionnels basés sur l'état de l'utilisateur */}
+            {user ? (
+              <>
+                {/* Si l'utilisateur est connecté, affichage du bouton de déconnexion */}
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="text-xl text-greenroots_white"
+                >
+                  Déconnexion
+                </button>
+                {/* Lien vers la page de profil de l'utilisateur */}
+                <Link to={`/user/${user.id}`} className="text-xl">
+                  Mon compte
+                </Link>
+              </>
+            ) : (
+              <>
+                {/* Si l'utilisateur n'est pas connecté, affichage des liens de connexion et d'inscription */}
+                <Link to="/login" className="text-xl">
+                  Connexion
+                </Link>
+                <Link to="/register" className="text-xl">
+                  S'enregistrer
+                </Link>
+              </>
+            )}
           </div>
         </nav>
 
         {/* Panier à droite */}
         <div className="flex items-center justify-end mr-6">
           <Link to="/panier" aria-label="Voir le contenu de mon panier">
-            <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 text-greenroots_white" />
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className="w-8 h-8 text-greenroots_white"
+            />
           </Link>
         </div>
       </header>
@@ -83,13 +107,12 @@ function Header() {
       <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
-          <Link to="/panier" aria-label="Voir le contenu de mon panier" aria-describedby="tooltip-panier">
+          <Link to="/panier" aria-label="Voir le contenu de mon panier">
             <FontAwesomeIcon
-            icon={faCartShopping}
-            className="w-6 h-6 text-greenroots_white"
-            // Masquer l'icône pour les lecteurs d'écran
-            aria-label="Afficher le contenu du panier"
-            aria-hidden="true"
+              icon={faCartShopping}
+              className="w-6 h-6 text-greenroots_white"
+              aria-label="Afficher le contenu du panier"
+              aria-hidden="true"
             />
           </Link>
         </div>
@@ -102,7 +125,7 @@ function Header() {
         </div>
 
         {/* BurgerMenu à droite pour mobile et tablette */}
-        <div className="flex items-center justify-end mr-1">
+        <div className="flex items-center justify-end mr-3">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>
       </header>
