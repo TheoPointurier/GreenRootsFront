@@ -21,7 +21,7 @@ function MainLayout() {
   }, [location.hash]);
 
   return (
-    <div className="flex-1 xl:mt-32">
+    <div className="flex-1 xl:mt-20">
       <Header />
       <Outlet />
       <Footer />
