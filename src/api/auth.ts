@@ -1,26 +1,6 @@
+// api/auth.ts
 import apiClient from './apiClient';
-
-export interface LoginData {
-  email: string;
-  password: string;
-}
-
-export interface RegisterData {
-  email: string;
-  password: string;
-  firstname: string;
-  lastname: string;
-  city: string;
-  postal_code: string;
-  street: string;
-  street_number: string;
-  country: string;
-  id_role: string;
-  phone_number?: string;
-  entity_name?: string;
-  entity_type?: string;
-  entity_siret?: string;
-}
+import type { LoginData, RegisterData } from '../@types/users';
 
 export async function login(data: LoginData) {
   return await apiClient('/login', {
