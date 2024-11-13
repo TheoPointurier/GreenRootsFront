@@ -13,6 +13,12 @@
 /* Add Gerbil font and default fonts */
 body {
   font-family: 'Gerbil', Arial, sans-serif;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px; 
 }
 
+main {
+  flex: 1;
+}
