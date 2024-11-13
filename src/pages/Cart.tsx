@@ -30,7 +30,7 @@ function Cart() {
   return (
     <div className="p-4 max-w-screen-lg mx-auto">
       <h1 className="text-2xl font-bold mb-6 text-center">
-        Oh! mais qu'elle beau <span className="bg-greenroots_green text-white rounded-lg px-4">panier</span>
+        Oh! mais quel beau <span className="bg-greenroots_green text-white rounded-lg px-4">panier</span>
       </h1>
       {cartItems.length === 0 ? (
         <EmptyCart />
