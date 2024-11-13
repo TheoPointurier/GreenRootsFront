@@ -133,33 +133,34 @@ function HomePage() {
       </h1>
 
       <div className="flex items-center justify-center mt-16 relative">
-        <div className="relative z-10">
-          <img
-            src="/Images/weeping-willow-tree.webp"
-            alt="Arbre pleureur"
-            className="w-[300px] object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div
-          className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px]"
-          style={{ width: '300px' }}
-        >
-          <p className="text-gray-700 mb-4">
-            Explication graph suivi, CO2, etc.
-          </p>
-          <button
-            onClick={() => navigate('/campaigns')}
-            className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
-            aria-label="Afficher la liste des campagnes pour contribuer"
-            type="button"
-          >
-            Je contribue
-          </button>
-        </div>
-      </div>
+  <div className="relative z-10">
+    <img
+      src="/Images/weeping-willow-tree.webp"
+      alt="Arbre pleureur"
+      className="w-[300px] xl:w-[700px] object-cover"  // Taille par défaut pour les petits écrans et agrandie pour les écrans XL
+      loading="lazy"
+    />
+  </div>
+  <div
+    className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px] w-[300px] xl:w-[500px] xl:ml-[-100px] xl:py-20" // Taille et marge ajustée pour XL
+  >
+    <p className="text-gray-700 mb-4 xl:pb-10">
+      Explication graph suivi, CO2, etc.
+    </p>
+    <button
+      onClick={() => navigate('/campaigns')}
+      className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
+      aria-label="Afficher la liste des campagnes pour contribuer"
+      type="button"
+    >
+      Je contribue
+    </button>
+  </div>
+</div>
 
-      <div className="mt-20 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
+
+
+      <div className="flex flex-col items-center justify-center mt-20 pb-24 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">
           Une question ?
         </h1>
@@ -167,7 +168,7 @@ function HomePage() {
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full xl:w-[1500px]"
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }
@@ -196,7 +197,7 @@ function HomePage() {
                 </span>
               </div>
               {faqOpenIndex === index && (
-                <div className="mt-4  bg-greenroots_sand text-gray-700 p-4 rounded-lg">
+                <div className="mt-4 bg-greenroots_sand text-gray-700 p-4 rounded-lg">
                   <p>{faq.answer}</p>
                 </div>
               )}
