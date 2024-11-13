@@ -23,7 +23,7 @@ function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
         onClick={onCheckout}
         className="w-full mt-4 bg-greenroots_green text-white py-2 rounded-lg font-semibold"
       >
-        Passer à la caisse
+        Passer au règlement
       </button>
     </div>
   );
