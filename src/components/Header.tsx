@@ -82,7 +82,7 @@ function Header() {
                   Connexion
                 </Link>
                 <Link to="/register" className="text-xl">
-                  S'enregistrer
+                  Créer un compte
                 </Link>
               </>
             )}
