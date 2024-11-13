@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import React, { Suspense } from 'react';
-import MainLayout from './layouts/MainLayout';
+import MainLayout from './layouts/MainLayout'
 
 // Utilisation de React.lazy pour le chargement différé des composants
 const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -12,6 +12,9 @@ const User = React.lazy(() => import('./pages/User'));
 const Cart = React.lazy(() => import('./pages/Cart'));
 const NotFound = React.lazy(() => import('./pages/404'));
 const ServerError = React.lazy(() => import('./pages/500'));
+const PrivateRoute = React.lazy(() => import('./components/PrivateRoute'));
+const OrderHistoryPage = React.lazy(() => import('./pages/OrderHistory'));
+const PaymentPage = React.lazy(() => import('./pages/Payment'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Register = React.lazy(() => import('./pages/Register'));
 const About = React.lazy(() => import('./pages/About'));
@@ -34,6 +37,8 @@ const Router = () => {
         { path: '/campaigns/:id', element: <Suspense fallback={<div>Chargement...</div>}><CampaignDetail /></Suspense> },
         { path: `/user/${user?.id}`, element: <Suspense fallback={<div>Chargement...</div>}><User /></Suspense> },
         { path: '/panier', element: <Suspense fallback={<div>Chargement...</div>}><Cart /></Suspense> },
+        { path: '/payment', element: <Suspense fallback={<div>Chargement...</div>}><PrivateRoute><PaymentPage /></PrivateRoute></Suspense> },
+        { path: '/user/orders',element: <Suspense fallback={<div>Chargement...</div>}><PrivateRoute><OrderHistoryPage /></PrivateRoute></Suspense>},
         { path: '/login', element: <Suspense fallback={<div>Chargement...</div>}><Login /></Suspense> },
         { path: '/register', element: <Suspense fallback={<div>Chargement...</div>}><Register /></Suspense> },
         { path: '/about', element: <Suspense fallback={<div>Chargement...</div>}><About /></Suspense> },

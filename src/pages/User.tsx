@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
@@ -45,6 +45,9 @@ const User = () => {
   return (
     <main className="user">
       <UserInfo user={user} />
+      <Link to="/user/orders" className="btn btn-primary">
+      Voir l'historique des commandes
+    </Link>
     </main>
   );
 };

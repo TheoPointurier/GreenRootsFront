@@ -26,20 +26,25 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [cartItems]);
 
   const addToCart = (item: CartItem) => {
+    const newItem = {
+      ...item,
+      countryName: item.countryName ?? 'Pays non disponible',
+    };
+  
     setCartItems(prevCart => {
       const existingItem = prevCart.find(
-        cartItem => cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
+        cartItem => cartItem.treeId === newItem.treeId && cartItem.campaignId === newItem.campaignId
       );
       if (existingItem) {
         return prevCart.map(cartItem =>
-          cartItem.treeId === item.treeId && cartItem.campaignId === item.campaignId
-            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+          cartItem.treeId === newItem.treeId && cartItem.campaignId === newItem.campaignId
+            ? { ...cartItem, quantity: cartItem.quantity + newItem.quantity, countryName: newItem.countryName }
             : cartItem
         );
       }
-      return [...prevCart, item];
+      return [...prevCart, newItem];
     });
-  };
+  };  
 
   const increaseQuantity = (itemId: string) => {
     setCartItems(prevCart =>
