@@ -74,12 +74,15 @@ function HomePage() {
 
       <section className='flex-1 flex flex-row justify-center'>
       <img
+          rel="preload"
           src="/Images/japanese-maple-tree.webp"
-          alt="Érable japonais rouge"
-          className="w-full max-w-2xl object-contain self-end hidden lg:block"
+          alt="Vue d'un érable japonais rouge avec des feuilles en automne"
+          className="w-full max-w-2xl object-contain self-end hidden xl:block"
+          loading="lazy"
         />
       <div className="relative mt-16">
         <img
+          rel="preload"
           src="/Images/illustration_arbre.webp"
           alt="Illustration d'un arbre"
           className="w-full max-w-md mx-auto"
@@ -97,6 +100,7 @@ function HomePage() {
           <button
             onClick={() => navigate('/campaigns')}
             className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
+            aria-label="Accéder à la page des campagnes pour contribuer"
             type="button"
           >
             Je contribue
@@ -147,6 +151,7 @@ function HomePage() {
           <button
             onClick={() => navigate('/campaigns')}
             className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
+            aria-label="Afficher la liste des campagnes pour contribuer"
             type="button"
           >
             Je contribue
@@ -166,7 +171,10 @@ function HomePage() {
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }
+              aria-label="Afficher la réponse à la question"
               type="button"
+              aria-expanded={faqOpenIndex === index ? 'true' : 'false'}
+              aria-controls={`faq-answer-${index}`}
             >
               <div className="flex items-center justify-between">
                 <p className="font-bold">{faq.question}</p>
@@ -178,7 +186,7 @@ function HomePage() {
                     className={`w-5 h-5 transform ${faqOpenIndex === index ? 'rotate-180' : ''}`}
                     aria-labelledby={`faq-icon-${index}`}
                   >
-                    <title id={`faq-icon-${index}`}>Flèche déroulante</title>
+                    <title id={`faq-icon-${index}`}>Flèche déroulante pour la FAQ</title>
                     <path
                       fillRule="evenodd"
                       d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z"
