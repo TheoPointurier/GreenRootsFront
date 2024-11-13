@@ -30,7 +30,7 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
   };
 
   return (
-    <div className="relative w-full max-w-full lg:max-w-5xl xl:max-w-5xl 2xl:max-w-6xl mx-auto overflow-hidden">
+    <div className="relative w-full max-w-full lg:max-w-5xl xl:max-w-5xl mx-auto overflow-hidden">
       {/* Images */}
       <div
         className="flex transition-transform duration-500"
