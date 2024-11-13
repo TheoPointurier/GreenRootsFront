@@ -282,7 +282,45 @@ function About() {
           <li>Des descriptions textuelles pour toutes les images et vidéos.</li>
           <li>Des liens accessibles et correctement décrits.</li>
         </ul>
+      </section>      <section
+        className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10"
+        aria-labelledby="rgpd"
+      >
+        <h2 id="rgpd" className="text-h2 font-bold text-black p-3 mt-6 mb-2">
+          Conformité au RGPD (Règlement Général sur la Protection des Données)
+        </h2>
+
+        <p className="text-gray-700 mt-4 mb-4">
+          GreenRoots respecte la législation européenne en matière de protection des données personnelles, et notamment le Règlement Général sur la Protection des Données (RGPD). Nous nous engageons à protéger la vie privée de nos utilisateurs et à garantir la sécurité de leurs informations personnelles.
+        </p>
+
+        <ul className="text-gray-700 mt-4 mb-4 flex flex-col justify-around items-center">
+          <li>Consentement : En utilisant notre plateforme, vous consentez à la collecte et à l’utilisation de vos données personnelles dans le cadre des services que nous offrons.</li>
+          <li>Transparence : Vous avez le droit d’accéder à vos données, de les modifier, de les supprimer ou de demander leur portabilité à tout moment.</li>
+          <li>Protection des données : Nous mettons en œuvre des mesures de sécurité pour protéger vos données contre tout accès non autorisé ou toute perte accidentelle.</li>
+        </ul>
       </section>
+
+      <section
+        className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10"
+        aria-labelledby="accessibilite"
+      >
+        <h2 id="accessibilite" className="text-h2 font-bold text-black p-3 mt-6 mb-2">
+          Accessibilité
+        </h2>
+
+        <p className="text-gray-700 mt-4 mb-4">
+          Nous nous engageons à rendre notre site Web accessible à tous, y compris aux personnes en situation de handicap. Nous avons conçu GreenRoots pour respecter les normes d’accessibilité Web, en mettant en œuvre des pratiques inclusives pour garantir une expérience utilisateur optimale, quelle que soit la technologie ou le dispositif utilisé.
+        </p>
+
+        <ul className="text-gray-700 mt-4 mb-4 flex flex-col justify-around items-center">
+          <li>Contrastes suffisants pour les utilisateurs malvoyants.</li>
+          <li>Navigation au clavier disponible pour les personnes ayant des difficultés à utiliser une souris.</li>
+          <li>Des descriptions textuelles pour toutes les images et vidéos.</li>
+          <li>Des liens accessibles et correctement décrits.</li>
+        </ul>
+      </section>
+
     </div>
   );
 }
