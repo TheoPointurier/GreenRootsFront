@@ -52,8 +52,8 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
       </div>
 
       {isOpen && (
-        <div className="fixed right-0 top-[70px] bottom-[56px] bg-greenroots_green flex flex-col items-end pl-8 pr-6 justify-start z-40 max-w-80 rounded-tl-lg border border-greenroots_orange-500 shadow-lg menu-container xl:hidden">
-          <ul className="text-greenroots_white text-xl space-y-4">
+        <div className="fixed right-0 bottom-[48px] bg-greenroots_green flex flex-col items-end pl-8 pr-6 justify-start z-40 max-w-80 rounded-tl-lg border border-greenroots_orange-500 shadow-lg menu-container xl:hidden">
+          <ul className="flex-1 flex flex-col text-greenroots_white text-xl space-y-4 mb-20 md:ml-2 md:mr-2">
             {/* Liens du menu */}
             <li className="pt-7">
               {user ? (
@@ -76,7 +76,7 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
             {!user && (
               <li className="pt-1">
                 <Link to="/register" onClick={toggleMenu}>
-                  S'enregistrer
+                  Créer mon compte
                 </Link>
               </li>
             )}
