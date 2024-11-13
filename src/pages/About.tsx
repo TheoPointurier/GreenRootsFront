@@ -302,7 +302,7 @@ function About() {
       </section>
 
       <section
-        className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10"
+        className="flex flex-col justify-around items-center lg:pl-10 lg:pr-10 mb-5"
         aria-labelledby="accessibilite"
       >
         <h2 id="accessibilite" className="text-h2 font-bold text-black p-3 mt-6 mb-2">
