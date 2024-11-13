@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Footer () {
   return (
-    <footer className='pb-16 mt-5'>
+    <footer className='bg-greenroots_green'>
       {/* Section des montagnes visible uniquement sur desktop */}
       <div className="hidden xl:flex bg-greenroots_green h-auto z-50">
         <img src={mountains} alt="mountain left" className="w-full h-40 rounded-t-[20px] object-cover transform scale-x-[-1]" />

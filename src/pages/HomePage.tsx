@@ -159,7 +159,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mt-20 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
+      <div className="mt-20 pb-24 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">
           Une question ?
         </h1>
@@ -196,7 +196,7 @@ function HomePage() {
                 </span>
               </div>
               {faqOpenIndex === index && (
-                <div className="mt-4  bg-greenroots_sand text-gray-700 p-4 rounded-lg">
+                <div className="mt-4 bg-greenroots_sand text-gray-700 p-4 rounded-lg">
                   <p>{faq.answer}</p>
                 </div>
               )}
