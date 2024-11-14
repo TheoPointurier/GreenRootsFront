@@ -2,8 +2,11 @@ import { useState } from 'react';
 import type { ReviewsAdd } from '../@types/reviews';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
-function ReviewsUser() {
+function ReviewCreate() {
     // Récupération l'utilisateur depuis le contexte
   const { user, isLoading, logout } = useUser();
   const [rating, setRating] = useState<number>(1);
@@ -45,11 +48,18 @@ function ReviewsUser() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 border rounded-md shadow-md my-40">
+    <main>
+      {/* <div className="flex justify-start items-center w-full mt-10 xl:mt-40 mb-10 ml-10">
+        <Link to="/user" className="pr-1">
+          <FontAwesomeIcon icon={faChevronLeft} className="pr-1 ml-1" /> Retour
+        </Link>
+      </div> */}
+
+    <div className="max-w-lg mx-auto p-4 border rounded-md shadow-md xl:mb-40">
       <h2 className="text-2xl font-bold mb-4">Créer un avis</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {error && <p className="text-red-500">{error}</p>}
-        {successMessage && <p className="text-green-500">{successMessage}</p>}
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        {error && <p className="text-greenroots_orange">{error}</p>}
+        {successMessage && <p className="text-greenroots_green">{successMessage}</p>}
 
         <label htmlFor="rating" className="font-medium">Note (1 à 5)</label>
         <input
@@ -85,13 +95,14 @@ function ReviewsUser() {
 
         <button
           type="submit"
-          className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-indigo-600"
+          className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-greenroots_orange"
         >
           Soumettre
         </button>
       </form>
     </div>
+    </main>
   );
 }
 
-export default ReviewsUser;
+export default ReviewCreate;

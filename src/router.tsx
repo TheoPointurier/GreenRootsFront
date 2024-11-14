@@ -15,8 +15,8 @@ const Cart = React.lazy(() => import('./pages/Cart'));
 const NotFound = React.lazy(() => import('./pages/404'));
 const ServerError = React.lazy(() => import('./pages/500'));
 const PrivateRoute = React.lazy(() => import('./components/PrivateRoute'));
-const OrderHistoryPage = React.lazy(() => import('./pages/OrderHistory'));
-const ReviewsUser = React.lazy(() => import('./pages/ReviewsUser'));
+// const OrderHistoryPage = React.lazy(() => import('./components/OrderHistory'));
+// const ReviewCreate = React.lazy(() => import('./components/ReviewCreate'));
 const PaymentPage = React.lazy(() => import('./pages/Payment'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Register = React.lazy(() => import('./pages/Register'));
@@ -39,8 +39,8 @@ const Router = () => {
         { path: `/user/${user?.id}`, element: <Suspense fallback={<div><Spinner /></div>}><User /></Suspense> },
         { path: '/panier', element: <Suspense fallback={<div><Spinner /></div>}><Cart /></Suspense> },
         { path: '/payment', element: <Suspense fallback={<div><Spinner /></div>}><PrivateRoute><PaymentPage /></PrivateRoute></Suspense> },
-        { path: '/user/orders',element: <Suspense fallback={<div><Spinner /></div>}><PrivateRoute><OrderHistoryPage /></PrivateRoute></Suspense>},
-        { path: '/user/reviews',element: <Suspense fallback={<div><Spinner /></div>}><PrivateRoute><ReviewsUser /></PrivateRoute></Suspense>},
+        // { path: '/user/orders',element: <Suspense fallback={<div><Spinner /></div>}><PrivateRoute><OrderHistoryPage /></PrivateRoute></Suspense>},
+        // { path: '/user/review',element: <Suspense fallback={<div><Spinner /></div>}><PrivateRoute><ReviewCreate /></PrivateRoute></Suspense>},
         { path: '/login', element: <Suspense fallback={<div><Spinner /></div>}><Login /></Suspense> },
         { path: '/register', element: <Suspense fallback={<div><Spinner /></div>}><Register /></Suspense> },
         { path: '/about', element: <Suspense fallback={<div><Spinner /></div>}><About /></Suspense> },
