@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const User = () => {
   const { user, setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Initialisation pour ouvrir par défaut "Informations utilisateur"
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   useEffect(() => {
     if (user) return;
@@ -57,9 +57,9 @@ const User = () => {
   if (!user) return <p>Chargement des informations...</p>;
 
   return (
-    <div className="flex my-10">
+    <div className="flex flex-col xl:flex-row items-start self-stretch">
       {/* Accordéon à gauche */}
-      <aside className="flex flex-col max-w-md bg-white p-4 rounded-lg shadow-md ml-7 mt-10">
+      <aside className="flex flex-col max-w-md bg-white p-4 rounded-lg shadow-md gap-2">
         <Accordion
           title="Informations utilisateur"
           isOpen={openIndex === 0}
