@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
+function Carousel({ images }: { images: Array<{ src: string; alt: string }> }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -21,7 +21,9 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
 
   // Pour aller à la slide précédente
   const goToPrevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+    );
   };
 
   // Pour aller à la slide suivante
@@ -67,38 +69,58 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
           />
         ))}
       </div>
+      
       {/* Flèche gauche (précédente) */}
+      <button
+        type="button"
+        className="absolute top-0 left-0 z-30 flex justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+        onClick={goToPrevSlide}
+        aria-label="Slide précédente"
+      >
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
+          <svg
+            className="w-5 h-5 text-white sm:w-6 sm:h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Slide précédent</title>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </span>
+      </button>
 
-<button
-  type="button"
-  className="absolute top-0 left-0 z-30 flex justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-  onClick={goToPrevSlide}
-  aria-label="Slide précédente"
->
-  <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
-    <svg className="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <title>Slide précédent</title>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-    </svg>
-  </span>
-</button>
-
-{/* Flèche droite (suivante) */}
-<button
-  type="button"
-  className="absolute top-0 right-0 z-30 flex justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-  onClick={goToNextSlide}
-  aria-label="Slide suivante"
->
-  <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
-    <svg className="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <title>Slide suivant</title>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-    </svg>
-  </span>
-</button>
-
-
+      {/* Flèche droite (suivante) */}
+      <button
+        type="button"
+        className="absolute top-0 right-0 z-30 flex justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+        onClick={goToNextSlide}
+        aria-label="Slide suivante"
+      >
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
+          <svg
+            className="w-5 h-5 text-white sm:w-6 sm:h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Slide suivant</title>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </span>
+      </button>
     </div>
   );
 }

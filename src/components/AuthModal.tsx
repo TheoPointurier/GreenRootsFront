@@ -36,45 +36,44 @@ function AuthModal({ onClose }: AuthModalProps) {
 
   return (
     <dialog
-      ref={modalRef}
-      open
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-[20px] shadow-lg"
-      aria-labelledby="auth-modal-title"
-      aria-modal="true"
-      style={{ borderRadius: '20px' }}
+  ref={modalRef}
+  open
+  className="fixed inset-0 flex flex-col items-center justify-center z-50 max-h-[70vh] overflow-y-auto rounded-[20px] mx-auto"
+  aria-labelledby="auth-modal-title"
+  aria-modal="true"
+>
+
+  <div className="bg-white p-6 rounded-[20px] shadow-lg max-w-2xl w-full relative">
+    <button
+      type="button"
+      className="absolute top-2 right-2 text-white bg-greenroots_red rounded-full p-2"
+      onClick={onClose}
     >
-      <div className="bg-white p-10 rounded-[20px] shadow-lg max-w-2xl w-full relative">
-        <button
-          type="button"
-          className="absolute top-2 right-2 text-white bg-greenroots_red rounded-full p-2"
-          onClick={onClose}
-          aria-label="Fermer la modal"
-        >
-          ✕
-        </button>
+      ✕
+    </button>
 
-        <h2 id="auth-modal-title" className="text-3xl font-bold mb-8 text-center">Connexion requise</h2>
-        <p className="mb-8 text-center">Vous devez être connecté pour passer à la caisse.</p>
+    <h2 id="auth-modal-title" className="text-3xl font-bold mb-6 text-center">Connexion requise</h2>
+    <p className="mb-6 text-center">Vous devez être connecté pour continuer.</p>
 
-        <div className="flex justify-center gap-6">
-          <button
-            ref={loginButtonRef}
-            type="button"
-            className="bg-greenroots_green text-white px-8 py-4 rounded-full text-lg"
-            onClick={handleLogin}
-          >
-            Se connecter
-          </button>
-          <button
-            type="button"
-            className="bg-greenroots_orange text-white px-8 py-4 rounded-full text-lg"
-            onClick={handleRegister}
-          >
-            S'enregistrer
-          </button>
-        </div>
-      </div>
-    </dialog>
+    <div className="flex flex-col md:flex-row justify-center gap-4">
+      <button
+        ref={loginButtonRef}
+        type="button"
+        className="bg-greenroots_green text-white px-4 py-2 rounded-full w-full md:w-auto"
+        onClick={handleLogin}
+      >
+        Se connecter
+      </button>
+      <button
+        type="button"
+        className="bg-greenroots_orange text-white px-4 py-2 rounded-full w-full md:w-auto"
+        onClick={handleRegister}
+      >
+        S'enregistrer
+      </button>
+    </div>
+  </div>
+</dialog>
   );
 }
 

@@ -52,7 +52,9 @@ function HomePage() {
   ];
 
   return (
-    <div className="relative text-center px-4">
+    <div className="flex flex-col items-center justify-center pt-[40px] xl:pt-[80px]">
+
+
       <h1 className="text-h1 font-bold text-black">
         Tu souhaites faire un geste
         <span className="bg-greenroots_green text-white rounded-lg px-4">
