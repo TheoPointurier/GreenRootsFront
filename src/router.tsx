@@ -14,6 +14,7 @@ const NotFound = React.lazy(() => import('./pages/404'));
 const ServerError = React.lazy(() => import('./pages/500'));
 const PrivateRoute = React.lazy(() => import('./components/PrivateRoute'));
 const OrderHistoryPage = React.lazy(() => import('./pages/OrderHistory'));
+const ReviewsUser = React.lazy(() => import('./pages/ReviewsUser'));
 const PaymentPage = React.lazy(() => import('./pages/Payment'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Register = React.lazy(() => import('./pages/Register'));
@@ -39,6 +40,7 @@ const Router = () => {
         { path: '/panier', element: <Suspense fallback={<div>Chargement...</div>}><Cart /></Suspense> },
         { path: '/payment', element: <Suspense fallback={<div>Chargement...</div>}><PrivateRoute><PaymentPage /></PrivateRoute></Suspense> },
         { path: '/user/orders',element: <Suspense fallback={<div>Chargement...</div>}><PrivateRoute><OrderHistoryPage /></PrivateRoute></Suspense>},
+        { path: '/user/reviews',element: <Suspense fallback={<div>Chargement...</div>}><PrivateRoute><ReviewsUser /></PrivateRoute></Suspense>},
         { path: '/login', element: <Suspense fallback={<div>Chargement...</div>}><Login /></Suspense> },
         { path: '/register', element: <Suspense fallback={<div>Chargement...</div>}><Register /></Suspense> },
         { path: '/about', element: <Suspense fallback={<div>Chargement...</div>}><About /></Suspense> },

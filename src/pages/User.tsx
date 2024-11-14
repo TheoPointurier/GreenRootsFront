@@ -20,7 +20,7 @@ const User = () => {
 
       const userId = getUserIdFromToken(token);
       if (!userId) {
-        setError("ID utilisateur non trouvé dans le token.");
+        setError('ID utilisateur non trouvé dans le token.');
         return;
       }
 
@@ -31,8 +31,13 @@ const User = () => {
         });
         setUser(response.user);
       } catch (error) {
-        console.error("Erreur lors de la récupération des informations utilisateur:", error);
-        setError("Impossible de récupérer vos informations. Veuillez vous reconnecter.");
+        console.error(
+          'Erreur lors de la récupération des informations utilisateur:',
+          error,
+        );
+        setError(
+          'Impossible de récupérer vos informations. Veuillez vous reconnecter.',
+        );
       }
     };
 
@@ -44,10 +49,19 @@ const User = () => {
 
   return (
     <main className="user">
+      <section>
       <UserInfo user={user} />
+      </section>
+      <section>
       <Link to="/user/orders" className="btn btn-primary">
-      Voir l'historique des commandes
-    </Link>
+        Voir l'historique des commandes
+      </Link>
+      </section>
+      <section>
+      <Link to="/user/reviews" className="btn btn-primary">
+        Créer un avis
+      </Link>
+      </section>
     </main>
   );
 };
@@ -60,7 +74,7 @@ const getUserIdFromToken = (token: string): number | null => {
     const payload = JSON.parse(atob(token.split('.')[1]));
     return payload.id || null;
   } catch (error) {
-    console.error("Erreur lors du décodage du token:", error);
+    console.error('Erreur lors du décodage du token:', error);
     return null;
   }
 };
