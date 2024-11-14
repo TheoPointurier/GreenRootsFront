@@ -29,7 +29,7 @@ function TreesList({ tree }: TreeProps) {
   };
 
   return (
-    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs mx-auto h-auto">
+    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs h-auto">
       <div className="flex justify-center w-full">
         <Link to={`/trees/${tree.id}`} className="w-full">
           <img

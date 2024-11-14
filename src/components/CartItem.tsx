@@ -9,7 +9,7 @@ function CartItem({ item, quantity }: CartItemProps) {
   const priceTTC = priceHT * (1 + tvaRate);
 
   return (
-    <article className="flex flex-col md:flex-row rounded-[20px] border border-gray-300 shadow-lg w-full max-w-lg md:max-w-full lg:w-full lg:max-w-4xl mx-auto mb-6">
+    <article className="flex flex-col md:flex-row rounded-[20px] border border-gray-300 shadow-lg w-full max-w-lg lg:w-full lg:max-w-4xl mb-6">
   {/* Image */}
   <div className="flex justify-center w-full md:w-1/3">
     <img

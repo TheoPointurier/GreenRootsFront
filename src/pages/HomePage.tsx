@@ -75,7 +75,7 @@ function HomePage() {
             rel="preload"
             src="/Images/illustration_arbre.webp"
             alt="Illustration d'un arbre"
-            className="w-full max-w-md mx-auto"
+            className="w-full max-w-md"
             loading="lazy"
           />
 

@@ -124,7 +124,7 @@ function PaymentPage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
+    <div className="p-6 max-w-md">
       <h2 className="text-2xl font-bold mb-4">Page de Paiement</h2>
 
       <CardNumberInput value={cardNumber} onChange={setCardNumber} />

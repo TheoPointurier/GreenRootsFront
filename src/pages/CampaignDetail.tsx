@@ -42,7 +42,7 @@ function CampaignDetail() {
     : 'Date invalide';
 
   return (
-    <main className="container mx-auto flex flex-col p-5 mb-20">
+    <main className="container flex flex-col p-5 mb-20">
       {/* Lien retour */}
       <section className="flex justify-start mt-5">
         <Link to="/campaigns" className='pr-1'>

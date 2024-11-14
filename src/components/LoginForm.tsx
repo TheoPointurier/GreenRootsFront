@@ -44,7 +44,7 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md"
+      className="max-w-md p-6 bg-white shadow-md rounded-md"
     >
       <h2 className="text-2xl font-bold text-center mb-6">Connexion</h2>
       {error && <p className="text-red-500 text-center">{error}</p>}

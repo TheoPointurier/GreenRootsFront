@@ -38,7 +38,7 @@ function AuthModal({ onClose }: AuthModalProps) {
     <dialog
   ref={modalRef}
   open
-  className="fixed inset-0 flex flex-col items-center justify-center z-50 max-h-[70vh] overflow-y-auto rounded-[20px] mx-auto"
+  className="fixed inset-0 flex flex-col items-center justify-center z-50 max-h-[70vh] overflow-y-auto rounded-[20px]"
   aria-labelledby="auth-modal-title"
   aria-modal="true"
 >
