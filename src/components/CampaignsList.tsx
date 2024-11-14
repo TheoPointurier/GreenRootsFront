@@ -27,15 +27,19 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
             className="flex flex-col rounded-lg border shadow-lg max-w-full h-full"
           >
             <div className="flex justify-center w-full">
-              <img
-                src={`/Campaign_Images/${campaign.id}.webp`}
-                alt={campaign.name}
-                className="w-full h-40 rounded-t-lg object-cover"
-                loading="lazy"
-              />
+              <Link to={`/campaigns/${campaign.id}`} className="w-full">
+                <img
+                  src={`/Campaign_Images/${campaign.id}.webp`}
+                  alt={campaign.name}
+                  className="w-full h-40 rounded-t-lg object-cover"
+                  loading="lazy"
+                />
+              </Link>
             </div>
             <div className="flex flex-col flex-grow p-4">
-              <h3 className="text-h3 font-bold">{campaign.name}</h3>
+              <Link to={`/campaigns/${campaign.id}`} className="w-full">
+                <h3 className="text-h3 font-bold">{campaign.name}</h3>
+              </Link>
               <p className="text-sm text-gray-500 mb-2">
                 {campaign.location.name_location},{' '}
                 {campaign.location.country.name}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useLocation } from 'react-router-dom';
-import type {TreeProps} from '../@types/trees';
+import type { TreeProps } from '../@types/trees';
 import { toast } from 'react-toastify';
 
 function TreesList({ tree }: TreeProps) {
@@ -31,15 +31,21 @@ function TreesList({ tree }: TreeProps) {
   return (
     <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs mx-auto h-auto">
       <div className="flex justify-center w-full">
-        <img
-          src={`/Trees_Images/${tree.id}.webp`}
-          alt={tree.name || 'Image'}
-          className="w-full h-40 rounded-t-[20px] object-cover"
-          loading="lazy"
-        />
+        <Link to={`/trees/${tree.id}`} className="w-full">
+          <img
+            src={`/Trees_Images/${tree.id}.webp`}
+            alt={tree.name || 'Image'}
+            className="w-full h-40 rounded-t-[20px] object-cover"
+            loading="lazy"
+          />
+        </Link>
       </div>
       <div className="flex justify-between flex-col items-center mt-2 w-full h-24">
-        <h3 className="text-h3 font-bold">{tree.name || 'Nom non disponible'}</h3>
+        <Link to={`/trees/${tree.id}`} className="w-full">
+          <h3 className="text-h3 font-bold text-center">
+            {tree.name || 'Nom non disponible'}
+          </h3>
+        </Link>
         <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
           {!isTreeDetailPage && (
             <Link
@@ -68,7 +74,9 @@ function TreesList({ tree }: TreeProps) {
               </Link>
             </p>
             <p className="p-1">
-              Lieu de plantation : {tree.campaignCountry || 'Aucun lieu de plantation pour le moment'}
+              Lieu de plantation :{' '}
+              {tree.campaignCountry ||
+                'Aucun lieu de plantation pour le moment'}
             </p>
           </>
         )}
@@ -83,7 +91,9 @@ function TreesList({ tree }: TreeProps) {
           >
             -
           </button>
-          <span className="border-t border-b border-greenroots_green px-4 p-3">{quantity}</span>
+          <span className="border-t border-b border-greenroots_green px-4 p-3">
+            {quantity}
+          </span>
           <button
             type="button"
             onClick={handleIncrement}
@@ -102,7 +112,6 @@ function TreesList({ tree }: TreeProps) {
       </div>
     </article>
   );
-  
 }
 
 export default TreesList;

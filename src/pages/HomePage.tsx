@@ -53,48 +53,48 @@ function HomePage() {
 
   return (
     <div className="relative text-center mt-12 px-4">
-      <h1 className="text-h1 font-bold text-black">
+      <h1 className="text-h1 font-bold text-black xl:mt-32">
         Tu souhaites faire un geste
         <span className="bg-greenroots_green text-white rounded-lg px-4">
           éco-responsable ?
         </span>
       </h1>
 
-      <section className='flex-1 flex flex-row justify-center'>
-      <img
+      <section className="flex-1 flex flex-row justify-center">
+        <img
           rel="preload"
           src="/Images/japanese-maple-tree.webp"
           alt="Vue d'un érable japonais rouge avec des feuilles en automne"
           className="w-full max-w-2xl object-contain self-end hidden xl:block"
           loading="lazy"
         />
-      <div className="relative mt-16">
-        <img
-          rel="preload"
-          src="/Images/illustration_arbre.webp"
-          alt="Illustration d'un arbre"
-          className="w-full max-w-md mx-auto"
-          loading="lazy"
-        />
+        <div className="relative mt-16">
+          <img
+            rel="preload"
+            src="/Images/illustration_arbre.webp"
+            alt="Illustration d'un arbre"
+            className="w-full max-w-md mx-auto"
+            loading="lazy"
+          />
 
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
-          <h2 className="text-h2 font-bold text-black">
-            Ce que nous te proposons
-          </h2>
-          <p className="text-gray-700 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
-            bibendum massa.
-          </p>
-          <button
-            onClick={() => navigate('/campaigns')}
-            className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
-            aria-label="Accéder à la page des campagnes pour contribuer"
-            type="button"
-          >
-            Je contribue
-          </button>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
+            <h2 className="text-h2 font-bold text-black">
+              Ce que nous te proposons
+            </h2>
+            <p className="text-gray-700 mt-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
+              bibendum massa.
+            </p>
+            <button
+              onClick={() => navigate('/campaigns')}
+              className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
+              aria-label="Accéder à la page des campagnes pour contribuer"
+              type="button"
+            >
+              Je contribue
+            </button>
+          </div>
         </div>
-      </div>
       </section>
 
       {/* Grille des Avis : Grille Adaptative */}
@@ -125,15 +125,14 @@ function HomePage() {
           <img
             src="/Images/weeping-willow-tree.webp"
             alt="Arbre pleureur"
-            className="w-[300px] object-cover"
+            className="w-[300px] xl:w-[700px] object-cover" // Taille par défaut pour les petits écrans et agrandie pour les écrans XL
             loading="lazy"
           />
         </div>
         <div
-          className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px]"
-          style={{ width: '300px' }}
+          className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px] w-[300px] xl:w-[500px] xl:ml-[-100px] xl:py-20" // Taille et marge ajustée pour XL
         >
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-700 mb-4 xl:pb-10">
             Explication graph suivi, CO2, etc.
           </p>
           <button
@@ -147,7 +146,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mt-20 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
+      <div className="flex flex-col items-center justify-center mt-20 pb-24 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">
           Une question ?
         </h1>
@@ -155,7 +154,7 @@ function HomePage() {
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full xl:w-[1500px]"
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }
@@ -174,7 +173,9 @@ function HomePage() {
                     className={`w-5 h-5 transform ${faqOpenIndex === index ? 'rotate-180' : ''}`}
                     aria-labelledby={`faq-icon-${index}`}
                   >
-                    <title id={`faq-icon-${index}`}>Flèche déroulante pour la FAQ</title>
+                    <title id={`faq-icon-${index}`}>
+                      Flèche déroulante pour la FAQ
+                    </title>
                     <path
                       fillRule="evenodd"
                       d="M12 15.293l-6.293-6.293a1 1 0 111.414-1.414L12 12.465l5.879-5.879a1 1 0 111.414 1.414L12 15.293z"
@@ -184,7 +185,7 @@ function HomePage() {
                 </span>
               </div>
               {faqOpenIndex === index && (
-                <div className="mt-4  bg-greenroots_sand text-gray-700 p-4 rounded-lg">
+                <div className="mt-4 bg-greenroots_sand text-gray-700 p-4 rounded-lg">
                   <p>{faq.answer}</p>
                 </div>
               )}

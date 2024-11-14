@@ -6,11 +6,10 @@ import customMarkerIcon from '../assets/Logos/Logo_onglet_nav.webp';
 // Icône personnalisée GreenRoots
 const customIcon = new L.Icon({
   iconUrl: customMarkerIcon,
-  // Peut être la même image ou une image de plus haute résolution
   iconRetinaUrl: customMarkerIcon,
   // Taille de l'icône
   iconSize: [40, 40],
-  // Point de l'icône correspondant à la position (centre bas)
+  // Point de l'icône correspondant à la position du marqueur
   iconAnchor: [16, 32],
   // Point relatif à l'icône où s'affiche le popup
   popupAnchor: [0, -32],

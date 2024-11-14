@@ -110,7 +110,7 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-greenroots_sand-100 shadow-md rounded-md"
+      className="max-w-md mx-auto p-6 bg-greenroots_sand-100 shadow-md rounded-md mt-10 mb-20 xl:mt-10 xl:mb-10"
     >
       <h2 className="text-2xl font-bold text-center mb-6">Inscription</h2>
       <p className="text-sm text-gray-600 mb-4">
