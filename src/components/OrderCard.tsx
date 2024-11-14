@@ -14,7 +14,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
     : order.total_amount;
 
   return (
-    <div className="order-card mb-6 p-4 border rounded-lg shadow-lg">
+    <div className="order-card mb-6 py-4 p-2 xl:p-4 border rounded-lg shadow-lg sm:max-md:text-xs">
       <h3 className="text-xl font-bold mb-2">Commande {order.order_number}</h3>
       <p className="mb-2">Statut : {order.status}</p>
       <p className="mb-4">Montant total HT : {totalAmount.toFixed(2)} €</p>

@@ -38,12 +38,12 @@ const OrderHistoryPage = () => {
   if (!orders.length) return <p>Aucune commande trouvée.</p>;
 
   return (
-    <main className="order-history p-6">
-      <h2 className="text-2xl font-bold mb-6">Historique des commandes</h2>
+    <div className="order-history mb-14">
+      <h2 className="text-2xl font-bold mt-2 mb-6">Historique des commandes</h2>
       {orders.map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}
-    </main>
+    </div>
   );
 };
 
