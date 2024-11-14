@@ -15,6 +15,7 @@ export default {
         greenroots_sand: '#FFF9F3',
         greenroots_grey: '#B7B7B7',
         greenroots_white: '#FFF',
+        greenroots_red: '#84090f',
       },
       fontSize: {
         // Taille de police et hauteur de ligne

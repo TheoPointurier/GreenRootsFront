@@ -52,8 +52,10 @@ function HomePage() {
   ];
 
   return (
-    <div className="relative text-center mt-12 px-4">
-      <h1 className="text-h1 font-bold text-black xl:mt-32">
+    <div className="flex flex-col items-center justify-center pt-[40px] xl:pt-[80px]">
+
+
+      <h1 className="text-h1 font-bold text-black">
         Tu souhaites faire un geste
         <span className="bg-greenroots_green text-white rounded-lg px-4">
           éco-responsable ?
@@ -73,7 +75,7 @@ function HomePage() {
             rel="preload"
             src="/Images/illustration_arbre.webp"
             alt="Illustration d'un arbre"
-            className="w-full max-w-md mx-auto"
+            className="w-full max-w-md"
             loading="lazy"
           />
 

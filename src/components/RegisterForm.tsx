@@ -87,8 +87,8 @@ export default function RegisterForm() {
           password: formData.password,
         };
         const loginResponse = await login(loginData);
-        if (loginResponse.accesstoken && loginResponse.user) {
-          localStorage.setItem('token', loginResponse.accesstoken);
+        if (loginResponse.accessToken && loginResponse.user) {
+          localStorage.setItem('token', loginResponse.accessToken);
           localStorage.setItem('userId', loginResponse.user.id.toString());
           setUser(loginResponse.user);
           navigate(`/user/${loginResponse.user.id}`);
@@ -110,7 +110,7 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-greenroots_sand-100 shadow-md rounded-md mt-10 mb-20 xl:mt-10 xl:mb-10"
+      className="max-w-md p-6 bg-white shadow-md rounded-md mt-10 mb-20 xl:mt-10 xl:mb-10"
     >
       <h2 className="text-2xl font-bold text-center mb-6">Inscription</h2>
       <p className="text-sm text-gray-600 mb-4">

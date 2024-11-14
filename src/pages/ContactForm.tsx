@@ -1,7 +1,7 @@
 function ContactForm () {
   return (
-    <main className="flex justify-center px-4">
-    <section className="flex flex-col xl:mt-20 mb-20 max-w-md w-full min-h-screen">
+    <main className="flex flex-col items-center justify-center max-w-md p-8">
+    <section className="flex flex-col max-w-md">
       <h1 className="text-h1 font-bold text-black">Formulaire de contact</h1>
       <form id="contact-form" className="mt-10">
         <label htmlFor="user_name">Nom</label>

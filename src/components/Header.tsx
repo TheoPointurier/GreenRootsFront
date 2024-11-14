@@ -13,7 +13,6 @@ function Header() {
 
   // Récupération des informations de l'utilisateur et de la fonction de déconnexion
   const { user, logout } = useUser();
-  // Hook pour naviguer dans l'application
   const navigate = useNavigate();
 
   // Fonction pour basculer l'état du menu burger
@@ -23,16 +22,14 @@ function Header() {
 
   // Fonction pour gérer la déconnexion de l'utilisateur
   const handleLogout = () => {
-    // Appel de la fonction de déconnexion
     logout();
-    // Redirection vers la page d'accueil après la déconnexion
     navigate('/');
   };
 
   return (
     <>
       {/* HEADER VERSION PC (en haut de la page) */}
-      <header className="fixed top-0 left-0 w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden z-50">
+      <header className="fixed top-0 left-0 w-full bg-greenroots_green h-[80px] xl:flex xl:items-center xl:justify-between hidden z-50">
         {/* Logo à gauche */}
         <div className="flex items-center justify-start ml-6">
           <Link to="/">
@@ -43,7 +40,6 @@ function Header() {
         {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
           <div className="flex space-x-4 flex-1 justify-center">
-            {/* Liens principaux du site */}
             <Link to="/" className="text-xl">
               Accueil
             </Link>
@@ -60,9 +56,7 @@ function Header() {
               À propos
             </Link>
           </div>
-
           <div className="flex space-x-4">
-            {/* Liens conditionnels basés sur l'état de l'utilisateur */}
             {user ? (
               <>
                 <button
@@ -104,29 +98,22 @@ function Header() {
       <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
-          <Link
-            to="/panier"
-            aria-label="Voir le contenu de mon panier"
-            aria-describedby="tooltip-panier"
-          >
+          <Link to="/panier" aria-label="Voir le contenu de mon panier">
             <FontAwesomeIcon
               icon={faCartShopping}
               className="w-6 h-6 text-greenroots_white"
-              // Masquer l'icône pour les lecteurs d'écran
-              aria-label="Afficher le contenu du panier"
-              aria-hidden="true"
             />
           </Link>
         </div>
 
-        {/* Logo centré pour mobile et tablette */}
+        {/* Logo centré pour mobile */}
         <div className="flex items-center justify-center flex-1">
           <Link to="/">
             <img src={logo} alt="logo" className="w-12 h-12" />
           </Link>
         </div>
 
-        {/* BurgerMenu à droite pour mobile et tablette */}
+        {/* BurgerMenu à droite pour mobile */}
         <div className="flex items-center justify-end mr-1">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>

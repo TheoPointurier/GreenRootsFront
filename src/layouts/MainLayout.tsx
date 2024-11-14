@@ -1,29 +1,27 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Outlet } from 'react-router-dom';
-import { setNavigate } from '../api/apiClient';
 
 function MainLayout() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const [currentPath, setCurrentPath] = useState(location.pathname);
 
   useEffect(() => {
-    // Initialise la fonction de navigation
-    setNavigate(navigate);
-  }, [navigate]);
-
-  useEffect(() => {
-    if (!location.hash) {
+    if (currentPath !== location.pathname) {
       window.scrollTo(0, 0);
+      setCurrentPath(location.pathname);
     }
-  }, [location.hash]);
+  }, [currentPath, location.pathname]);
 
   return (
-    <div className="flex-1 xl:mt-20">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <div className="hidden xl:block h-[80px]" />
+      <main className="flex flex-col flex-1 justify-center items-center">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

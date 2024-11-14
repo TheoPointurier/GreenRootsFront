@@ -93,7 +93,7 @@ function PaymentPage() {
     // Préparation des données de la commande
     const orderData: OrderData = {
       total_amount: Number(totalAmount),
-      status: 'En cours',
+      status: 'terminée',
       order_number: orderNumber,
       orderLines: orderLines.map<OrderLineInput>((line) => ({
         price_ht_at_order: line.price_ht_at_order,
@@ -124,14 +124,14 @@ function PaymentPage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
+    <div className="p-6 max-w-md">
       <h2 className="text-2xl font-bold mb-4">Page de Paiement</h2>
 
       <CardNumberInput value={cardNumber} onChange={setCardNumber} />
       <ExpiryDateInput value={expiryDate} onChange={setExpiryDate} />
       <CvvInput value={cvv} onChange={setCvv} />
 
-      {error && <p className="text-red-500 mb-4">{error}</p>}
+      {error && <p className="text-greenroots_red mb-4">{error}</p>}
 
       <PaymentButton onClick={handlePayment} />
     </div>
