@@ -40,24 +40,44 @@ function Header() {
         {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
           <div className="flex space-x-4 flex-1 justify-center">
-            <Link to="/" className="text-xl">Accueil</Link>
-            <Link to="/trees" className="text-xl">Nos arbres</Link>
-            <Link to="/campaigns" className="text-xl">Nos campagnes</Link>
-            <Link to="/contact" className="text-xl">Contact</Link>
-            <Link to="/about" className="text-xl">À propos</Link>
+            <Link to="/" className="text-xl">
+              Accueil
+            </Link>
+            <Link to="/trees" className="text-xl">
+              Nos arbres
+            </Link>
+            <Link to="/campaigns" className="text-xl">
+              Nos campagnes
+            </Link>
+            <Link to="/contact" className="text-xl">
+              Contact
+            </Link>
+            <Link to="/about" className="text-xl">
+              À propos
+            </Link>
           </div>
           <div className="flex space-x-4">
             {user ? (
               <>
-                <button type="button" onClick={handleLogout} className="text-xl text-greenroots_white">
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="text-xl text-greenroots_white"
+                >
                   Déconnexion
                 </button>
-                <Link to={`/user/${user.id}`} className="text-xl">Mon compte</Link>
+                <Link to={`/user/${user.id}`} className="text-xl">
+                  Mon compte
+                </Link>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-xl">Connexion</Link>
-                <Link to="/register" className="text-xl">Créer un compte</Link>
+                <Link to="/login" className="text-xl">
+                  Connexion
+                </Link>
+                <Link to="/register" className="text-xl">
+                  Créer un compte
+                </Link>
               </>
             )}
           </div>
@@ -66,28 +86,34 @@ function Header() {
         {/* Panier à droite */}
         <div className="flex items-center justify-end mr-6">
           <Link to="/panier" aria-label="Voir le contenu de mon panier">
-            <FontAwesomeIcon icon={faCartShopping} className="w-8 h-8 text-greenroots_white" />
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className="w-8 h-8 text-greenroots_white"
+            />
           </Link>
         </div>
       </header>
 
       {/* HEADER VERSION MOBILE / TABLETTE (en bas de la page) */}
-      <header className="fixed bottom-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
+      <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
-          <Link to="/panier">
-            <FontAwesomeIcon icon={faCartShopping} className="w-6 h-6 text-greenroots_white" />
+          <Link to="/panier" aria-label="Voir le contenu de mon panier">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className="w-6 h-6 text-greenroots_white"
+            />
           </Link>
         </div>
 
-        {/* Logo centré pour mobile et tablette */}
+        {/* Logo centré pour mobile */}
         <div className="flex items-center justify-center flex-1">
           <Link to="/">
             <img src={logo} alt="logo" className="w-12 h-12" />
           </Link>
         </div>
 
-        {/* BurgerMenu à droite pour mobile et tablette */}
+        {/* BurgerMenu à droite pour mobile */}
         <div className="flex items-center justify-end mr-1">
           <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         </div>
