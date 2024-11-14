@@ -87,8 +87,8 @@ export default function RegisterForm() {
           password: formData.password,
         };
         const loginResponse = await login(loginData);
-        if (loginResponse.accesstoken && loginResponse.user) {
-          localStorage.setItem('token', loginResponse.accesstoken);
+        if (loginResponse.accessToken && loginResponse.user) {
+          localStorage.setItem('token', loginResponse.accessToken);
           localStorage.setItem('userId', loginResponse.user.id.toString());
           setUser(loginResponse.user);
           navigate(`/user/${loginResponse.user.id}`);

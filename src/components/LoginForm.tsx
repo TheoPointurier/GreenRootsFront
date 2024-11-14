@@ -26,10 +26,10 @@ export default function LoginForm() {
 
     try {
       const response = await login({ email, password });
-      const { user, accesstoken } = response;
+      const { user, accessToken } = response;
 
-      if (accesstoken) {
-        localStorage.setItem('token', accesstoken);
+      if (accessToken) {
+        localStorage.setItem('token', accessToken);
         localStorage.setItem('userId', user.id.toString());
         setUser(user);
         showSuccessToast('Connexion réussie ! Bienvenue !');
