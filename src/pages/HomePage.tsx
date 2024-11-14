@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Carousel from '../components/Carousel';
 import Reviews from '../components/Reviews';
-// import { useEffect } from 'react';  (à décommenter quand l'API sera prête)
 
 function HomePage() {
   const navigate = useNavigate();
@@ -23,17 +22,6 @@ function HomePage() {
       alt: 'View of Flower',
     },
   ];
-
-  // Partie qui cherchera les images depuis l'API (à décommenter quand l'API sera prête)
-  // const [campaignImages, setCampaignImages] = useState([]);
-  //
-  // useEffect(() => {
-  //   fetch('/api/campaigns/images')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setCampaignImages(data.images);
-  //     });
-  // }, []);
 
   // Questions/Réponses pour la FAQ
   const faqs = [

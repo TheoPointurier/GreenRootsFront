@@ -1,4 +1,3 @@
-// api/auth.ts
 import apiClient from './apiClient';
 import type { LoginData, RegisterData } from '../@types/users';
 

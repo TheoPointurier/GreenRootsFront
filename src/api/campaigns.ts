@@ -1,4 +1,3 @@
-// src/api/campaigns.ts
 import apiClient from './apiClient';
 
 export const fetchCampaigns = async () => {

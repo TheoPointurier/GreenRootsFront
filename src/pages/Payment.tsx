@@ -104,7 +104,6 @@ function PaymentPage() {
       })),
     };
     
-    // Ajoute un log ici pour vérifier la structure
     console.log('Données envoyées (corrigées) :', JSON.stringify(orderData, null, 2));
 
     try {

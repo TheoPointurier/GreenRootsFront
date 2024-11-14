@@ -16,7 +16,6 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
     });
   };
 
-  // Rendu du composant
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-xl mx-auto p-4">
       {campaigns.length === 0 ? (
@@ -81,12 +80,12 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
               <div className="p-4 bg-gray-100 rounded-b-lg">
                 {campaign.treesCampaign.map((tree) => (
                   <TreesList
-                    key={`${tree.id}-${campaign.id}`} // Utilisez une clé unique pour chaque combinaison arbre-campagne
+                    key={`${tree.id}-${campaign.id}`}
                     tree={{
                       ...tree,
                       campaignCountry: campaign.location.country.name,
                       campaignName: campaign.name,
-                      campaignId: campaign.id, // Passez `campaignId` ici
+                      campaignId: campaign.id,
                     }}
                   />
                 ))}
