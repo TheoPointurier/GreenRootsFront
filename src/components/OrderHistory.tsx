@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../api/apiClient';
 import { useUser } from '../context/UserContext';
-import { showErrorToast } from '../components/ToastProvider';
-import OrderCard from '../components/OrderCard';
+import { showErrorToast } from './ToastProvider';
+import OrderCard from './OrderCard';
 import type { OrderData } from '../@types/Order';
 
 const OrderHistoryPage = () => {

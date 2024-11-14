@@ -6,3 +6,9 @@ export type ReviewsType = {
   updated_at: string;
   id_user: number;
 };
+
+export type ReviewsAdd = {
+  content: string;
+  rating: number;
+  id_user: number;
+};
