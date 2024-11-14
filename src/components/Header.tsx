@@ -32,7 +32,7 @@ function Header() {
   return (
     <>
       {/* HEADER VERSION PC (en haut de la page) */}
-      <header className="fixed top-0 left-0 w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden z-50">
+      <header className="fixed top-0 left-0 w-full bg-greenroots_green py-0.5 px-1 xl:flex xl:items-center xl:justify-between hidden z-50 h-[80px]">
         {/* Logo à gauche */}
         <div className="flex items-center justify-start ml-6">
           <Link to="/">
@@ -101,7 +101,7 @@ function Header() {
       </header>
 
       {/* HEADER VERSION MOBILE / TABLETTE (en bas de la page) */}
-      <header className="fixed bottom-0 left-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
+      <header className="fixed bottom-0 w-full bg-greenroots_green z-50 xl:hidden flex items-center justify-between">
         {/* Panier à gauche pour mobile */}
         <div className="flex items-center justify-start ml-3">
           <Link

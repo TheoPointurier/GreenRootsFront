@@ -46,7 +46,7 @@ function AuthModal({ onClose }: AuthModalProps) {
       <div className="bg-white p-10 rounded-[20px] shadow-lg max-w-2xl w-full relative">
         <button
           type="button"
-          className="absolute top-2 right-2 text-white bg-red-600 rounded-full p-2"
+          className="absolute top-2 right-2 text-white bg-greenroots_red rounded-full p-2"
           onClick={onClose}
           aria-label="Fermer la modal"
         >
@@ -60,14 +60,14 @@ function AuthModal({ onClose }: AuthModalProps) {
           <button
             ref={loginButtonRef}
             type="button"
-            className="bg-green-500 text-white px-8 py-4 rounded-full text-lg"
+            className="bg-greenroots_green text-white px-8 py-4 rounded-full text-lg"
             onClick={handleLogin}
           >
             Se connecter
           </button>
           <button
             type="button"
-            className="bg-blue-500 text-white px-8 py-4 rounded-full text-lg"
+            className="bg-greenroots_orange text-white px-8 py-4 rounded-full text-lg"
             onClick={handleRegister}
           >
             S'enregistrer

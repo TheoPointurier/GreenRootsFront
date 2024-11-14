@@ -56,7 +56,7 @@ function CartItem({ item, quantity }: CartItemProps) {
       <button
         type="button"
         onClick={() => removeFromCart(item.id)}
-        className="bg-[#84090f] text-white py-2 px-6 rounded-full md:w-auto w-full mt-2 md:mt-0"
+        className="bg-greenroots_red text-white py-2 px-6 rounded-full md:w-auto w-full mt-2 md:mt-0"
       >
         Supprimer
       </button>

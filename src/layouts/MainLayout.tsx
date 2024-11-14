@@ -21,11 +21,15 @@ function MainLayout() {
   }, [location.hash]);
 
   return (
-    <div className="flex-1 xl:mt-20">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <div className="flex flex-col min-h-screen">
+  <Header />
+  <div className="hidden xl:block h-[80px]" />
+  <main className="flex flex-col flex-1 justify-center items-center container mx-auto p-5">
+    <Outlet />
+  </main>
+  <Footer />
+</div>
+
   );
 }
 
