@@ -11,7 +11,7 @@ function Carousel({ images }: { images: Array<{ src: string, alt: string }> }) {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Changer toutes les 5 secondes
 
-    return () => clearInterval(interval); // Nettoyer l'intervalle quand le composant est démonté
+    return () => clearInterval(interval);
   }, [images.length]);
 
   // Pour changer manuellement d'image

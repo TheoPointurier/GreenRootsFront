@@ -32,8 +32,6 @@ function CampaignDetail() {
     return <p>Chargement des données...</p>;
   }
 
-  // Convert and format end_campaign date
-  // The T is used to separate the date and time in a string that follows the ISO 8601 format
   const endDate = new Date(campaign.end_campaign.replace(' ', 'T'));
   const formattedDate = !Number.isNaN(endDate.getTime())
     ? endDate.toLocaleDateString('fr-FR', {
@@ -45,21 +43,21 @@ function CampaignDetail() {
 
   return (
     <main className="container mx-auto flex flex-col p-5">
-      {/* Back link */}
+      {/* Lien retour */}
       <section className="flex justify-start mt-5">
         <Link to="/campaigns" className='pr-1'>
           <FontAwesomeIcon icon={faChevronLeft} className='pr-1 ml-1' /> Retour
         </Link>
       </section>
 
-      {/* Title campaign */}
+      {/* Nom campagne */}
       <section className='flex flex-row justify-evenly mt-2 p-1 items-center'>
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
           <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">{campaign.name}</span>
         </h2>
       </section>
 
-      {/* Forest photo */}
+      {/* Photo campagne */}
       <section className="flex justify-evenly mt-5 mb-5">
         <img 
           src={`/Campaign_Images/${campaign.id}.webp`}
@@ -68,14 +66,14 @@ function CampaignDetail() {
         />
       </section>
 
-      {/* Information campaign */}
+      {/* Information campagne */}
       <section className="flex flex-col justify-between p-5 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
         <h3 className="text-h3 pl-3 mb-2">Contexte projet</h3>
         <p className="text-sm p-1 m-1">{campaign.description}</p>
         <p className="text-sm font-bold p-1 m-1">Date limite pour contribuer : {formattedDate}</p>
       </section>
 
-      {/* Method campaign */}
+      {/* Méthode campagne */}
       <section className="flex flex-col justify-between p-5 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
         <h3 className="text-h3 pl-3 mb-2">Comment allons nous procéder?</h3>
         <p className="text-sm p-1 m-1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam maiores corporis.</p>
@@ -87,7 +85,7 @@ function CampaignDetail() {
         </h2>
       </section>
 
-      {/* Trees of campaign */}
+      {/* Arbres de la campagne */}
       <section className="flex flex-col justify-between p-5 mb-2 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
         <h3 className="text-h3 pl-3 mb-8">Notre sélection d'arbres adapté à cette campagne</h3>
         <p className="text-sm p-1 mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam maiores corporis.</p>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { fetchReviews } from '../api/reviews'; // Assurez-vous que le chemin est correct
+import { fetchReviews } from '../api/reviews';
 import type { ReviewsType } from '../@types/reviews';
 import './Reviews.css';
 
@@ -29,11 +29,11 @@ function Reviews() {
 
   // Afficher un message de chargement ou d'erreur
   if (loading) {
-    return <div aria-live="polite">Chargement des avis...</div>; // Ajout de aria-live
+    return <div aria-live="polite">Chargement des avis...</div>;
   }
 
   if (error) {
-    return <div role="alert" aria-live="assertive">{error}</div>; // Ajout de role="alert" pour notifier immédiatement l'erreur
+    return <div role="alert" aria-live="assertive">{error}</div>;
   }
 
   // Fonction pour mélanger un tableau de manière aléatoire
@@ -94,7 +94,7 @@ function Reviews() {
         <button
           type="button"
           className="bg-greenroots_orange text-white px-4 py-2 rounded-full hover:bg-orange-600"
-          aria-label="Contribuer à l'impact de ton geste" // Ajout de aria-label pour expliquer l'action du bouton
+          aria-label="Contribuer à l'impact de ton geste" 
         >
           Je contribue
         </button>

@@ -15,7 +15,6 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
       <p className="mt-1 block w-full px-4 py-2">Société / Association  : {user.entity_name}</p>
       <p className="mt-1 block w-full px-4 py-2">Type structure : {user.entity_type}</p>
       <p className="mt-1 block w-full px-4 py-2">Numéro de SIRET : {user.entity_siret}</p>
-      {/* Affichez d'autres informations si nécessaire */}
     </div>
   );
 };
