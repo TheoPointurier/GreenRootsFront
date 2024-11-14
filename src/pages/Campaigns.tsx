@@ -39,7 +39,7 @@ function Campaigns() {
   };
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center mb-20">
       <h2 className="text-h2 mt-10 mb-4 text-center">
         Contribues à la campagne de<span className="bg-greenroots_green text-greenroots_white rounded p-1 mx-1">ton choix</span>
       </h2>

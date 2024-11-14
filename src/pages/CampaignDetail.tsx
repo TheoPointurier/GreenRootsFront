@@ -44,7 +44,7 @@ function CampaignDetail() {
     : 'Date invalide';
 
   return (
-    <main className="container mx-auto flex flex-col p-5">
+    <main className="container mx-auto flex flex-col p-5 mb-20">
       {/* Back link */}
       <section className="flex justify-start mt-5">
         <Link to="/campaigns" className='pr-1'>
@@ -91,7 +91,7 @@ function CampaignDetail() {
       <section className="flex flex-col justify-between p-5 mb-2 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
         <h3 className="text-h3 pl-3 mb-8">Notre sélection d'arbres adapté à cette campagne</h3>
         <p className="text-sm p-1 mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam maiores corporis.</p>
-        <div>
+        <div className='flex flex-wrap'>
           {campaign.treesCampaign.map(tree => (
            <TreesList 
            key={tree.id} 

@@ -25,7 +25,7 @@ function About() {
   }, [location]);
 
   return (
-    <div className="w-full h-full px-4 lg:px-[15rem]">
+    <main className="w-full h-full px-4 lg:px-[15rem] mb-20">
       <section
         className="flex-1 flex flex-col justify-center items-center lg:pl-10 lg:pr-10"
         aria-labelledby="about-section"
@@ -321,7 +321,7 @@ function About() {
         </ul>
       </section>
 
-    </div>
+    </main>
   );
 }
 

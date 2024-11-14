@@ -5,7 +5,7 @@ function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
   const subtotalTTC = subtotal * (1 + tvaRate);
 
   return (
-    <div className="p-4 border rounded-lg shadow-lg w-full max-w-lg md:max-w-full lg:w-full lg:max-w-4xl mx-auto">
+    <div className="p-4 border rounded-lg shadow-lg w-full max-w-lg md:max-w-full lg:w-full lg:max-w-4xl mx-auto mb-20">
       <h2 className="text-xl font-semibold mb-4 text-center">Résumé du panier</h2>
   
       <div className="flex justify-between py-2">
