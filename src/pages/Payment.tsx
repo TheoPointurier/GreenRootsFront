@@ -8,6 +8,8 @@ import CvvInput from '../components/CvvInput';
 import PaymentButton from '../components/PaymentButton';
 import type { OrderData, OrderLineInput } from '../@types/Order';
 import { showSuccessToast, showErrorToast } from '../components/ToastProvider';
+import { useUser } from '../context/UserContext';
+
 
 function PaymentPage() {
   const [cardNumber, setCardNumber] = useState('');
@@ -16,6 +18,7 @@ function PaymentPage() {
   const [error, setError] = useState('');
   const { cartItems, clearCart } = useCart();
   const navigate = useNavigate();
+  const { user } = useUser();
 
   // Calcul du montant total
   const totalAmount = Number.parseFloat(
@@ -113,7 +116,7 @@ function PaymentPage() {
         console.log('Réponse de la création de commande :', response);
         showSuccessToast('Paiement réussi ! Votre commande a été enregistrée.');
         clearCart();
-        navigate('/user/orders');
+        navigate(`/user/${user?.id}?tab=orders`);
       } else {
         showErrorToast("Une erreur est survenue lors de l'enregistrement de votre commande.");
       }

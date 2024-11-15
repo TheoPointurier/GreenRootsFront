@@ -4,16 +4,16 @@ import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
 import OrderHistoryPage from '../components/OrderHistory';
 import ReviewCreate from '../components/ReviewCreate';
-import {
-  faChevronDown,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
+import { useSearchParams } from 'react-router-dom';
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const User = () => {
   const { user, setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [searchParams] = useSearchParams();
+  const defaultTab = searchParams.get('tab') === 'orders' ? 1 : 0;
+  const [openIndex, setOpenIndex] = useState<number | null>(defaultTab);
 
   useEffect(() => {
     if (user) return;
@@ -38,13 +38,8 @@ const User = () => {
         });
         setUser(response.user);
       } catch (error) {
-        console.error(
-          'Erreur lors de la récupération des informations utilisateur:',
-          error,
-        );
-        setError(
-          'Impossible de récupérer vos informations. Veuillez vous reconnecter.',
-        );
+        console.error('Erreur lors de la récupération des informations utilisateur:', error);
+        setError('Impossible de récupérer vos informations. Veuillez vous reconnecter.');
       }
     };
 
@@ -91,6 +86,7 @@ const User = () => {
 
 export default User;
 
+// Fonction pour décoder l'ID utilisateur depuis le token
 const getUserIdFromToken = (token: string): number | null => {
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
@@ -101,6 +97,7 @@ const getUserIdFromToken = (token: string): number | null => {
   }
 };
 
+// Composant Accordéon avec styles Tailwind
 interface AccordionProps {
   title: string;
   isOpen: boolean;
@@ -117,14 +114,14 @@ const Accordion = ({ title, isOpen, onToggle }: AccordionProps) => (
     >
       {title}
       <FontAwesomeIcon
-        icon={faChevronRight}
-        className="ml-5 text-black hidden xl:block"
-      />
-      <FontAwesomeIcon
-        icon={faChevronDown}
-        className="ml-5 text-black block xl:hidden"
+        icon={isOpen ? faChevronDown : faChevronRight}
+        className="ml-5 text-black"
       />
     </button>
-    {isOpen && <div>{/* Contenu à afficher lorsqu'il est ouvert */}</div>}
+    {isOpen && (
+      <div className="p-4 bg-gray-100 rounded-md">
+        {/* Contenu à afficher lorsqu'il est ouvert */}
+      </div>
+    )}
   </div>
 );
