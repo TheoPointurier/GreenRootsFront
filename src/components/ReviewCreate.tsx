@@ -2,12 +2,10 @@ import { useState } from 'react';
 import type { ReviewsAdd } from '../@types/reviews';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 function ReviewCreate() {
-    // Récupération l'utilisateur depuis le contexte
+  // Récupération de l'utilisateur depuis le contexte
   const { user, isLoading, logout } = useUser();
   const [rating, setRating] = useState<number>(1);
   const [content, setContent] = useState<string>('');
@@ -21,11 +19,11 @@ function ReviewCreate() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     const review: ReviewsAdd = { rating, content, id_user: user.id };
-
-    console.log(review);
-
+  
+    console.log('Review to submit:', review);
+  
     try {
       const response = await apiClient('/reviews', {
         method: 'POST',
@@ -34,73 +32,72 @@ function ReviewCreate() {
         },
         body: JSON.stringify(review),
       });
-
+  
+      console.log('API Response:', response);
+  
       if (response.status === 200) {
         setSuccessMessage('Avis soumis avec succès !');
-        setRating(1);
-        setContent('');
+        setRating(1);  // Réinitialisation de la note
+        setContent(''); // Réinitialisation du contenu
       } else {
         setError("Une erreur est survenue lors de l'envoi de votre avis.");
       }
     } catch (error) {
+      console.error('Error during submission:', error);
       setError('Une erreur est survenue, veuillez réessayer.');
     }
   };
+  
 
   return (
     <main>
-      {/* <div className="flex justify-start items-center w-full mt-10 xl:mt-40 mb-10 ml-10">
-        <Link to="/user" className="pr-1">
-          <FontAwesomeIcon icon={faChevronLeft} className="pr-1 ml-1" /> Retour
-        </Link>
-      </div> */}
+      <div className="max-w-lg mx-auto p-4 border rounded-md shadow-md xl:mb-40">
+        <h2 className="text-2xl font-bold mb-4">Créer un avis</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          {error && <p className="text-red-500">{error}</p>}
+          {successMessage && <p className="text-green-500">{successMessage}</p>}
 
-    <div className="max-w-lg mx-auto p-4 border rounded-md shadow-md xl:mb-40">
-      <h2 className="text-2xl font-bold mb-4">Créer un avis</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        {error && <p className="text-greenroots_orange">{error}</p>}
-        {successMessage && <p className="text-greenroots_green">{successMessage}</p>}
-
-        <label htmlFor="rating" className="font-medium">Note (1 à 5)</label>
-        <input
-          type="number"
-          id="rating"
-          name="rating"
-          min={1}
-          max={5}
-          value={rating || ''}
-          onChange={(e) => {
-            const value = e.target.value;
-            if (value === '') {
-              setRating(0);
-            } else {
-              const numericValue = Number(value);
-              if (!Number.isNaN(numericValue) && numericValue >= 1 && numericValue <= 5) {
-                setRating(numericValue);
+          <label htmlFor="rating" className="font-medium">Note (1 à 5)</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            min={1}
+            max={5}
+            value={rating || ''}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === '') {
+                setRating(1); // Prévient la note à 1 si vide
+              } else {
+                const numericValue = Number(value);
+                if (!Number.isNaN(numericValue) && numericValue >= 1 && numericValue <= 5) {
+                  setRating(numericValue);
+                }
               }
-            }
-          }}
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+            }}
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
 
-        <label htmlFor="content" className="font-medium">Commentaire</label>
-        <textarea
-          id="content"
-          name="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          rows={4}
-        />
+          <label htmlFor="content" className="font-medium">Commentaire</label>
+          <textarea
+            id="content"
+            name="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            rows={4}
+            required
+          />
 
-        <button
-          type="submit"
-          className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-greenroots_orange"
-        >
-          Soumettre
-        </button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-greenroots_orange"
+          >
+            Soumettre
+          </button>
+        </form>
+      </div>
     </main>
   );
 }
