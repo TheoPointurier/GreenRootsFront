@@ -55,22 +55,22 @@ function HomePage() {
     <div className="flex flex-col items-center justify-center pt-[40px] xl:pt-[80px]">
 
 
-      <h1 className="text-h1 font-bold text-black">
+      <h1 className="text-h1 font-bold text-black xl:text-center xl:flex xl:flex-col xl:items-center">
         Tu souhaites faire un geste
         <span className="bg-greenroots_green text-white rounded-lg px-4">
           éco-responsable ?
         </span>
       </h1>
 
-      <section className="flex-1 flex flex-row justify-center">
+      <section className="flex-1 flex flex-row justify-center xl:gap-20 xl:pl-20 relative xl:py-8">
         <img
           rel="preload"
           src="/Images/japanese-maple-tree.webp"
           alt="Vue d'un érable japonais rouge avec des feuilles en automne"
-          className="w-full max-w-2xl object-contain self-end hidden xl:block"
+          className="w-full max-w-2xl object-contain self-end hidden xl:block "
           loading="lazy"
         />
-        <div className="relative mt-16">
+        <div className="relative mt-16 xl:ml-48">
           <img
             rel="preload"
             src="/Images/illustration_arbre.webp"
@@ -79,13 +79,13 @@ function HomePage() {
             loading="lazy"
           />
 
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:-translate-x-full xl:left-36  bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
             <h2 className="text-h2 font-bold text-black">
               Ce que nous te proposons
             </h2>
             <p className="text-gray-700 mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
-              bibendum massa.
+              Faire un geste en quelques clics pour lutter contre le changement climatique.
+             
             </p>
             <button
               onClick={() => navigate('/campaigns')}
@@ -152,11 +152,11 @@ function HomePage() {
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">
           Une question ?
         </h1>
-        <div className="grid gap-4">
+        <div className="grid gap-4 xl:grid-cols-2 gap-x-12">
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full xl:w-[1500px]"
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }

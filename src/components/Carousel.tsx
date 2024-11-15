@@ -5,6 +5,8 @@ function Carousel({ images }: { images: Array<{ src: string; alt: string }> }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
+  
+
   // Pour faire défiler automatiquement
   useEffect(() => {
     const interval = setInterval(() => {
