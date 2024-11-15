@@ -1,0 +1,8 @@
+# Indique aux moteurs de recherche de ne pas explorer certains dossiers
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /cart/
+
+# Autorise l'accès au reste du site
+Allow: /

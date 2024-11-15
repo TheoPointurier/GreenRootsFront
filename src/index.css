@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Gerbil Font */
+@font-face {
+  font-family: 'Gerbil';
+  src: url('/fonts/gerbil.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Add Gerbil font and default fonts */
+body {
+  font-family: 'Gerbil', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; 
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Réinitialiser le scroll lors des changements de viewport en développement */
+@media screen and (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
