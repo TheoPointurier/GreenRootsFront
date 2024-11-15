@@ -4,7 +4,10 @@ import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
 import OrderHistoryPage from '../components/OrderHistory';
 import ReviewCreate from '../components/ReviewCreate';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const User = () => {
@@ -48,7 +51,6 @@ const User = () => {
     fetchUserInfo();
   }, [user, setUser]);
 
-  // Fonction pour gérer l'ouverture/fermeture de chaque section de l'accordéon
   const handleAccordionToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -57,9 +59,9 @@ const User = () => {
   if (!user) return <p>Chargement des informations...</p>;
 
   return (
-    <div className="flex flex-col xl:flex-row items-start self-stretch">
+    <div className="flex flex-col xl:flex-row items-start w-full">
       {/* Accordéon à gauche */}
-      <aside className="flex flex-col max-w-md bg-white p-4 rounded-lg shadow-md gap-2">
+      <aside className="flex flex-col w-full md:w-80 bg-white p-4 rounded-lg shadow-md gap-2 mx-2">
         <Accordion
           title="Informations utilisateur"
           isOpen={openIndex === 0}
@@ -78,7 +80,7 @@ const User = () => {
       </aside>
 
       {/* Contenu affiché à droite */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-4 md:p-6 w-full">
         {openIndex === 0 && <UserInfo user={user} />}
         {openIndex === 1 && <OrderHistoryPage />}
         {openIndex === 2 && <ReviewCreate />}
@@ -89,8 +91,6 @@ const User = () => {
 
 export default User;
 
-
-// Fonction pour décoder l'ID utilisateur depuis le token
 const getUserIdFromToken = (token: string): number | null => {
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
@@ -101,7 +101,6 @@ const getUserIdFromToken = (token: string): number | null => {
   }
 };
 
-// Composant Accordéon
 interface AccordionProps {
   title: string;
   isOpen: boolean;
@@ -109,20 +108,23 @@ interface AccordionProps {
 }
 
 const Accordion = ({ title, isOpen, onToggle }: AccordionProps) => (
-  <div className="mb-4 w-96">
+  <div className="w-full">
     <button
       type="button"
-      className="flex1 flex justify-center items-center w-full text-left p-4 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-2xl"
+      className="flex justify-between items-center w-full text-left p-3 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-md"
       onClick={onToggle}
       aria-expanded={isOpen ? 'true' : 'false'}
     >
       {title}
-      <FontAwesomeIcon icon={faChevronRight} className="ml-5 text-black" />
+      <FontAwesomeIcon
+        icon={faChevronRight}
+        className="ml-5 text-black hidden xl:block"
+      />
+      <FontAwesomeIcon
+        icon={faChevronDown}
+        className="ml-5 text-black block xl:hidden"
+      />
     </button>
-    {isOpen && (
-      <div>
-        {/* Contenu à afficher lorsqu'il est ouvert */}
-      </div>
-    )}
+    {isOpen && <div>{/* Contenu à afficher lorsqu'il est ouvert */}</div>}
   </div>
 );
