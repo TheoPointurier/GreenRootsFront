@@ -119,7 +119,7 @@ const Accordion = ({ title, isOpen, onToggle }: AccordionProps) => (
       />
     </button>
     {isOpen && (
-      <div className="p-4 bg-gray-100 rounded-md">
+      <div className="p-4 rounded-md">
         {/* Contenu à afficher lorsqu'il est ouvert */}
       </div>
     )}
