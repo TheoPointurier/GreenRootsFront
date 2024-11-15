@@ -4,13 +4,16 @@ import apiClient from '../api/apiClient';
 import UserInfo from '../components/UserInfo';
 import OrderHistoryPage from '../components/OrderHistory';
 import ReviewCreate from '../components/ReviewCreate';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useSearchParams } from 'react-router-dom';
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const User = () => {
   const { user, setUser } = useUser();
   const [error, setError] = useState<string | null>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Initialisation pour ouvrir par défaut "Informations utilisateur"
+  const [searchParams] = useSearchParams();
+  const defaultTab = searchParams.get('tab') === 'orders' ? 1 : 0;
+  const [openIndex, setOpenIndex] = useState<number | null>(defaultTab);
 
   useEffect(() => {
     if (user) return;
@@ -35,20 +38,14 @@ const User = () => {
         });
         setUser(response.user);
       } catch (error) {
-        console.error(
-          'Erreur lors de la récupération des informations utilisateur:',
-          error,
-        );
-        setError(
-          'Impossible de récupérer vos informations. Veuillez vous reconnecter.',
-        );
+        console.error('Erreur lors de la récupération des informations utilisateur:', error);
+        setError('Impossible de récupérer vos informations. Veuillez vous reconnecter.');
       }
     };
 
     fetchUserInfo();
   }, [user, setUser]);
 
-  // Fonction pour gérer l'ouverture/fermeture de chaque section de l'accordéon
   const handleAccordionToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -57,9 +54,9 @@ const User = () => {
   if (!user) return <p>Chargement des informations...</p>;
 
   return (
-    <div className="flex my-10">
+    <div className="flex flex-col xl:flex-row items-start w-full">
       {/* Accordéon à gauche */}
-      <aside className="flex flex-col max-w-md bg-white p-4 rounded-lg shadow-md ml-7 mt-10">
+      <aside className="flex flex-col w-full md:w-80 bg-white p-4 rounded-lg shadow-md gap-2 mx-2">
         <Accordion
           title="Informations utilisateur"
           isOpen={openIndex === 0}
@@ -78,7 +75,7 @@ const User = () => {
       </aside>
 
       {/* Contenu affiché à droite */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-4 md:p-6 w-full">
         {openIndex === 0 && <UserInfo user={user} />}
         {openIndex === 1 && <OrderHistoryPage />}
         {openIndex === 2 && <ReviewCreate />}
@@ -88,7 +85,6 @@ const User = () => {
 };
 
 export default User;
-
 
 // Fonction pour décoder l'ID utilisateur depuis le token
 const getUserIdFromToken = (token: string): number | null => {
@@ -101,7 +97,7 @@ const getUserIdFromToken = (token: string): number | null => {
   }
 };
 
-// Composant Accordéon
+// Composant Accordéon avec styles Tailwind
 interface AccordionProps {
   title: string;
   isOpen: boolean;
@@ -109,18 +105,21 @@ interface AccordionProps {
 }
 
 const Accordion = ({ title, isOpen, onToggle }: AccordionProps) => (
-  <div className="mb-4 w-96">
+  <div className="w-full">
     <button
       type="button"
-      className="flex1 flex justify-center items-center w-full text-left p-4 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-2xl"
+      className="flex justify-between items-center w-full text-left p-3 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-md"
       onClick={onToggle}
       aria-expanded={isOpen ? 'true' : 'false'}
     >
       {title}
-      <FontAwesomeIcon icon={faChevronRight} className="ml-5 text-black" />
+      <FontAwesomeIcon
+        icon={isOpen ? faChevronDown : faChevronRight}
+        className="ml-5 text-black"
+      />
     </button>
     {isOpen && (
-      <div>
+      <div className="p-4 bg-gray-100 rounded-md">
         {/* Contenu à afficher lorsqu'il est ouvert */}
       </div>
     )}
