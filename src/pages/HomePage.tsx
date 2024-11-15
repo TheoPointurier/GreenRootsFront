@@ -56,7 +56,7 @@ function HomePage() {
           rel="preload"
           src="/Images/japanese-maple-tree.webp"
           alt="Vue d'un érable japonais rouge avec des feuilles en automne"
-          className="w-full max-w-2xl object-contain self-end hidden xl:block "
+          className="w-full max-w-3xl object-contain self-end hidden xl:block "
           loading="lazy"
         />
         <div className="relative mt-16 xl:ml-48">
@@ -64,7 +64,7 @@ function HomePage() {
             rel="preload"
             src="/Images/illustration_arbre.webp"
             alt="Illustration d'un arbre"
-            className="w-full max-w-md"
+            className="w-full "
             loading="lazy"
           />
 
@@ -73,9 +73,10 @@ function HomePage() {
               Ce que nous te proposons
             </h2>
             <p className="text-gray-700 mt-4">
-              Faire un geste en quelques clics pour lutter contre le changement climatique.
-             
-            </p>
+  Faire un geste en quelques clics pour lutter contre le changement climatique.</p>
+  <p className="text-gray-700 mt-4"> En rejoignant notre initiative, tu contribues à des projets concrets de reforestation et à la préservation de la biodiversité. 
+</p>
+
             <button
               onClick={() => navigate('/campaigns')}
               className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
@@ -123,9 +124,14 @@ function HomePage() {
         <div
           className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px] w-[300px] xl:w-[500px] xl:ml-[-100px] xl:py-20" // Taille et marge ajustée pour XL
         >
-          <p className="text-gray-700 mb-4 xl:pb-10">
-            Explication graph suivi, CO2, etc.
-          </p>
+         <p className="text-gray-700 mb-4 xl:pb-10">
+  Tu vas pouvoir suivre la croissance de l'arbre que tu as contribué à planter, son impact en CO₂ absorbé,
+  et les informations détaillées sur la campagne associée.</p>
+
+  <p className="text-gray-700 mb-4 xl:pb-10 font-bold">
+  Prends enfin conscience de l'impact de ton geste pour la planète !
+ 
+</p>
           <button
             onClick={() => navigate('/campaigns')}
             className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"

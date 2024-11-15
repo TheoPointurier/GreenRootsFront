@@ -111,20 +111,7 @@ useEffect(() => {
         ))}
       </div>
 
-      {/* Indicateurs de navigation */}
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {images.map((image, index) => (
-          <button
-            key={image.alt}
-            className={`w-5 h-5 rounded-full ${
-              index === currentIndex - imagesPerView ? 'bg-greenroots_orange' : 'bg-gray-300'
-            }`}
-            onClick={() => setCurrentIndex(index + imagesPerView)}
-            aria-label={`Bouton pour aller à l'image ${index + 1}`}
-            type="button"
-          />
-        ))}
-      </div>
+    
       
       {/* Flèche gauche (précédente) */}
       <button

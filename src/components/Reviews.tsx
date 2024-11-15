@@ -45,7 +45,7 @@ function Reviews() {
   const randomReviews = shuffleArray(reviews).slice(0, 3);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:ml-[7rem] md:mr-[7rem]">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 ">
       {/* Section des reviews */}
       <section
         className="flex flex-wrap gap-8 justify-center justify-self-auto"
@@ -82,8 +82,7 @@ function Reviews() {
           Gardes un visuel sur l'impact de ton geste
         </h2>
         <p className="mb-4">
-          Explication graph suivi, co2 etc... Lorem ipsum has been the
-          industry's standard text.
+         Geste simple, mais impact important ! Gardes un oeil sur l'impact de ta contribution.
         </p>
         <img
           src="/Images/graphic_co2.webp"
