@@ -3,54 +3,106 @@ import { useNavigate } from 'react-router-dom';
 
 function Carousel({ images }: { images: Array<{ src: string; alt: string }> }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesPerView, setImagesPerView] = useState(window.innerWidth >= 1280 ? 3 : 1);
   const navigate = useNavigate();
 
-  
 
-  // Pour faire défiler automatiquement
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Changer toutes les 5 secondes
+  // Étendre les images pour un effet de boucle
+  const extendedImages = [
+    ...images.slice(-imagesPerView), // Ajouter les dernières images au début
+    ...images,
+    ...images.slice(0, imagesPerView), // Ajouter les premières images à la fin
+  ];
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+  const visibleWidthPercentage = 100 / imagesPerView;
 
-  // Pour changer manuellement d'image
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+
+// Met à jour `imagesPerView` en cas de redimensionnement
+useEffect(() => {
+  const handleResize = () => {
+    setImagesPerView(window.innerWidth >= 1280 ? 3 : 1);
   };
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
 
-  // Pour aller à la slide précédente
-  const goToPrevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
-    );
-  };
+// Pour faire défiler automatiquement
+useEffect(() => {
+  const interval = setInterval(() => {
+    goToNextSlide();
+  }, 5000); // Changer toutes les 5 secondes
 
-  // Pour aller à la slide suivante
-  const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  return () => clearInterval(interval);
+}, []);
+
+// Gestion du défilement vers la gauche
+const goToPrevSlide = () => {
+  if (currentIndex === 0) {
+    // Réinitialiser à la position réelle
+    setCurrentIndex(extendedImages.length - 2);
+  } else {
+    setCurrentIndex((prevIndex) => prevIndex - 1);
+  }
+};
+
+// Gestion du défilement vers la droite
+const goToNextSlide = () => {
+  if (currentIndex === extendedImages.length - 1) {
+    // Réinitialiser à la position réelle
+    setCurrentIndex(1);
+  } else {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  }
+};
+
+ // Réinitialiser la position pour la boucle infinie
+ useEffect(() => {
+  if (currentIndex >= extendedImages.length - imagesPerView) {
+    setTimeout(() => setCurrentIndex(imagesPerView), 0); // Réinitialiser après la dernière image
+  }
+  if (currentIndex < imagesPerView) {
+    setTimeout(() => setCurrentIndex(extendedImages.length - imagesPerView * 2), 0); // Réinitialiser avant la première image
+  }
+}, [currentIndex, extendedImages.length, imagesPerView]);
+
+
+
+// Changer instantanément la position si en bordure (boucle infinie)
+useEffect(() => {
+  if (currentIndex === 0) {
+    setTimeout(() => setCurrentIndex(extendedImages.length - 2), 0);
+  } else if (currentIndex === extendedImages.length - 1) {
+    setTimeout(() => setCurrentIndex(1), 0);
+  }
+}, [currentIndex, extendedImages.length]);
 
   return (
-    <div className="relative w-full lg:max-w-xl xl:max-w-xl overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* Images */}
       <div
-        className="flex transition-transform duration-500"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{
+          transform: `translateX(-${(currentIndex * visibleWidthPercentage)}%)`,
+          width: "100%",
+        }}
       >
-        {images.map((image) => (
-          <div key={image.alt} className="min-w-full relative">
+        {extendedImages.map((image) => (
+          <div key={image.alt}
+         className="flex-shrink-0 relative"
+          style={{
+            width: `${visibleWidthPercentage}%`,
+          }}>
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover rounded-lg"
+              className=" w-full object-contain h-64
+              "  // Taille uniforme des images
             />
-            <button
+             {/* Bouton accessible pour chaque image */}
+             <button
               onClick={() => navigate('/campaigns')}
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-greenroots_orange text-white py-2 mb-4 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
-              aria-label="Bouton pour accéder à la liste des campagnes"
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
+              aria-label={`Accéder à la campagne pour ${image.alt}`}
               type="button"
             >
               Accéder
@@ -64,9 +116,11 @@ function Carousel({ images }: { images: Array<{ src: string; alt: string }> }) {
         {images.map((image, index) => (
           <button
             key={image.alt}
-            className={`w-5 h-5 rounded-full ${index === currentIndex ? 'bg-greenroots_orange' : 'bg-gray-300'}`}
-            onClick={() => goToSlide(index)}
-            aria-label="Boutons carroussel pour faire défiler les photos de campagnes"
+            className={`w-5 h-5 rounded-full ${
+              index === currentIndex - imagesPerView ? 'bg-greenroots_orange' : 'bg-gray-300'
+            }`}
+            onClick={() => setCurrentIndex(index + imagesPerView)}
+            aria-label={`Bouton pour aller à l'image ${index + 1}`}
             type="button"
           />
         ))}

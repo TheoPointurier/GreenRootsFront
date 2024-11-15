@@ -7,21 +7,10 @@ function HomePage() {
   const navigate = useNavigate();
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
 
-  // Images définies en dur dans HomePage
-  const campaignImages = [
-    {
-      src: '/Images/planting-in-forest.webp',
-      alt: 'Planting in Forest',
-    },
-    {
-      src: '/Images/tea-field-plantation.webp',
-      alt: 'Tea Field Plantation',
-    },
-    {
-      src: '/Images/view-of-flower.webp',
-      alt: 'View of Flower',
-    },
-  ];
+  const campaignImages = Array.from({ length: 7 }, (_, i) => ({
+    src: `/Campaign_Images/${i + 1}.webp`,
+    alt: `Campaign Image ${i + 1}`,
+  }));
 
   // Questions/Réponses pour la FAQ
   const faqs = [
