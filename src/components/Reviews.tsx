@@ -5,11 +5,8 @@ import { fetchReviews } from '../api/reviews';
 import type { ReviewsType } from '../@types/reviews';
 import './Reviews.css';
 
-interface ReviewsProps {
-  navigate: (path: string) => void;
-}
 
-function Reviews({navigate}: ReviewsProps) {
+function Reviews() {
   // Déclare les états pour les avis, le chargement et les erreurs
   const [reviews, setReviews] = useState<ReviewsType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -49,10 +46,10 @@ function Reviews({navigate}: ReviewsProps) {
   const randomReviews = shuffleArray(reviews).slice(0, 3);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 ">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mt-16 ">
       {/* Section des reviews */}
       <section
-        className="flex flex-wrap gap-8 justify-center justify-self-auto"
+        className="flex flex-wrap gap-8 justify-center justify-self-auto xl:mr-8"
         style={{ minWidth: '300px' }}
       >
         {randomReviews.map((review) => (
@@ -80,29 +77,7 @@ function Reviews({navigate}: ReviewsProps) {
           </div>
         ))}
       </section>
-      {/* Section visuel impact */}
-      <section className="flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-md w-full sm:w-[400px] md:w-[400px] lg:w-[500px] xl:w-1/3 2xl:w-[700px]">
-        <h2 className="text-2xl font-bold mb-4">
-          Garde un visuel sur l'impact de ton geste
-        </h2>
-        <p className='text-gray-700 pb-2'>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
-        <ul className='text-gray-700 text-base mb-4 py-2'>
-          <li>Arbres achetés: 9</li>
-          <li>Co2 aborbé jusqu'à aujourdh'ui: 720kg * </li>
-          <li>Campagnes auquelles j'ai contribué: Restauration de la Savane Africaine, Espaces Verts à New York  </li>
-        </ul>
-        <span className='text-sm text-gray-700'>* Pour une contribution de 9 arbres Ecalyptus sur une durée de deux années</span>
-
-
-        <button
-        onClick={() => navigate('/campaigns')}
-          type="button"
-          className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
-          aria-label="Accéder à la page des campagnes pour contribuer" 
-        >
-          Je contribue
-        </button>
-      </section>
+    
     </div>
   );
 }

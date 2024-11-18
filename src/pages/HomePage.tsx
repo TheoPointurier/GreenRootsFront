@@ -95,62 +95,48 @@ function HomePage() {
 
   </div>
 </section>
-
-
       {/* Grille des Avis : Grille Adaptative */}
-      <div
-        className="grid gap-8 mt-16"
-        style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
-      >
-        <Reviews navigate= {navigate}/>
+      <div>
+        <Reviews />
       </div>
 
       {/* Section Nos Campagnes */}
       <div className="mt-20">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+        <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-greenroots_green mb-8 ">
           Nos campagnes
         </h1>
         <Carousel images={campaignImages} />
       </div>
 
-      <h1 className="text-h1 font-bold text-black mt-20">
-        Garde un visuel sur l'impact de{' '}
-        <span className="bg-greenroots_green text-white rounded-lg px-4">
-          ton geste
-        </span>
-      </h1>
-
-      <div className="flex items-center justify-center mt-16 relative">
-        <div className="relative z-10">
+      <section className="flex flex-row p-6 mt-20  ">
+      <div>
           <img
             src="/Images/weeping-willow-tree.webp"
             alt="Arbre pleureur"
-            className="w-[300px] xl:w-[700px] object-cover" // Taille par défaut pour les petits écrans et agrandie pour les écrans XL
             loading="lazy"
           />
         </div>
-        <div
-          className="relative z-0 bg-white p-6 rounded-lg shadow-md ml-[-40px] w-[300px] xl:w-[500px] xl:ml-[-100px] xl:py-20" // Taille et marge ajustée pour XL
+        <div className='bg-white/80 flex flex-col p-8 rounded-xl shadow-md'>
+        <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black pb-4 self-start">
+          Garde un visuel sur l'impact de <span className="bg-greenroots_green text-white rounded-lg px-4 py-1">ton geste</span>
+        </h2>
+        <p className='text-sm sm:text-base xl:text-lg text-gray-700 '>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
+        <ul className='text-sm sm:text-base xl:text-lg text-gray-700 py-4'>
+          <li>Arbres achetés: 9</li>
+          <li className='my-1'>Co2 aborbé jusqu'à aujourdh'ui: 720kg * </li>
+          <li>Campagnes auquelles j'ai contribué: Restauration de la Savane Africaine, Espaces Verts à New York  </li>
+        </ul>
+        <span className='text-sm text-gray-700'>* Pour une contribution de 9 arbres Eucalyptus sur une durée de deux années</span>
+        <button
+        onClick={() => navigate('/campaigns')}
+          type="button"
+          className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300 self-start"
+          aria-label="Accéder à la page des campagnes pour contribuer" 
         >
-         <p className="text-gray-700 mb-4 xl:pb-10">
-  Tu vas pouvoir suivre la croissance de l'arbre que tu as contribué à planter, son impact en CO₂ absorbé,
-  et les informations détaillées sur la campagne associée.</p>
-
-  <p className="text-gray-700 mb-4 xl:pb-10 font-bold">
-  Prends enfin conscience de l'impact de ton geste pour la planète !
- 
-</p>
-          <button
-            onClick={() => navigate('/campaigns')}
-            className="bg-greenroots_orange text-white py-2 px-4 rounded-lg border border-white shadow-md hover:bg-greenroots_green transition-colors duration-300"
-            aria-label="Afficher la liste des campagnes pour contribuer"
-            type="button"
-          >
-            Je contribue
-          </button>
+          Je contribue
+        </button>
         </div>
-      </div>
-
+      </section>
       <div className="flex flex-col items-center justify-center mt-20 pb-24 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
         <h1 className="text-h1 font-bold text-greenroots_green mb-8">
           Une question ?
