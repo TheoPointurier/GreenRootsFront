@@ -44,50 +44,51 @@ function HomePage() {
     <div className="flex flex-col items-center justify-center pt-[40px] xl:pt-[80px]">
 
 
-      <h1 className="text-h1 font-bold text-black xl:text-center xl:flex xl:flex-col xl:items-center">
+      <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black xl:text-center xl:flex xl:flex-col xl:items-center">
         Tu souhaites faire un geste
-        <span className="bg-greenroots_green text-white rounded-lg px-4">
+        <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2">
           éco-responsable ?
         </span>
       </h1>
 
-      <section className="flex-1 flex flex-row justify-center xl:gap-20 xl:pl-20 relative xl:py-8">
-        <img
-          rel="preload"
-          src="/Images/japanese-maple-tree.webp"
-          alt="Vue d'un érable japonais rouge avec des feuilles en automne"
-          className="w-full max-w-3xl object-contain self-end hidden xl:block "
-          loading="lazy"
-        />
-        <div className="relative mt-16 xl:ml-48">
-          <img
-            rel="preload"
-            src="/Images/illustration_arbre.webp"
-            alt="Illustration d'un arbre"
-            className="w-full "
-            loading="lazy"
-          />
+      <section className="relative flex flex-col xl:flex-row xl:gap-20 xl:pl-20 items-center justify-center xl:py-8">
+  {/* Image visible uniquement sur desktop */}
+  <img
+    src="/Images/japanese-maple-tree.webp"
+    alt="Vue d'un érable japonais rouge avec des feuilles en automne"
+    className="hidden xl:block w-1/2 object-contain"
+    loading="lazy"
+  />
 
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:-translate-x-full xl:left-36  bg-white/70 p-6 rounded-lg shadow-md backdrop-blur-sm max-w-xs w-full">
-            <h2 className="text-h2 font-bold text-black">
-              Ce que nous te proposons
-            </h2>
-            <p className="text-gray-700 mt-4">
-  Faire un geste en quelques clics pour lutter contre le changement climatique.</p>
-  <p className="text-gray-700 mt-4"> En rejoignant notre initiative, tu contribues à des projets concrets de reforestation et à la préservation de la biodiversité. 
-</p>
+  {/* Conteneur principal */}
+  <div
+  className="relative mt-8 xl:ml-12 flex flex-col items-center justify-center w-full xl:w-2/3 bg-illustration-arbre bg-contain bg-center bg-no-repeat "
+>
 
-            <button
-              onClick={() => navigate('/campaigns')}
-              className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
-              aria-label="Accéder à la page des campagnes pour contribuer"
-              type="button"
-            >
-              Je contribue
-            </button>
-          </div>
-        </div>
-      </section>
+    {/* Texte et contenu */}
+    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full text-center bg-white/70 m-10 p-4 sm:p-6 xl:p-8">
+  <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black">
+    Ce que nous te proposons
+  </h2>
+  <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
+    Faire un geste en quelques clics pour lutter contre le changement climatique.
+  </p>
+  <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
+    En rejoignant notre initiative, tu contribues à des projets concrets de reforestation et à la préservation de la biodiversité.
+  </p>
+  <button
+    onClick={() => navigate('/campaigns')}
+    className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
+    aria-label="Accéder à la page des campagnes pour contribuer"
+    type="button"
+  >
+    Je contribue
+  </button>
+</div>
+
+  </div>
+</section>
+
 
       {/* Grille des Avis : Grille Adaptative */}
       <div
