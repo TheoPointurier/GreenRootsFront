@@ -2,11 +2,10 @@ import { useState } from 'react';
 import type { ReviewsAdd } from '../@types/reviews';
 import { useUser } from '../context/UserContext';
 import apiClient from '../api/apiClient';
-import { Link } from 'react-router-dom';
 
 function ReviewCreate() {
   // Récupération de l'utilisateur depuis le contexte
-  const { user, isLoading, logout } = useUser();
+  const { user } = useUser();
   const [rating, setRating] = useState<number>(1);
   const [content, setContent] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
