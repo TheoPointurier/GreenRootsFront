@@ -79,7 +79,7 @@ function Reviews() {
       {/* Section visuel impact */}
       <section className="flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-md w-full sm:w-[400px] md:w-[400px] lg:w-[500px] xl:w-1/3 2xl:w-[700px]">
         <h2 className="text-2xl font-bold mb-4">
-          Gardes un visuel sur l'impact de ton geste
+          Garde un visuel sur l'impact de ton geste
         </h2>
         <p className="mb-4">
          Geste simple, mais impact important ! Gardes un oeil sur l'impact de ta contribution.

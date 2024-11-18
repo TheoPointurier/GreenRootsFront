@@ -41,32 +41,39 @@ function HomePage() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center pt-[40px] xl:pt-[80px]">
+    <div className="flex flex-col items-center justify-center pt-10 xl:mt-8">
 
 
-      <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black xl:text-center xl:flex xl:flex-col xl:items-center">
-        Tu souhaites faire un geste
-        <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2">
+      <section className="relative flex flex-col xl:py-8 xl:w-full xl:pt-14 xl:grid xl:grid-cols-2 xl:gap-8">
+      <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black  xl:flex xl:flex-col xl:items-center xl:col-span-2">
+        Tu souhaite faire un geste
+        <span className="bg-greenroots_green text-white rounded-lg px-4 pt-2 ml-2 mt-2">
           éco-responsable ?
         </span>
       </h1>
 
-      <section className="relative flex flex-col xl:flex-row xl:gap-20 xl:pl-20 items-center justify-center xl:py-8">
   {/* Image visible uniquement sur desktop */}
+
+
   <img
     src="/Images/japanese-maple-tree.webp"
     alt="Vue d'un érable japonais rouge avec des feuilles en automne"
-    className="hidden xl:block w-1/2 object-contain"
+    className="hidden xl:block xl:col-span-1 self-center justify-self-center"
     loading="lazy"
   />
 
+
   {/* Conteneur principal */}
   <div
-  className="relative mt-8 xl:ml-12 flex flex-col items-center justify-center w-full xl:w-2/3 bg-illustration-arbre bg-contain bg-center bg-no-repeat "
+  className="relative mt-8 xl:ml-12 flex flex-col items-center justify-center w-full  bg-illustration-arbre bg-contain bg-center bg-no-repeat  xl:col-span-1 "
 >
 
+<div
+    className="absolute inset-0 bg-greenroots_sand/30 z-10"
+    aria-hidden="true"
+  />
     {/* Texte et contenu */}
-    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full text-center bg-white/70 m-10 p-4 sm:p-6 xl:p-8">
+    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full  bg-white/80 m-10 p-4 sm:p-6 xl:p-8 xl:right-[35%] ">
   <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black">
     Ce que nous te proposons
   </h2>
@@ -107,7 +114,7 @@ function HomePage() {
       </div>
 
       <h1 className="text-h1 font-bold text-black mt-20">
-        Gardes un visuel sur l'impact de{' '}
+        Garde un visuel sur l'impact de{' '}
         <span className="bg-greenroots_green text-white rounded-lg px-4">
           ton geste
         </span>
