@@ -137,15 +137,19 @@ function HomePage() {
         </button>
         </div>
       </section>
-      <div className="flex flex-col items-center justify-center mt-20 pb-24 md:ml-[2rem] md:mr-[2rem] xl:ml-[7rem] xl:mr-[7rem]">
-        <h1 className="text-h1 font-bold text-greenroots_green mb-8">
+
+      {/* Section FAQ */}
+
+      <section className="grid  grid-cols-2 w-full">
+      
+        <h1 className="text-h1 font-bold text-greenroots_green mb-8 col-span-2">
           Une question ?
         </h1>
-        <div className="grid gap-4 xl:grid-cols-2 gap-x-12">
+        <div className=" grid col-span-2 grid-cols-2 gap-6 mb-10">
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left w-full"
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left"
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }
@@ -183,7 +187,9 @@ function HomePage() {
             </button>
           ))}
         </div>
-      </div>
+      
+      </section>
+      
     </div>
   );
 }
