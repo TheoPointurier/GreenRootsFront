@@ -145,7 +145,7 @@ function HomePage() {
         <h1 className="text-h1 font-bold text-greenroots_green mb-8 col-span-2">
           Une question ?
         </h1>
-        <div className=" grid col-span-2 grid-cols-2 gap-6 mb-10">
+        <div className=" grid col-span-2 xl:grid-cols-2 gap-6 mb-10">
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
