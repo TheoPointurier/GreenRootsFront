@@ -102,7 +102,7 @@ function HomePage() {
         className="grid gap-8 mt-16"
         style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}
       >
-        <Reviews />
+        <Reviews navigate= {navigate}/>
       </div>
 
       {/* Section Nos Campagnes */}

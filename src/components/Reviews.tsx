@@ -5,7 +5,11 @@ import { fetchReviews } from '../api/reviews';
 import type { ReviewsType } from '../@types/reviews';
 import './Reviews.css';
 
-function Reviews() {
+interface ReviewsProps {
+  navigate: (path: string) => void;
+}
+
+function Reviews({navigate}: ReviewsProps) {
   // Déclare les états pour les avis, le chargement et les erreurs
   const [reviews, setReviews] = useState<ReviewsType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -81,19 +85,20 @@ function Reviews() {
         <h2 className="text-2xl font-bold mb-4">
           Garde un visuel sur l'impact de ton geste
         </h2>
-        <p className="mb-4">
-         Geste simple, mais impact important ! Gardes un oeil sur l'impact de ta contribution.
-        </p>
-        <img
-          src="/Images/graphic_co2.webp"
-          alt="Graphique de l'impact - Suivi CO2"
-          className="max-w-sm w-full min-w-52 min-h-52 object-cover mb-5"
-          loading="lazy"
-        />
+        <p className='text-gray-700 pb-2'>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
+        <ul className='text-gray-700 text-base mb-4 py-2'>
+          <li>Arbres achetés: 9</li>
+          <li>Co2 aborbé jusqu'à aujourdh'ui: 720kg * </li>
+          <li>Campagnes auquelles j'ai contribué: Restauration de la Savane Africaine, Espaces Verts à New York  </li>
+        </ul>
+        <span className='text-sm text-gray-700'>* Pour une contribution de 9 arbres Ecalyptus sur une durée de deux années</span>
+
+
         <button
+        onClick={() => navigate('/campaigns')}
           type="button"
-          className="bg-greenroots_orange text-white px-4 py-2 rounded-full hover:bg-orange-600"
-          aria-label="Contribuer à l'impact de ton geste" 
+          className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
+          aria-label="Accéder à la page des campagnes pour contribuer" 
         >
           Je contribue
         </button>
