@@ -23,6 +23,9 @@ export default {
         h2: ['1.875rem', '2.25rem'],
         h3: ['1.5rem', '2rem'],
       },
+      backgroundImage: {
+        'illustration-arbre': "url('/Images/illustration_arbre.webp')",
+      },
     },
   },
   plugins: [],

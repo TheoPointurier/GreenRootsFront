@@ -5,6 +5,7 @@ import { fetchReviews } from '../api/reviews';
 import type { ReviewsType } from '../@types/reviews';
 import './Reviews.css';
 
+
 function Reviews() {
   // Déclare les états pour les avis, le chargement et les erreurs
   const [reviews, setReviews] = useState<ReviewsType[]>([]);
@@ -45,10 +46,10 @@ function Reviews() {
   const randomReviews = shuffleArray(reviews).slice(0, 3);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 md:ml-[7rem] md:mr-[7rem]">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mt-16 ">
       {/* Section des reviews */}
       <section
-        className="flex flex-wrap gap-8 justify-center justify-self-auto"
+        className="flex flex-wrap gap-8 justify-center justify-self-auto xl:mr-8"
         style={{ minWidth: '300px' }}
       >
         {randomReviews.map((review) => (
@@ -76,29 +77,7 @@ function Reviews() {
           </div>
         ))}
       </section>
-      {/* Section visuel impact */}
-      <section className="flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-md w-full sm:w-[400px] md:w-[400px] lg:w-[500px] xl:w-1/3 2xl:w-[700px]">
-        <h2 className="text-2xl font-bold mb-4">
-          Gardes un visuel sur l'impact de ton geste
-        </h2>
-        <p className="mb-4">
-          Explication graph suivi, co2 etc... Lorem ipsum has been the
-          industry's standard text.
-        </p>
-        <img
-          src="/Images/graphic_co2.webp"
-          alt="Graphique de l'impact - Suivi CO2"
-          className="max-w-sm w-full min-w-52 min-h-52 object-cover mb-5"
-          loading="lazy"
-        />
-        <button
-          type="button"
-          className="bg-greenroots_orange text-white px-4 py-2 rounded-full hover:bg-orange-600"
-          aria-label="Contribuer à l'impact de ton geste" 
-        >
-          Je contribue
-        </button>
-      </section>
+    
     </div>
   );
 }
