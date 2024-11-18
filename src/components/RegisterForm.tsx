@@ -46,10 +46,9 @@ export default function RegisterForm() {
   };
 
   const validatePassword = (password: string) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]{12,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\p{L}\p{N}\p{P}\p{S}])[\p{L}\p{N}\p{P}\p{S}]{12,}$/u;
     return regex.test(password);
-  };
+  };    
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();

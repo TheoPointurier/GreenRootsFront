@@ -12,7 +12,7 @@ function ContactForm () {
         <input type="email" name="user_email" id="user_email" className="mt-1 mb-4 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:greenroots_green focus:ring-greenroots_green"/>
         <label htmlFor="message">Message</label>
         <textarea name="message" id="message" className="mt-1 mb-2 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:greenroots_green focus:ring-greenroots_green"/>
-        <input type="submit" value="Send" className="mt-5 w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full"/>
+        <input type="submit" value="Envoyer" className="mt-5 w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full hover:bg-greenroots_orange transition-colors duration-300"/>
       </form>
     </section>
     </main>
