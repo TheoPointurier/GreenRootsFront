@@ -1,52 +1,51 @@
 import { useState } from 'react';
+import { createReview } from '../api/reviews'; // Import de la fonction
 import type { ReviewsAdd } from '../@types/reviews';
 import { useUser } from '../context/UserContext';
-import apiClient from '../api/apiClient';
 
 function ReviewCreate() {
-  // Récupération de l'utilisateur depuis le contexte
   const { user } = useUser();
-  const [rating, setRating] = useState<number>(1);
+  const [rating, setRating] = useState<number | string>(1); // Permet de gérer la note comme un nombre ou une chaîne vide.
   const [content, setContent] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   if (!user) {
     setError('Vous devez être connecté pour soumettre un avis.');
+    console.log('Utilisateur non connecté.');
     return <p>Veuillez vous connecter pour soumettre un avis.</p>;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  
-    const review: ReviewsAdd = { rating, content, id_user: user.id };
-  
-    console.log('Review to submit:', review);
-  
+    e.preventDefault(); // Empêche le rechargement de la page lors de la soumission.
+
+    // Si la note est vide ou invalide, afficher un message d'erreur
+    if (rating === '' || typeof rating === 'string' || rating < 1 || rating > 5) {
+      setError('Veuillez entrer une note valide entre 1 et 5.');
+      return;
+    }
+
+    const review: ReviewsAdd = { rating, content }; // Crée un objet structuré pour l'avis.
+    console.log('Review to submit:', review); // Log pour vérifier l'avis avant l'envoi.
+
     try {
-      const response = await apiClient('/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(review),
-      });
-  
+      const response = await createReview(review); // Appel à l'API pour soumettre l'avis.
       console.log('API Response:', response);
-  
-      if (response.status === 200) {
-        setSuccessMessage('Avis soumis avec succès !');
-        setRating(1);  // Réinitialisation de la note
-        setContent(''); // Réinitialisation du contenu
+
+      // Si tout se passe bien, message de succès et réinitialisation des champs.
+      setSuccessMessage('Avis soumis avec succès !');
+      setRating(1); // Réinitialise la note.
+      setContent(''); // Réinitialise le contenu.
+    } catch (error: unknown) {
+      // Gère les erreurs API, par exemple, si l'utilisateur n'est pas authentifié.
+      if (error instanceof Error && error.message.includes('401')) {
+        setError('Vous devez être connecté pour soumettre un avis.');
       } else {
-        setError("Une erreur est survenue lors de l'envoi de votre avis.");
+        setError('Une erreur est survenue, veuillez réessayer.');
       }
-    } catch (error) {
-      console.error('Error during submission:', error);
-      setError('Une erreur est survenue, veuillez réessayer.');
+      console.error('Erreur lors de la soumission :', error);
     }
   };
-  
 
   return (
     <main>
@@ -63,15 +62,19 @@ function ReviewCreate() {
             name="rating"
             min={1}
             max={5}
-            value={rating || ''}
+            value={rating || ''} // Permet de laisser le champ vide si nécessaire
             onChange={(e) => {
               const value = e.target.value;
+              // Si l'utilisateur efface la note, on permet de la laisser vide
               if (value === '') {
-                setRating(1); // Prévient la note à 1 si vide
+                setRating('');
               } else {
                 const numericValue = Number(value);
                 if (!Number.isNaN(numericValue) && numericValue >= 1 && numericValue <= 5) {
-                  setRating(numericValue);
+                  setRating(numericValue); // Met à jour si la valeur est valide
+                  console.log('Rating mis à jour :', numericValue);
+                } else {
+                  setError('Veuillez entrer une note valide entre 1 et 5.');
                 }
               }
             }}
@@ -83,7 +86,10 @@ function ReviewCreate() {
             id="content"
             name="content"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => {
+              setContent(e.target.value); // Met à jour le contenu de l'avis.
+              console.log('Content mis à jour :', e.target.value);
+            }}
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={4}
             required

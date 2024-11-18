@@ -10,5 +10,4 @@ export type ReviewsType = {
 export type ReviewsAdd = {
   content: string;
   rating: number;
-  id_user: number;
 };
