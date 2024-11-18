@@ -84,16 +84,16 @@ function TreeDetail() {
             : 'Aucun lieu de plantation pour le moment'}
         </p>
       </div>
-      <div className="flex flex-row justify-evenly mt-2 p-1 items-center">
+      <div className="flex flex-row justify-evenly mt-2">
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
           <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">
             {tree.species?.species_name || 'Espèce non disponible'}
-          </span>
-          {' '}dans une campagne
+          </span>{' '}
+          dans une campagne
         </h2>
       </div>
       {/* Affiche une instance de TreesList par campagne */}
-      <div className="flex flex-wrap justify-center gap-4 mb-4">
+      <div className="flex flex-wrap justify-evenly gap-4">
         {treeCampaigns.map((campaign) => (
           <TreesList
             key={`${tree.id}-${campaign.id}`}

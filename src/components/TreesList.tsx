@@ -29,7 +29,7 @@ function TreesList({ tree }: TreeProps) {
   };
 
   return (
-    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-auto max-w-xs h-auto">
+    <article className="flex flex-col rounded-t-[20px] rounded-b-[10px] border border-grey shadow-lg w-full max-w-xs h-full">
       <div className="flex justify-center w-full">
         <Link to={`/trees/${tree.id}`} className="w-full">
           <img
@@ -40,64 +40,65 @@ function TreesList({ tree }: TreeProps) {
           />
         </Link>
       </div>
-      <div className="flex justify-between flex-col items-center mt-2 w-full h-24">
+      <div className="flex flex-col items-center mt-2 w-full px-2 flex-grow">
         <Link to={`/trees/${tree.id}`} className="w-full">
-          <h3 className="text-h3 font-bold text-center">
+          <h3 className="text-h3 font-bold text-center line-clamp-2 h-[56px]">
             {tree.name || 'Nom non disponible'}
           </h3>
         </Link>
-        <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
-          {!isTreeDetailPage && (
+        {!isTreeDetailPage && (
+          <p className="text-sm text-gray-500 items-center mt-1">
             <Link
               to={`/trees/${tree.id}`}
-              className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
+              className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full hover:bg-greenroots_orange transition-colors duration-300"
             >
               {tree.species?.species_name || 'Espèce non disponible'}
             </Link>
-          )}
-        </p>
-        <p className="text-greenroots_green">
+          </p>
+        )}
+        <p className="text-greenroots_green mt-1">
           {tree.price_ht
             ? `${Number.parseFloat(tree.price_ht.toString()).toFixed(2)} € HT`
             : 'Prix non disponible'}
         </p>
       </div>
-      <div className="m-2 w-full">
+      <div className="m-2 w-full px-2 flex-grow">
         {!isCampaignPage && (
           <>
-            <p className="flex justify-around text-sm text-gray-500 items-center gap-2">
+            <p className="text-sm text-gray-500 items-center mt-1">
               <Link
                 to={`/campaigns/${tree.campaignId}`}
-                className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full"
+                className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full block text-center mx-auto w-fit hover:bg-greenroots_orange transition-colors duration-300"
+                title={tree.campaignName || 'Nom de campagne indisponible'}
               >
                 {tree.campaignName || 'Nom de campagne indisponible'}
               </Link>
             </p>
-            <p className="p-1">
+            <p className="p-1 text-center">
               Lieu de plantation :{' '}
               {tree.campaignCountry ||
                 'Aucun lieu de plantation pour le moment'}
             </p>
           </>
         )}
-        <p className="p-1">Âge : {tree.age || 'Non spécifié'} ans</p>
+        <p className="p-1 text-center">Âge : {tree.age || 'Non spécifié'} ans</p>
       </div>
-      <div className="flex flex-row justify-between items-center p-2 mb-2 gap-2 w-full">
+      <div className="flex flex-col items-center p-2 mb-2 gap-2 w-full">
         <div className="flex items-center">
           <button
             type="button"
             onClick={handleDecrement}
-            className="border border-greenroots_green rounded-l-full w-8 p-3"
+            className="border border-greenroots_green rounded-l-full w-8 h-8 flex items-center justify-center hover:bg-greenroots_orange hover:text-greenroots_white transition-colors duration-300"
           >
             -
           </button>
-          <span className="border-t border-b border-greenroots_green px-4 p-3">
+          <span className="border-t border-b border-greenroots_green px-4 h-8 flex items-center justify-center">
             {quantity}
           </span>
           <button
             type="button"
             onClick={handleIncrement}
-            className="border border-greenroots_green rounded-r-full w-8 p-3"
+            className="border border-greenroots_green rounded-r-full w-8 h-8 flex items-center justify-center hover:bg-greenroots_orange hover:text-greenroots_white"
           >
             +
           </button>
@@ -105,7 +106,7 @@ function TreesList({ tree }: TreeProps) {
         <button
           type="button"
           onClick={handleAddToCart}
-          className="flex items-center bg-greenroots_orange text-white p-0.5 rounded-full"
+          className="bg-greenroots_orange text-white py-2 px-4 rounded-full text-sm w-full hover:bg-greenroots_green transition-colors duration-300"
         >
           Ajouter au panier
         </button>

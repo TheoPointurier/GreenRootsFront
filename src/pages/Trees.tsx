@@ -47,7 +47,7 @@ function Trees() {
   const speciesOptions = Array.from(new Set(trees.map((tree) => tree.species?.species_name || '')));
 
   const handleFilterChange = (speciesName: string) => {
-    const filtered = speciesName
+    const filtered = speciesName && speciesName !== 'Toutes'
       ? trees.filter((tree) => tree.species?.species_name === speciesName)
       : trees;
     setFilteredTrees(filtered);
@@ -56,7 +56,8 @@ function Trees() {
   return (
     <main className="flex flex-col items-center">
       <h2 className="text-h2 mt-10 mb-4 text-center">
-        Trouves l'arbre qu'il<span className="bg-greenroots_green text-greenroots_white rounded p-1 mx-1">te faut</span>
+        Trouves l'arbre qu'il
+        <span className="bg-greenroots_green text-greenroots_white rounded p-1 mx-1">te faut</span>
       </h2>
       <div className="flex justify-evenly items-center w-full mt-5">
         <Link to="/" className="pr-1">
@@ -64,7 +65,7 @@ function Trees() {
         </Link>
         <FilterSelect onFilterChange={handleFilterChange} filterType="species" filterOptions={['Toutes', ...speciesOptions]} />
       </div>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-screen-xl p-4 mb-20">
         {filteredTrees.map((tree) => (
           <TreesList key={`${tree.id}-${tree.campaignId}`} tree={tree} />

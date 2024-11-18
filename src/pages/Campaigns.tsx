@@ -32,7 +32,7 @@ function Campaigns() {
 
   // Gère le filtrage par pays
   const handleFilterChange = (country: string) => {
-    const filtered = country
+    const filtered = country && country !== 'Tous'
       ? campaigns.filter(campaign => campaign.location?.country?.name === country)
       : campaigns;
     setFilteredCampaigns(filtered);
@@ -41,7 +41,8 @@ function Campaigns() {
   return (
     <main className="flex flex-col items-center mb-20">
       <h2 className="text-h2 mt-10 mb-4 text-center">
-        Contribues à la campagne de<span className="bg-greenroots_green text-greenroots_white rounded p-1 mx-1">ton choix</span>
+        Contribues à la campagne de
+        <span className="bg-greenroots_green text-greenroots_white rounded p-1 mx-1">ton choix</span>
       </h2>
       <div className="flex justify-evenly items-center w-full mt-5">
         <Link to="/" className="pr-1">

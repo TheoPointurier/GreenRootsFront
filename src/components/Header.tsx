@@ -40,19 +40,19 @@ function Header() {
         {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
           <div className="flex space-x-4 flex-1 justify-center">
-            <Link to="/" className="text-xl">
+            <Link to="/" className="text-xl hover:text-greenroots_orange">
               Accueil
             </Link>
-            <Link to="/trees" className="text-xl">
+            <Link to="/trees" className="text-xl hover:text-greenroots_orange">
               Nos arbres
             </Link>
-            <Link to="/campaigns" className="text-xl">
+            <Link to="/campaigns" className="text-xl hover:text-greenroots_orange">
               Nos campagnes
             </Link>
-            <Link to="/contact" className="text-xl">
+            <Link to="/contact" className="text-xl hover:text-greenroots_orange">
               Contact
             </Link>
-            <Link to="/about" className="text-xl">
+            <Link to="/about" className="text-xl hover:text-greenroots_orange">
               À propos
             </Link>
           </div>
@@ -62,20 +62,20 @@ function Header() {
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="text-xl text-greenroots_white"
+                  className="text-xl text-greenroots_white hover:text-greenroots_orange"
                 >
                   Déconnexion
                 </button>
-                <Link to={`/user/${user.id}`} className="text-xl">
+                <Link to={`/user/${user.id}`} className="text-xl hover:text-greenroots_orange">
                   Mon compte
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-xl">
+                <Link to="/login" className="text-xl hover:text-greenroots_orange">
                   Connexion
                 </Link>
-                <Link to="/register" className="text-xl">
+                <Link to="/register" className="text-xl hover:text-greenroots_orange">
                   Créer un compte
                 </Link>
               </>
@@ -88,7 +88,7 @@ function Header() {
           <Link to="/panier" aria-label="Voir le contenu de mon panier">
             <FontAwesomeIcon
               icon={faCartShopping}
-              className="w-8 h-8 text-greenroots_white"
+              className="w-8 h-8 text-greenroots_white hover:text-greenroots_orange"
             />
           </Link>
         </div>
