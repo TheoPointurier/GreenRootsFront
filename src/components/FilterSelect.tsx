@@ -14,7 +14,7 @@ function FilterSelect({ onFilterChange, filterType, filterOptions }: FilterSelec
       <button 
         onClick={() => setIsOpen(!isOpen)} 
         type="button"
-        className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-9 pr-9 mr-5 rounded-full"
+        className="bg-greenroots_orange text-greenroots_white text-[0.8rem] p-2 pl-9 pr-9 mr-5 rounded-full hover:bg-greenroots_green transition-colors duration-300"
       >
         Filtrer par {filterType === 'country' ? 'pays' : 'espèce'}
       </button>
