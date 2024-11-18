@@ -73,7 +73,7 @@ function HomePage() {
     aria-hidden="true"
   />
     {/* Texte et contenu */}
-    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full  bg-white/80 m-10 p-4 sm:p-6 xl:p-8 xl:right-[35%] ">
+    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full  bg-white/80 m-10 p-4 sm:p-6 xl:p-8 xl:right-[30%] ">
   <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black">
     Ce que nous te proposons
   </h2>
@@ -109,7 +109,7 @@ function HomePage() {
       </div>
 
       <section className="flex flex-row p-6 mt-20  ">
-      <div>
+      <div className='hidden xl:block'>
           <img
             src="/Images/weeping-willow-tree.webp"
             alt="Arbre pleureur"
@@ -140,7 +140,7 @@ function HomePage() {
 
       {/* Section FAQ */}
 
-      <section className="grid  grid-cols-2 w-full">
+      <section className="grid  grid-cols-2 w-full pt-20">
       
         <h1 className="text-h1 font-bold text-greenroots_green mb-8 col-span-2">
           Une question ?
