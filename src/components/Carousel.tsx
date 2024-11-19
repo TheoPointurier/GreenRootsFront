@@ -121,7 +121,7 @@ useEffect(() => {
         onClick={goToPrevSlide}
         aria-label="Slide précédente"
       >
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 duration-300 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
           <svg
             className="w-5 h-5 text-white sm:w-6 sm:h-6"
             fill="none"
@@ -147,7 +147,7 @@ useEffect(() => {
         onClick={goToNextSlide}
         aria-label="Slide suivante"
       >
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
+        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-orange-500 group-hover:bg-orange-400 duration-300 group-focus:ring-4 group-focus:ring-orange-500 group-focus:outline-none">
           <svg
             className="w-5 h-5 text-white sm:w-6 sm:h-6"
             fill="none"

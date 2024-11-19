@@ -97,7 +97,7 @@ function ReviewCreate() {
 
           <button
             type="submit"
-            className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-greenroots_orange"
+            className="bg-greenroots_green text-white rounded-md py-2 px-4 hover:bg-greenroots_orange duration-300"
           >
             Soumettre
           </button>

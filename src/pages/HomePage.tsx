@@ -149,7 +149,7 @@ function HomePage() {
           {faqs.map((faq, index) => (
             <button
               key={faq.id}
-              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left"
+              className="bg-greenroots_green text-white p-4 rounded-lg shadow-md cursor-pointer text-left hover:bg-greenroots_orange duration-300"
               onClick={() =>
                 setFaqOpenIndex(faqOpenIndex === index ? null : index)
               }

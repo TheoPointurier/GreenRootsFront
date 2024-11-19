@@ -97,17 +97,17 @@ export default function LoginForm() {
       {/* Bouton de soumission */}
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full"
+        className="w-full py-2 px-4 bg-greenroots_green text-greenroots_white text-xs rounded-full hover:bg-greenroots_orange transition-colors duration-300"
       >
         Se connecter
       </button>
 
       {/* Liens supplémentaires */}
       <div className='flex items-center justify-between'>
-        <Link to="/register" className="text-greenroots_green text-[0.6rem] pt-4">
+        <Link to="/register" className="text-greenroots_green text-[0.6rem] pt-4 hover:text-greenroots_orange transition-colors duration-300">
           Créer un compte
         </Link>
-        <Link to="/resetpassword" className="text-greenroots_green text-[0.6rem] pt-4">
+        <Link to="/resetpassword" className="text-greenroots_green text-[0.6rem] pt-4 hover:text-greenroots_orange transition-colors duration-300">
           Mot de passe oublié
         </Link>
       </div>

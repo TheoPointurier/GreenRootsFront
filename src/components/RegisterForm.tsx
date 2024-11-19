@@ -353,7 +353,7 @@ export default function RegisterForm() {
       {/* Bouton de soumission */}
       <button
         type="submit"
-        className="w-full py-2 px-4 bg-greenroots_green text-greenroots_white rounded-full"
+        className="w-full py-2 px-4 bg-greenroots_green text-greenroots_white rounded-full hover:bg-greenroots_orange transition-colors duration-300"
       >
         S'inscrire
       </button>

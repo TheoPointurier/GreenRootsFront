@@ -7,7 +7,7 @@ function PaymentButton({ onClick }: PaymentButtonProps) {
     <button
       type="button"
       onClick={onClick}
-      className="bg-green-500 text-white p-2 rounded-lg w-full"
+      className="bg-greenroots_green text-white p-2 rounded-lg w-full hover:bg-greenroots_orange duration-300"
     >
       Valider et payer
     </button>

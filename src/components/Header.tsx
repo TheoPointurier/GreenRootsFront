@@ -40,19 +40,19 @@ function Header() {
         {/* Menu horizontal uniquement sur PC */}
         <nav className="flex space-x-4 text-greenroots_white flex-1 justify-center ml-10 mr-5">
           <div className="flex space-x-4 flex-1 justify-center">
-            <Link to="/" className="text-xl hover:text-greenroots_orange">
+            <Link to="/" className="text-xl hover:text-greenroots_orange duration-300">
               Accueil
             </Link>
-            <Link to="/trees" className="text-xl hover:text-greenroots_orange">
+            <Link to="/trees" className="text-xl hover:text-greenroots_orange duration-300">
               Nos arbres
             </Link>
-            <Link to="/campaigns" className="text-xl hover:text-greenroots_orange">
+            <Link to="/campaigns" className="text-xl hover:text-greenroots_orange duration-300">
               Nos campagnes
             </Link>
-            <Link to="/contact" className="text-xl hover:text-greenroots_orange">
+            <Link to="/contact" className="text-xl hover:text-greenroots_orange duration-300">
               Contact
             </Link>
-            <Link to="/about" className="text-xl hover:text-greenroots_orange">
+            <Link to="/about" className="text-xl hover:text-greenroots_orange duration-300">
               À propos
             </Link>
           </div>
@@ -62,20 +62,20 @@ function Header() {
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="text-xl text-greenroots_white hover:text-greenroots_orange"
+                  className="text-xl text-greenroots_white hover:text-greenroots_orange duration-300"
                 >
                   Déconnexion
                 </button>
-                <Link to={`/user/${user.id}`} className="text-xl hover:text-greenroots_orange">
+                <Link to={`/user/${user.id}`} className="text-xl hover:text-greenroots_orange duration-300">
                   Mon compte
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-xl hover:text-greenroots_orange">
+                <Link to="/login" className="text-xl hover:text-greenroots_orange duration-300">
                   Connexion
                 </Link>
-                <Link to="/register" className="text-xl hover:text-greenroots_orange">
+                <Link to="/register" className="text-xl hover:text-greenroots_orange duration-300">
                   Créer un compte
                 </Link>
               </>
@@ -88,7 +88,7 @@ function Header() {
           <Link to="/panier" aria-label="Voir le contenu de mon panier">
             <FontAwesomeIcon
               icon={faCartShopping}
-              className="w-8 h-8 text-greenroots_white hover:text-greenroots_orange"
+              className="w-8 h-8 text-greenroots_white hover:text-greenroots_orange duration-300"
             />
           </Link>
         </div>

@@ -46,7 +46,7 @@ function AuthModal({ onClose }: AuthModalProps) {
   <div className="bg-white p-6 rounded-[20px] shadow-lg max-w-2xl w-full relative">
     <button
       type="button"
-      className="absolute top-2 right-2 text-white bg-greenroots_red rounded-full p-2"
+      className="absolute top-2 right-2 text-white bg-greenroots_red rounded-full p-2 hover:bg-greenroots_orange duration-300"
       onClick={onClose}
     >
       ✕
@@ -59,14 +59,14 @@ function AuthModal({ onClose }: AuthModalProps) {
       <button
         ref={loginButtonRef}
         type="button"
-        className="bg-greenroots_green text-white px-4 py-2 rounded-full w-full md:w-auto"
+        className="bg-greenroots_green text-white px-4 py-2 rounded-full w-full md:w-auto hover:bg-greenroots_orange duration-300"
         onClick={handleLogin}
       >
         Se connecter
       </button>
       <button
         type="button"
-        className="bg-greenroots_orange text-white px-4 py-2 rounded-full w-full md:w-auto"
+        className="bg-greenroots_orange text-white px-4 py-2 rounded-full w-full md:w-auto hover:bg-greenroots_green duration-300"
         onClick={handleRegister}
       >
         S'enregistrer

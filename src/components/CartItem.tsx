@@ -36,7 +36,7 @@ function CartItem({ item, quantity }: CartItemProps) {
         <button
           type="button"
           onClick={() => decreaseQuantity(item.id)}
-          className="border border-greenroots_green rounded-l-full w-8 p-3"
+          className="border border-greenroots_green rounded-l-full w-8 p-3 hover:bg-greenroots_orange hover:text-greenroots_white transition-colors duration-300"
         >
           -
         </button>
@@ -46,7 +46,7 @@ function CartItem({ item, quantity }: CartItemProps) {
         <button
           type="button"
           onClick={() => increaseQuantity(item.id)}
-          className="border border-greenroots_green rounded-r-full w-8 p-3"
+          className="border border-greenroots_green rounded-r-full w-8 p-3 hover:bg-greenroots_orange hover:text-greenroots_white transition-colors duration-300"
         >
           +
         </button>
@@ -56,7 +56,7 @@ function CartItem({ item, quantity }: CartItemProps) {
       <button
         type="button"
         onClick={() => removeFromCart(item.id)}
-        className="bg-greenroots_red text-white py-2 px-6 rounded-full md:w-auto w-full mt-2 md:mt-0"
+        className="bg-greenroots_red text-white py-2 px-6 rounded-full md:w-auto w-full mt-2 md:mt-0 hover:bg-greenroots_orange duration-300"
       >
         Supprimer
       </button>

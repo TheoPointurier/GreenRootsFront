@@ -31,16 +31,16 @@ function Footer() {
 
         {/* Menu des liens */}
         <div className="flex items-center justify-between w-full px-8 py-5">
-          <Link to="/about#cgv" className="text-greenroots_white text-sm hover:text-greenroots_orange">
+          <Link to="/about#cgv" className="text-greenroots_white text-sm hover:text-greenroots_orange duration-300">
             CGV
           </Link>
-          <Link to="/about#confidentialite" className="text-greenroots_white text-sm hover:text-greenroots_orange">
+          <Link to="/about#confidentialite" className="text-greenroots_white text-sm hover:text-greenroots_orange duration-300">
             Politique de confidentialité
           </Link>
-          <Link to="/about#mentions-legales" className="text-greenroots_white text-sm hover:text-greenroots_orange">
+          <Link to="/about#mentions-legales" className="text-greenroots_white text-sm hover:text-greenroots_orange duration-300">
             Mentions légales
           </Link>
-          <Link to="/contact" className="text-greenroots_white text-sm hover:text-greenroots_orange">
+          <Link to="/contact" className="text-greenroots_white text-sm hover:text-greenroots_orange duration-300">
             Contact
           </Link>
         </div>
