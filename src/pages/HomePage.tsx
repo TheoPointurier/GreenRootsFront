@@ -116,7 +116,7 @@ function HomePage() {
             loading="lazy"
           />
         </div>
-        <div className='bg-white/80 flex flex-col p-8 rounded-xl shadow-md'>
+        <div className='bg-white/80 flex flex-col p-8 rounded-xl shadow-md justify-center'>
         <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black pb-4 self-start">
           Garde un visuel sur l'impact de <span className="bg-greenroots_green text-white rounded-lg px-4 py-1">ton geste</span>
         </h2>

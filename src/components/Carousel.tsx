@@ -86,8 +86,9 @@ useEffect(() => {
           width: "100%",
         }}
       >
-        {extendedImages.map((image) => (
-          <div key={image.alt}
+        {extendedImages.map((image, index) => (
+          <div
+        key={`${image.alt}-${index}`} // Combinaison de l'alt et de l'index pour garantir l'unicité
          className="flex-shrink-0 relative"
           style={{
             width: `${visibleWidthPercentage}%`,
