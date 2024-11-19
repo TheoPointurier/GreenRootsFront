@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ERROR404 from '../assets/images/404_sapins.webp';
 
 const NotFound: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const NotFound: React.FC = () => {
         {/* Image */}
         <div className='flex justify-center mt-4'>
           <img 
-            src="./src/assets/images/404_sapins.webp" 
+            src={ERROR404} 
             alt="page not found" 
             className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-[20px]"
           />

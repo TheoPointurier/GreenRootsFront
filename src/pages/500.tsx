@@ -1,3 +1,5 @@
+import ERROR500 from '../assets/images/500.webp';
+
 const ServerError: React.FC = () => {
   return (
     <div className="flex-1 flex bg-greenroots_beige h-auto justify-center items-center flex-col md:p-20 min-h-screen">
@@ -9,7 +11,7 @@ const ServerError: React.FC = () => {
         {/* Image */}
         <div className='flex justify-center mt-4'>
           <img 
-            src="./src/assets/images/500.webp" 
+            src={ERROR500} 
             alt="server error" 
             className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-[20px]"
           />
