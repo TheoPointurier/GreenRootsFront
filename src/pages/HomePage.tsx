@@ -18,25 +18,25 @@ function HomePage() {
       id: 'faq1',
       question: 'Quelle est la mission de Greenroots ?',
       answer:
-        "Greenroots vise à promouvoir la plantation d'arbres pour lutter contre le changement climatique.",
+        "Greenroots s'engage à restaurer les écosystèmes en promouvant la plantation d'arbres pour lutter contre le changement climatique, préserver la biodiversité et améliorer les conditions de vie des communautés locales.",
     },
     {
       id: 'faq2',
       question: 'Comment puis-je contribuer ?',
       answer:
-        "Vous pouvez contribuer en achetant un arbre à planter dans l'une de nos campagnes.",
+        "Contribuer est simple : choisissez une campagne qui vous inspire, sélectionnez les arbres que vous souhaitez financer, et laissez-nous nous occuper du reste ! Vous recevrez des mises à jour sur l'impact de votre geste.",
     },
     {
       id: 'faq3',
       question: 'Où sont plantés les arbres ?',
       answer:
-        'Les arbres sont plantés dans différentes régions que vous pouvez choisir lors de votre contribution.',
+        "Nos arbres sont plantés dans des zones soigneusement sélectionnées à travers le monde, en collaboration avec des partenaires locaux. Lors de votre contribution, vous pouvez choisir la région que vous souhaitez soutenir.",
     },
     {
       id: 'faq4',
       question: "Puis-je suivre l'impact de mon geste ?",
       answer:
-        "Oui, vous recevrez des informations sur la croissance de l'arbre et l'impact en CO₂ absorbé.",
+        "Absolument ! Vous recevrez des mises à jour régulières sur la plantation, la croissance des arbres et leur impact, notamment la quantité de CO₂ absorbée. Vous aurez aussi accès à des rapports sur la campagne choisie.",
     },
   ];
 
