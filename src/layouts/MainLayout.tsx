@@ -9,11 +9,14 @@ function MainLayout() {
   const [currentPath, setCurrentPath] = useState(location.pathname);
 
   useEffect(() => {
+    // Si le fragment existe dans l'URL, ne scrolle pas automatiquement vers le haut
     if (currentPath !== location.pathname) {
-      window.scrollTo(0, 0);
+      if (!location.hash) {
+        window.scrollTo(0, 0);
+      }
       setCurrentPath(location.pathname);
     }
-  }, [currentPath, location.pathname]);
+  }, [currentPath, location.pathname, location.hash]);
 
   return (
     <div className="flex flex-col min-h-screen">

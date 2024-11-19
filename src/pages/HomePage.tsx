@@ -53,15 +53,12 @@ function HomePage() {
       </h1>
 
   {/* Image visible uniquement sur desktop */}
-
-
   <img
     src="/Images/japanese-maple-tree.webp"
     alt="Vue d'un érable japonais rouge avec des feuilles en automne"
     className="hidden xl:block xl:col-span-1 self-center justify-self-center"
     loading="lazy"
   />
-
 
   {/* Conteneur principal */}
   <div
