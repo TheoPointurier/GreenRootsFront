@@ -86,8 +86,9 @@ useEffect(() => {
           width: "100%",
         }}
       >
-        {extendedImages.map((image) => (
-          <div key={image.alt}
+        {extendedImages.map((image, index) => (
+          <div
+        key={`${image.alt}-${index}`} // Combinaison de l'alt et de l'index pour garantir l'unicité
          className="flex-shrink-0 relative"
           style={{
             width: `${visibleWidthPercentage}%`,
@@ -95,7 +96,7 @@ useEffect(() => {
             <img
               src={image.src}
               alt={image.alt}
-              className=" w-full object-contain h-64
+              className=" w-full object-cover h-64
               "  // Taille uniforme des images
             />
              {/* Bouton accessible pour chaque image */}
