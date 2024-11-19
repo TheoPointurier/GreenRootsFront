@@ -65,7 +65,7 @@ function TreesList({ tree }: TreeProps) {
       <div className="m-2 w-full px-2 flex-grow">
         {!isCampaignPage && (
           <>
-            <p className="text-sm text-gray-500 items-center mt-1">
+            <p className="text-sm text-gray-500 items-center mt-1 mr-4">
               <Link
                 to={`/campaigns/${tree.campaignId}`}
                 className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full block text-center mx-auto w-fit hover:bg-greenroots_orange transition-colors duration-300"
