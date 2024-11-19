@@ -21,7 +21,7 @@ function CartSummary({ subtotal, onCheckout }: CartSummaryProps) {
       <button
         type="button"
         onClick={onCheckout}
-        className="w-full mt-4 bg-greenroots_green text-white py-2 rounded-lg font-semibold"
+        className="w-full mt-4 bg-greenroots_green text-white py-2 rounded-lg font-semibold hover:bg-greenroots_orange duration-300"
       >
         Passer au règlement
       </button>

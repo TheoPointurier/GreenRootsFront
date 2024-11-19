@@ -108,7 +108,7 @@ const Accordion = ({ title, isOpen, onToggle }: AccordionProps) => (
   <div className="w-full">
     <button
       type="button"
-      className="flex justify-between items-center w-full text-left p-3 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-md"
+      className="flex justify-between items-center w-full text-left p-3 bg-greenroots_green text-greenroots_white border-b border-greenroots_green rounded-md hover:bg-greenroots_orange duration-300"
       onClick={onToggle}
       aria-expanded={isOpen ? 'true' : 'false'}
     >
