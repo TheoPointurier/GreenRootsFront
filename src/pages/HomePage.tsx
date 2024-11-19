@@ -108,7 +108,7 @@ function HomePage() {
       <section className="flex flex-row p-6 mt-20  ">
       <div className='hidden xl:block'>
           <img
-            src="/Images/weeping-willow-tree.webp"
+            src="/public/Images/weeping-willow-tree.webp"
             alt="Arbre pleureur"
             loading="lazy"
           />
