@@ -81,8 +81,8 @@ function CampaignDetail() {
       <section className="flex flex-col justify-between p-5 mb-5 rounded-t-[20px] rounded-b-[20px] border border-grey shadow-xl">
         <h3 className="text-h3 pl-3 mb-2">Comment allons nous procéder?</h3>
         <p className="text-sm p-1 m-1">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam
-          maiores corporis.
+        Dans une démarche éco-responsable, nous privilégions des pratiques durables à chaque étape du processus. Une fois votre contribution effectuée, nous collaborons avec des experts locaux et des associations engagées pour planter les arbres sélectionnés, en respectant les écosystèmes existants. Nous utilisons des techniques de plantation qui minimisent l’impact environnemental, tout en assurant une croissance optimale des arbres. Vous serez régulièrement informé(e) de l’avancée du projet, parce que votre geste mérite d’être suivi et valorisé.
+
         </p>
       </section>
 
@@ -102,8 +102,8 @@ function CampaignDetail() {
           Notre sélection d'arbres adapté à cette campagne
         </h3>
         <p className="text-sm p-1 mb-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam
-          maiores corporis.
+        Pour cette campagne, nous avons sélectionné des espèces d'arbres parfaitement adaptées aux conditions locales. Ces essences ont été choisies pour leur capacité à s’épanouir durablement, tout en offrant des bénéfices écologiques tels que la régénération des sols, la réduction du CO₂ atmosphérique, et le soutien à la faune environnante.
+
         </p>
         <div className="flex flex-wrap justify-evenly gap-4">
           {campaign.treesCampaign.map((tree) => (
