@@ -77,8 +77,6 @@ export default function RegisterForm() {
 
     try {
       const registerResponse = await register(dataToSend);
-      console.log('Réponse du serveur :', registerResponse);
-
       if (registerResponse.message === 'Utilisateur créé') {
         showSuccessToast('Compte créé avec succès ! Vous êtes maintenant connecté.');
         const loginData: LoginData = {

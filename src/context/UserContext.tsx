@@ -43,26 +43,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
-      console.log(
-        'Token et ID utilisateur récupérés depuis localStorage:',
-        token,
-        userId,
-      );
 
       if (token && userId) {
         try {
           const data = await apiClient(`/users/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
-
-          console.log("Données utilisateur récupérées depuis l'API:", data);
           setUser(data);
-          console.log('Utilisateur mis à jour dans le contexte:', data);
         } catch (error) {
-          console.error(
-            'Erreur lors de la récupération des informations utilisateur:',
-            error,
-          );
           logout();
         }
       }

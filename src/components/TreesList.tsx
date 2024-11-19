@@ -24,7 +24,6 @@ function TreesList({ tree }: TreeProps) {
       campaignName: tree.campaignName || 'Nom de campagne indisponible',
       campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
-    console.log('Produit ajouté au panier:', tree);
     toast.success(`${tree.name} ajouté au panier avec succès !`);
   };
 

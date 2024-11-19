@@ -1,18 +1,17 @@
 import { useState } from 'react';
-import { createReview } from '../api/reviews'; // Import de la fonction
+import { createReview } from '../api/reviews';
 import type { ReviewsAdd } from '../@types/reviews';
 import { useUser } from '../context/UserContext';
 
 function ReviewCreate() {
   const { user } = useUser();
-  const [rating, setRating] = useState<number | string>(1); // Permet de gérer la note comme un nombre ou une chaîne vide.
+  const [rating, setRating] = useState<number | string>(1);
   const [content, setContent] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   if (!user) {
     setError('Vous devez être connecté pour soumettre un avis.');
-    console.log('Utilisateur non connecté.');
     return <p>Veuillez vous connecter pour soumettre un avis.</p>;
   }
 
@@ -26,12 +25,9 @@ function ReviewCreate() {
     }
 
     const review: ReviewsAdd = { rating, content }; // Crée un objet structuré pour l'avis.
-    console.log('Review to submit:', review); // Log pour vérifier l'avis avant l'envoi.
 
     try {
-      const response = await createReview(review); // Appel à l'API pour soumettre l'avis.
-      console.log('API Response:', response);
-
+      await createReview(review); // Appel à l'API pour soumettre l'avis.
       // Si tout se passe bien, message de succès et réinitialisation des champs.
       setSuccessMessage('Avis soumis avec succès !');
       setRating(1); // Réinitialise la note.
@@ -72,7 +68,6 @@ function ReviewCreate() {
                 const numericValue = Number(value);
                 if (!Number.isNaN(numericValue) && numericValue >= 1 && numericValue <= 5) {
                   setRating(numericValue); // Met à jour si la valeur est valide
-                  console.log('Rating mis à jour :', numericValue);
                 } else {
                   setError('Veuillez entrer une note valide entre 1 et 5.');
                 }
@@ -88,7 +83,6 @@ function ReviewCreate() {
             value={content}
             onChange={(e) => {
               setContent(e.target.value); // Met à jour le contenu de l'avis.
-              console.log('Content mis à jour :', e.target.value);
             }}
             className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows={4}

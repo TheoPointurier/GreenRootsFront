@@ -9,7 +9,6 @@ export async function login(data: LoginData) {
 }
 
 export async function register(data: RegisterData) {
-  console.log("Données envoyées au backend:", data);
   return await apiClient('/register', {
     method: 'POST',
     body: JSON.stringify(data),

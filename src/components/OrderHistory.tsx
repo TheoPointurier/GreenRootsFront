@@ -22,7 +22,6 @@ const OrderHistoryPage = () => {
           method: 'GET',
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
-        console.log('Données des commandes récupérées :', JSON.stringify(response, null, 2));
         setOrders(response);
       } catch (error) {
         console.error("Erreur lors de la récupération des commandes :", error);

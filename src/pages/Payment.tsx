@@ -24,10 +24,8 @@ function PaymentPage() {
   const totalAmount = Number.parseFloat(
     cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)
   );
-  console.log('Montant total calculé =', totalAmount);
 
   const orderNumber = `ORD-${Date.now()}`;
-  console.log('Numéro de commande généré =', orderNumber);
 
   // Création des lignes de commande
   const orderLines = cartItems.map((item) => {
@@ -48,18 +46,11 @@ function PaymentPage() {
     if (!line.country_name) {
       line.country_name = 'Pays non disponible';
     }
-  
-    console.log('Vérification de la ligne de commande avant l\'envoi:', JSON.stringify(line, null, 2));
     return line;
   });
-  
-
-  console.log('Toutes les lignes de commande =', orderLines);
 
   const validateExpiryDate = () => {
     const [month, year] = expiryDate.split('/').map(Number);
-    console.log('Mois et année extraits:', { month, year });
-
     if (!month || !year || month < 1 || month > 12) {
       return "Date d'expiration invalide. Utilisez le format MM/AA.";
     }
@@ -67,7 +58,6 @@ function PaymentPage() {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
     const currentYear = currentDate.getFullYear() % 100;
-    console.log('Date actuelle :', { currentMonth, currentYear });
 
     if (year < currentYear || (year === currentYear && month < currentMonth)) {
       return "La date d'expiration est déjà passée.";
@@ -106,14 +96,11 @@ function PaymentPage() {
         id_tree: line.id_tree,
       })),
     };
-    
-    console.log('Données envoyées (corrigées) :', JSON.stringify(orderData, null, 2));
 
     try {
       const response = await createOrder(orderData);
 
       if (response?.createdOrder) {
-        console.log('Réponse de la création de commande :', response);
         showSuccessToast('Paiement réussi ! Votre commande a été enregistrée.');
         clearCart();
         navigate(`/user/${user?.id}?tab=orders`);

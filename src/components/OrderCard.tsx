@@ -27,7 +27,6 @@ const OrderCard = ({ order }: OrderCardProps) => {
         const totalTTC = totalHT * 1.2;
 
         if (isOrderLineWithDetails(line)) {
-          console.log('Détails de la campagne récupérés :', line.campaign?.location);
           return (
             <div key={line.id} className="order-line mb-4 p-4 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-semibold mb-1">{line.tree?.name ?? line.tree_name}</h4>

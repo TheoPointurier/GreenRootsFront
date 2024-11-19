@@ -11,15 +11,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    const parsedCart = savedCart ? JSON.parse(savedCart) : [];
-    console.log("Panier chargé depuis le localStorage :", parsedCart);
-  }, []);
-
-  useEffect(() => {
     if (cartItems.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cartItems));
-      console.log("Panier sauvegardé dans le localStorage :", cartItems);
     } else {
       localStorage.removeItem('cart');
     }

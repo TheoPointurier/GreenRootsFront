@@ -9,8 +9,6 @@ export async function createOrder(orderData: OrderData) {
       throw new Error('Token non trouvé');
     }
 
-    console.log('Données préparées avant l\'appel API :', JSON.stringify(orderData, null, 2));
-
     const response = await apiClient('/orders', {
       method: 'POST',
       headers: {
@@ -19,9 +17,6 @@ export async function createOrder(orderData: OrderData) {
       },
       body: JSON.stringify(orderData),
     });
-
-    console.log('Statut de la réponse API :', response?.status);
-    console.log('Réponse brute de l\'API :', response);
 
     if (!response || !response.createdOrder) {
       console.error('Erreur de réponse de l\'API :', response);
