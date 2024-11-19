@@ -96,7 +96,7 @@ useEffect(() => {
             <img
               src={image.src}
               alt={image.alt}
-              className=" w-full object-contain h-64
+              className=" w-full object-cover h-64
               "  // Taille uniforme des images
             />
              {/* Bouton accessible pour chaque image */}
