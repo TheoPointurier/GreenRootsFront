@@ -1,4 +1,4 @@
-import ERROR500 from '../assets/images/500.webp';
+import ServerErrorImage from '../assets/images/500.webp';
 
 const ServerError: React.FC = () => {
   return (
@@ -11,20 +11,18 @@ const ServerError: React.FC = () => {
         {/* Image */}
         <div className='flex justify-center mt-4'>
           <img 
-            src={ERROR500} 
+            src={ServerErrorImage}
             alt="server error" 
             className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-[20px]"
           />
         </div>
 
-        {/* Back link */}
+        {/* Error message */}
         <p className="text-center text-xl md:text-3xl mt-8 text-blue-500">
           Oups, ça sent le sapin !
         </p>
-
-        {/* Error message */}
         <p className="mt-4 text-lg md:text-xl text-center">
-          Le serveur est actuellement indisponible, revenez plus tard 
+          Le serveur est actuellement indisponible, revenez plus tard.
         </p>
       </section>
     </div>
