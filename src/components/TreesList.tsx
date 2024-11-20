@@ -41,12 +41,12 @@ function TreesList({ tree }: TreeProps) {
       </div>
       <div className="flex flex-col items-center mt-2 w-full px-2 flex-grow">
         <Link to={`/trees/${tree.id}`} className="w-full">
-          <h3 className="text-h3 font-bold text-center line-clamp-2 h-[56px]">
+          <h3 className="text-h3 font-bold text-center line-clamp-2 h-full">
             {tree.name || 'Nom non disponible'}
           </h3>
         </Link>
         {!isTreeDetailPage && (
-          <p className="text-sm text-gray-500 items-center mt-1">
+          <p className="text-sm text-gray-500 items-center m-2">
             <Link
               to={`/trees/${tree.id}`}
               className="bg-greenroots_green text-greenroots_white text-xs px-3 py-1 rounded-full hover:bg-greenroots_orange transition-colors duration-300"
