@@ -43,11 +43,11 @@ function Header() {
             <Link to="/" className="text-xl hover:text-greenroots_orange duration-300">
               Accueil
             </Link>
-            <Link to="/trees" className="text-xl hover:text-greenroots_orange duration-300">
-              Nos arbres
-            </Link>
             <Link to="/campaigns" className="text-xl hover:text-greenroots_orange duration-300">
               Nos campagnes
+            </Link>
+            <Link to="/trees" className="text-xl hover:text-greenroots_orange duration-300">
+              Nos arbres
             </Link>
             <Link to="/contact" className="text-xl hover:text-greenroots_orange duration-300">
               Contact

@@ -1,17 +1,21 @@
-let navigate: ((path: string) => void) | null = null;
+// src/api/apiClient.ts
+import type { NavigateFunction } from 'react-router-dom';
 
-export const setNavigate = (navigateFn: (path: string) => void) => {
+let navigate: NavigateFunction | null = null;
+
+export const setNavigate = (navigateFn: NavigateFunction) => {
   navigate = navigateFn;
 };
 
+// src/api/apiClient.ts
 export const apiClient = async (endpoint: string, options: RequestInit = {}) => {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
+      ...options,
       headers: {
         'Content-Type': 'application/json',
-        ...options.headers,
+        ...(options.headers || {}),
       },
-      ...options,
     });
 
     if (!response.ok) {
@@ -27,11 +31,14 @@ export const apiClient = async (endpoint: string, options: RequestInit = {}) => 
 
     return await response.json();
   } catch (error) {
-    if (error instanceof TypeError && navigate) {
+    if (navigate) {
       navigate('/500');
     }
+    console.error('Erreur dans apiClient:', error);
     throw error;
   }
 };
+
+
 
 export default apiClient;

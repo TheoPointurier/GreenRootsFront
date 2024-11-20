@@ -84,8 +84,8 @@ const BurgerMenu = ({ isOpen, toggleMenu }: BurgerMenuProps) => {
               <Link to="/panier" onClick={toggleMenu}>Mon panier</Link>
             </li>
             <li className="pt-2"><Link to="/" onClick={toggleMenu}>Accueil</Link></li>
-            <li className="pt-2"><Link to="/trees" onClick={toggleMenu}>Nos arbres</Link></li>
             <li className="pt-2"><Link to="/campaigns" onClick={toggleMenu}>Nos campagnes</Link></li>
+            <li className="pt-2"><Link to="/trees" onClick={toggleMenu}>Nos arbres</Link></li>
             <li className="pt-2"><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
             <li className="pt-2"><Link to="/about" onClick={toggleMenu}>À propos</Link></li>
           </ul>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import { fetchCampaigns } from '../api/campaigns';
@@ -9,6 +9,7 @@ import type { TreeProps } from '../@types/trees';
 
 function TreeDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [tree, setTree] = useState<TreeProps['tree'] | null>(null);
   const [treeCampaigns, setTreeCampaigns] = useState<Campaign[]>([]);
 
@@ -36,14 +37,17 @@ function TreeDetail() {
             });
           }
           setTreeCampaigns(relatedCampaigns);
+        } else {
+          throw new Error('Arbre non trouvé');
         }
       } catch (error) {
         console.error("Erreur lors de la récupération de l'arbre:", error);
+        navigate('/404');
       }
     };
 
     fetchTreeData();
-  }, [id]);
+  }, [id, navigate]);
 
   if (!tree) {
     return <p>Chargement des données...</p>;
