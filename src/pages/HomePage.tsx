@@ -47,7 +47,7 @@ function HomePage() {
       <section className="relative flex flex-col py-8 xl:w-full xl:grid xl:grid-cols-2 xl:gap-8">
       <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black  xl:flex xl:flex-col xl:items-center xl:col-span-2">
         Tu souhaite faire un geste
-        <span className="bg-greenroots_green text-white rounded-lg px-4 pt-2 ml-2 mt-2">
+        <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2 mt-2">
           éco-responsable ?
         </span>
       </h1>

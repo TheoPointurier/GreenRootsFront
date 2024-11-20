@@ -39,11 +39,11 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
             {/* Suppression de flex-grow ici */}
             <div className="flex flex-col p-4">
               <Link to={`/campaigns/${campaign.id}`} className="w-full">
-                <h3 className="text-h3 font-bold line-clamp-2 h-[56px]">
+                <h3 className="text-h3 font-bold line-clamp-2 h-full">
                   {campaign.name}
                 </h3>
               </Link>
-              <p className="text-sm text-gray-500 mb-2 mt-2">
+              <p className="text-sm text-gray-500 mb-2 m-2">
                 {campaign.location.name_location},{' '}
                 {campaign.location.country.name}
               </p>
