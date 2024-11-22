@@ -47,7 +47,11 @@ const Router: React.FC = () => {
         { path: '*', element: <Suspense fallback={<Spinner />}><NotFound /></Suspense> },
       ],
     },
-  ]);
+  ],
+{
+    basename: '/greenrootsfront',
+}
+);
 
   return <RouterProvider router={router} />;
 };
