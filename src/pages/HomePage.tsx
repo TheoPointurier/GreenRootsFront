@@ -54,7 +54,7 @@ function HomePage() {
 
   {/* Image visible uniquement sur desktop */}
   <img
-    src={`${import.meta.env.BASE_URL}Images/japanese-maple-tree.webp`}
+    src={'/Images/japanese-maple-tree.webp'}
     alt="Vue d'un érable japonais rouge avec des feuilles en automne"
     className="hidden xl:block xl:col-span-1 self-center justify-self-center"
     loading="lazy"
@@ -108,7 +108,7 @@ function HomePage() {
       <section className="flex flex-row p-6 mt-20  ">
       <div className='hidden xl:block'>
           <img
-            src={`${import.meta.env.BASE_URL}Images/weeping-willow-tree.webp`}
+            src={'/Images/weeping-willow-tree.webp'}
             alt="Arbre pleureur"
             loading="lazy"
           />

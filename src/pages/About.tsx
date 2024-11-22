@@ -49,7 +49,7 @@ function About() {
 
         <div className="flex justify-around items-center">
           <img
-            src={`${import.meta.env.BASE_UR}Images/Equipe.webp`}
+            src={'/Images/Equipe.webp'}
             alt="L'équipe GreenRoots travaillant sur la plateforme"
             className="w-[300px] object-cover"
             loading="lazy"

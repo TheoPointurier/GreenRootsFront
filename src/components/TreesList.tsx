@@ -32,7 +32,7 @@ function TreesList({ tree }: TreeProps) {
       <div className="flex justify-center w-full">
         <Link to={`/trees/${tree.id}`} className="w-full">
           <img
-            src={`${import.meta.env.BASE_URL}Trees_Images/${tree.id}.webp`}
+            src={`/Trees_Images/${tree.id}.webp`}
             alt={tree.name || 'Image'}
             className="w-full h-40 rounded-t-[20px] object-cover"
             loading="lazy"
