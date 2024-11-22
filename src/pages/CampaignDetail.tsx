@@ -63,7 +63,7 @@ function CampaignDetail() {
       {/* Photo campagne */}
       <section className="flex justify-evenly mt-5 mb-5">
         <img
-          src={`/Campaign_Images/${campaign.id}.webp`}
+          src={`${import.meta.env.VITE_API_URL}/Campaign_Images/${campaign.id}.webp`}
           alt={`forêt de ${campaign.name}`}
           className="w-full max-w-sm md:max-w-md lg:max-w-lg h-100 rounded-[20px] object-cover"
         />

@@ -29,7 +29,7 @@ function CampaignsList({ campaigns }: CampaignsListProps) {
             <div className="flex justify-center w-full">
               <Link to={`/campaigns/${campaign.id}`} className="w-full">
                 <img
-                  src={`/Campaign_Images/${campaign.id}.webp`}
+                  src={`${import.meta.env.VITE_API_URL}/Campaign_Images/${campaign.id}.webp`}
                   alt={campaign.name}
                   className="w-full h-40 rounded-t-lg object-cover"
                   loading="lazy"
