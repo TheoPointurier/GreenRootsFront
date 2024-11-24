@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function Carousel({ images }: { images: Array<{ src: string; alt: string }> }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesPerView, setImagesPerView] = useState(window.innerWidth >= 1280 ? 3 : 1);
@@ -94,7 +95,7 @@ useEffect(() => {
             width: `${visibleWidthPercentage}%`,
           }}>
             <img
-              src={image.src}
+              src={`${import.meta.env.VITE_IMG_URL}/Campaign_Images/${index}.webp`}
               alt={image.alt}
               className=" w-full object-cover h-64
               "  // Taille uniforme des images
