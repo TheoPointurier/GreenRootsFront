@@ -45,53 +45,53 @@ function HomePage() {
 
 
       <section className="relative flex flex-col py-8 xl:w-full xl:grid xl:grid-cols-2 xl:gap-8">
-      <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black  xl:flex xl:flex-col xl:items-center xl:col-span-2">
-        Tu souhaite faire un geste
-        <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2 mt-2">
-          éco-responsable ?
-        </span>
-      </h1>
+        <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black  xl:flex xl:flex-col xl:items-center xl:col-span-2">
+          Tu souhaite faire un geste
+          <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2 mt-2">
+            éco-responsable ?
+          </span>
+        </h1>
 
-  {/* Image visible uniquement sur desktop */}
-  <img
-    src={`${import.meta.env.VITE_IMG_URL}/Images/japanese-maple-tree.webp`}
-    alt="Vue d'un érable japonais rouge avec des feuilles en automne"
-    className="hidden xl:block xl:col-span-1 self-center justify-self-center"
-    loading="lazy"
-  />
+        {/* Image visible uniquement sur desktop */}
+        <img
+          src={`${import.meta.env.VITE_IMG_URL}/Images/japanese-maple-tree.webp`}
+          alt="Vue d'un érable japonais rouge avec des feuilles en automne"
+          className="hidden xl:block xl:col-span-1 self-center justify-self-center"
+          loading="lazy"
+        />
 
-  {/* Conteneur principal */}
-  <div
-  className="relative mt-8 xl:ml-12 flex flex-col items-center justify-center w-full  bg-illustration-arbre bg-contain bg-center bg-no-repeat  xl:col-span-1 "
->
+        {/* Conteneur principal */}
+        <div
+          className="relative mt-8 xl:ml-12 flex flex-col items-center justify-center w-full  bg-illustration-arbre bg-contain bg-center bg-no-repeat  xl:col-span-1 "
+        >
 
-<div
-    className="absolute inset-0 bg-greenroots_sand/30 z-10"
-    aria-hidden="true"
-  />
-    {/* Texte et contenu */}
-    <div className="relative z-20 rounded-lg shadow-md max-w-md w-full  bg-white/80 m-10 p-4 sm:p-6 xl:p-8 xl:right-[30%] ">
-  <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black">
-    Ce que nous te proposons
-  </h2>
-  <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
-    Faire un geste en quelques clics pour lutter contre le changement climatique.
-  </p>
-  <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
-    En rejoignant notre initiative, tu contribues à des projets concrets de reforestation et à la préservation de la biodiversité.
-  </p>
-  <button
-    onClick={() => navigate('/campaigns')}
-    className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
-    aria-label="Accéder à la page des campagnes pour contribuer"
-    type="button"
-  >
-    Je contribue
-  </button>
-</div>
+          <div
+            className="absolute inset-0 bg-greenroots_sand/30 z-10"
+            aria-hidden="true"
+          />
+          {/* Texte et contenu */}
+          <div className="relative z-20 rounded-lg shadow-md max-w-md w-full  bg-white/80 m-10 p-4 sm:p-6 xl:p-8 xl:right-[30%] ">
+            <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black">
+              Ce que nous te proposons
+            </h2>
+            <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
+              Faire un geste en quelques clics pour lutter contre le changement climatique.
+            </p>
+            <p className="text-sm sm:text-base xl:text-lg text-gray-700 mt-4">
+              En rejoignant notre initiative, tu contribues à des projets concrets de reforestation et à la préservation de la biodiversité.
+            </p>
+            <button
+              onClick={() => navigate('/campaigns')}
+              className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300"
+              aria-label="Accéder à la page des campagnes pour contribuer"
+              type="button"
+            >
+              Je contribue
+            </button>
+          </div>
 
-  </div>
-</section>
+        </div>
+      </section>
       {/* Grille des Avis : Grille Adaptative */}
       <div>
         <Reviews />
@@ -106,7 +106,7 @@ function HomePage() {
       </div>
 
       <section className="flex flex-row p-6 mt-20  ">
-      <div className='hidden xl:block'>
+        <div className='hidden xl:block'>
           <img
             src={`${import.meta.env.VITE_IMG_URL}/Images/weeping-willow-tree.webp`}
             alt="Arbre pleureur"
@@ -114,31 +114,32 @@ function HomePage() {
           />
         </div>
         <div className='bg-white/80 flex flex-col p-8 rounded-xl shadow-md justify-center'>
-        <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black pb-4 self-start">
-          Garde un visuel sur l'impact de <span className="bg-greenroots_green text-white rounded-lg px-4 py-1">ton geste</span>
-        </h2>
-        <p className='text-sm sm:text-base xl:text-lg text-gray-700 '>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
-        <ul className='text-sm sm:text-base xl:text-lg text-gray-700 py-4'>
-          <li>Arbres achetés: 9</li>
-          <li className='my-1'>Co2 aborbé jusqu'à aujourdh'ui: 720kg * </li>
-          <li>Campagnes auquelles j'ai contribué: Restauration de la Savane Africaine, Espaces Verts à New York  </li>
-        </ul>
-        <span className='text-sm text-gray-700'>* Pour une contribution de 9 arbres Eucalyptus sur une durée de deux années</span>
-        <button
-        onClick={() => navigate('/campaigns')}
-          type="button"
-          className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300 self-start"
-          aria-label="Accéder à la page des campagnes pour contribuer" 
-        >
-          Je contribue
-        </button>
+          <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black pb-4 self-start">
+            Garde un visuel sur l'impact de
+            <span className="bg-greenroots_green text-white rounded-lg mx-2 px-2 py-1">ton geste</span>
+          </h2>
+          <p className='text-sm sm:text-base xl:text-lg text-gray-700 '>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
+          <ul className='text-sm sm:text-base xl:text-lg text-gray-700 py-4'>
+            <li>Arbres achetés: 9</li>
+            <li className='my-1'>Co2 aborbé jusqu'à aujourdh'ui: 720kg * </li>
+            <li>Campagnes auquelles j'ai contribué: Restauration de la Savane Africaine, Espaces Verts à New York  </li>
+          </ul>
+          <span className='text-sm text-gray-700'>* Pour une contribution de 9 arbres Eucalyptus sur une durée de deux années</span>
+          <button
+            onClick={() => navigate('/campaigns')}
+            type="button"
+            className="mt-6 bg-greenroots_orange text-white py-3 px-6 rounded-lg shadow-md hover:bg-greenroots_green transition-colors duration-300 self-start"
+            aria-label="Accéder à la page des campagnes pour contribuer"
+          >
+            Je contribue
+          </button>
         </div>
       </section>
 
       {/* Section FAQ */}
 
       <section className="grid  grid-cols-2 w-full pt-20">
-      
+
         <h1 className="text-h1 font-bold text-greenroots_green mb-8 col-span-2">
           Une question ?
         </h1>
@@ -184,9 +185,9 @@ function HomePage() {
             </button>
           ))}
         </div>
-      
+
       </section>
-      
+
     </div>
   );
 }
