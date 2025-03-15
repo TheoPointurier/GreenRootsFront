@@ -20,7 +20,7 @@ function TreesList({ tree }: TreeProps) {
       name: tree.name,
       price: Number.parseFloat(tree.price_ht.toString()),
       quantity,
-      image: `/Trees_Images/${tree.id}.webp`,
+      image: `${import.meta.env.VITE_IMG_URL}/Trees_Images/${tree.id}.webp`,
       campaignName: tree.campaignName || 'Nom de campagne indisponible',
       campaignLocation: tree.campaignCountry || 'Localisation non disponible',
     });
