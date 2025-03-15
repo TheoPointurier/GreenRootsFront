@@ -46,8 +46,8 @@ function HomePage() {
 
       <section className="relative flex flex-col py-8 xl:w-full xl:grid xl:grid-cols-2 xl:gap-8">
         <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold text-black  xl:flex xl:flex-col xl:items-center xl:col-span-2">
-          Tu souhaite faire un geste
-          <span className="bg-greenroots_green text-white rounded-lg px-4 ml-2 mt-2">
+          Tu souhaite faire un geste <br/>
+          <span className="bg-greenroots_green text-white rounded-[2rem] pl-5 pr-5 leading-[2]">
             éco-responsable ?
           </span>
         </h1>
@@ -115,8 +115,8 @@ function HomePage() {
         </div>
         <div className='bg-white/80 flex flex-col p-8 rounded-xl shadow-md justify-center'>
           <h2 className="text-lg sm:text-xl xl:text-2xl font-bold text-black pb-4 self-start">
-            Garde un visuel sur l'impact de
-            <span className="bg-greenroots_green text-white rounded-lg mx-2 px-2 py-1">ton geste</span>
+            Garde un visuel sur l'impact de <br/>
+            <span className="bg-greenroots_green text-white rounded-[2rem] pr-5 pl-5 py-1 leading-[2]">ton geste</span>
           </h2>
           <p className='text-sm sm:text-base xl:text-lg text-gray-700 '>En tant que contributeur, tu pourras garder un oeil sur l'impact de ta contribution !</p>
           <ul className='text-sm sm:text-base xl:text-lg text-gray-700 py-4'>

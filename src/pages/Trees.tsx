@@ -56,8 +56,8 @@ function Trees() {
   return (
     <main className="flex flex-col items-center">
       <h2 className="text-h2 mt-10 mb-4 text-center">
-        Trouves l'arbre qu'il
-        <span className="bg-greenroots_green text-greenroots_white rounded pl-1 pr-1 mx-1">te faut</span>
+        Trouve l'arbre qu'il
+        <span className="bg-greenroots_green text-greenroots_white rounded-[2rem] pl-5 pr-5 mx-1 leading-[2]">te faut</span>
       </h2>
       <div className="flex justify-evenly items-center w-full mt-5">
         <Link to="/" className="pr-1">

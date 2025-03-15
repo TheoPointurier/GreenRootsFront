@@ -64,7 +64,7 @@ function TreeDetail() {
       <div className="flex flex-row justify-evenly mt-2 p-1 items-center">
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
           Détail d'un{' '}
-          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">
+          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3 leading-[2]">
             {tree.species?.species_name || 'Espèce non disponible'}
           </span>
         </h2>
@@ -90,7 +90,7 @@ function TreeDetail() {
       </div>
       <div className="flex flex-row justify-evenly mt-2">
         <h2 className="text-h2 items-center text-center mt-10 mb-10">
-          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3">
+          <span className="bg-greenroots_green text-greenroots_white rounded-[20px] ml-2 pt-1 pb-1 pl-3 pr-3 leading-[2]">
             {tree.species?.species_name || 'Espèce non disponible'}
           </span>{' '}
           dans une campagne

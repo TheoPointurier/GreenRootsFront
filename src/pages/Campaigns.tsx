@@ -46,8 +46,8 @@ function Campaigns() {
   return (
     <main className="flex flex-col items-center mb-20">
       <h2 className="text-h2 mt-10 mb-4 text-center">
-        Contribue à la campagne de
-        <span className="bg-greenroots_green text-greenroots_white rounded text-[1.5rem] p-1 ml-1">
+        Contribue à la campagne de <br/>
+        <span className="bg-greenroots_green text-greenroots_white rounded-[2rem] pr-5 pl-5 ml-1 leading-[2]">
           ton choix
         </span>
       </h2>
