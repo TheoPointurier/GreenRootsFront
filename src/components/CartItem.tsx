@@ -13,7 +13,7 @@ function CartItem({ item, quantity }: CartItemProps) {
   {/* Image */}
   <div className="flex justify-center w-full md:w-1/3">
     <img
-      src={`${import.meta.env.VITE_IMG_URL}/${item.image}`}
+      src={`${item.image}`}
       alt={item.name}
       className="w-full h-40 md:h-full rounded-t-[20px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-t-none object-cover"
       loading="lazy"
